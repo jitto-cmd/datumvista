@@ -1,3 +1,79 @@
 body {
-  background: red;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+}
+
+/* NAVBAR */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #0a2540;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 120px 20px;
+  background: #f4f7fb;
+}
+
+.hero h1 {
+  font-size: 42px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.hero p {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #555;
+}
+
+.btn {
+  margin-top: 30px;
+  padding: 12px 28px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* SECTIONS */
+.services, .why {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+  gap: 25px;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* FOOTER */
+footer {
+  background: #0a2540;
+  color: white;
+  text-align: center;
+  padding: 20px;
 }
