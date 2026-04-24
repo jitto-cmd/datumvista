@@ -4,31 +4,31 @@ body {
   color: #1f2937;
 }
 
-/* NAVBAR */
+/* NAV */
 .nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 20px 40px;
   background: #0a2540;
   color: white;
 }
 
 .nav-links {
-  list-style: none;
   display: flex;
   gap: 25px;
+  list-style: none;
 }
 
 /* HERO */
 .hero {
+  padding: 140px 20px;
+  background: linear-gradient(to right, #0a2540, #2563eb);
+  color: white;
   text-align: center;
-  padding: 120px 20px;
-  background: #f4f7fb;
 }
 
 .hero h1 {
-  font-size: 42px;
+  font-size: 48px;
   max-width: 900px;
   margin: auto;
 }
@@ -36,43 +36,75 @@ body {
 .hero p {
   margin-top: 20px;
   font-size: 18px;
-  color: #555;
+  opacity: 0.9;
+}
+
+.hero-buttons {
+  margin-top: 30px;
 }
 
 .btn {
-  margin-top: 30px;
-  padding: 12px 28px;
-  background: #2563eb;
-  color: white;
+  padding: 12px 25px;
   border: none;
-  font-size: 16px;
   cursor: pointer;
+  margin: 10px;
+}
+
+.primary {
+  background: white;
+  color: #0a2540;
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+/* TRUST */
+.trust {
+  text-align: center;
+  padding: 20px;
+  background: #f4f7fb;
 }
 
 /* SECTIONS */
-.services, .why {
-  padding: 70px 20px;
+.services, .process, .why {
+  padding: 80px 20px;
   text-align: center;
 }
 
 .grid {
   display: flex;
   gap: 25px;
-  margin-top: 40px;
   justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
 }
 
 .card {
-  background: white;
-  padding: 25px;
   width: 280px;
+  padding: 25px;
+  background: white;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
+.step {
+  width: 220px;
+}
+
+/* CTA */
+.cta {
+  background: #0a2540;
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
 /* FOOTER */
 footer {
-  background: #0a2540;
+  background: #111;
   color: white;
   text-align: center;
   padding: 20px;
