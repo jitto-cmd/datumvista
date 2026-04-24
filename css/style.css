@@ -135,3 +135,39 @@ footer {
   color: #fff;
   margin-top: 40px;
 }
+.hero {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #cbd5e1;
+  margin-bottom: 30px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #3b82f6;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+}
