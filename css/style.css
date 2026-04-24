@@ -171,3 +171,7 @@ footer {
 .btn-primary:hover {
   background: #2563eb;
 }
+.logo img {
+  height: 50px;
+  width: auto;
+}
