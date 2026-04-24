@@ -117,3 +117,21 @@ footer {
 .nav-links a:hover {
   text-decoration: underline;
 }
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+.contact-form button {
+  align-self: flex-start;
+}
