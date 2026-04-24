@@ -29,13 +29,23 @@
 <section class="services">
   <h2>Get in Touch</h2>
 
-  <form class="contact-form">
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <input type="text" placeholder="Company Name">
-    <textarea placeholder="Describe your requirement..." rows="5" required></textarea>
-    <button type="submit" class="btn primary">Submit Request</button>
-  </form>
+ <form action="https://formsubmit.co/info@datumvista.com" method="POST" class="contact-form">
+
+  <input type="text" name="name" placeholder="Your Name" required>
+
+  <input type="email" name="email" placeholder="Your Email" required>
+
+  <input type="text" name="company" placeholder="Company Name">
+
+  <textarea name="message" placeholder="Describe your requirement..." rows="5" required></textarea>
+
+  <button type="submit" class="btn primary">Submit Request</button>
+
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="New Datumvista Inquiry">
+  <input type="hidden" name="_template" value="table">
+
+</form>
 
 </section>
 
