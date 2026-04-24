@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Datumvista</title>
+  <title>Contact Us | Datumvista</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,13 +11,11 @@
 <header>
   <div class="container">
     <nav class="nav">
-      
       <div class="logo">
         <a href="index.html">
-          <img src="images/logo.png" alt="Datumvista Logo">
+          <img src="images/Datumvista logo.png" alt="Datumvista Logo" style="height: 50px;">
         </a>
       </div>
-
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -25,44 +23,41 @@
         <li><a href="industries.html">Industries</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-
     </nav>
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
-    <h1>Page Title</h1>
-    <p>Subtitle text</p>
+    <h1>Start Your Project</h1>
+    <p>Contact us to discuss your data needs and receive a tailored research proposal.</p>
   </div>
 </section>
 
-<section class="services">
-  <h2>Get in Touch</h2>
-
- <form action="https://formsubmit.co/info@datumvista.com" method="POST" class="contact-form">
-
-  <input type="text" name="name" placeholder="Your Name" required>
-
-  <input type="email" name="email" placeholder="Your Email" required>
-
-  <input type="text" name="company" placeholder="Company Name">
-
-  <textarea name="message" placeholder="Describe your requirement..." rows="5" required></textarea>
-
-  <button type="submit" class="btn primary">Submit Request</button>
-
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_subject" value="New Datumvista Inquiry">
-  <input type="hidden" name="_next" value="https://jitto-cmd.github.io/datumvista/thankyou.html">
-  <input type="hidden" name="_template" value="table">
-
-</form>
-
+<section class="contact-section">
+  <div class="container">
+    <div class="form-container">
+      <h2>Inquiry Form</h2>
+      <form action="https://formsubmit.co/info@datumvista.com" method="POST" class="contact-form">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="text" name="company" placeholder="Company Name">
+        <textarea name="message" placeholder="Briefly describe your research requirements..." rows="5" required></textarea>
+        
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New Website Inquiry - Datumvista">
+        <input type="hidden" name="_next" value="https://jitto-cmd.github.io/datumvista/thankyou.html">
+        
+        <button type="submit" class="btn primary">Submit Request</button>
+      </form>
+    </div>
+  </div>
 </section>
 
-<footer>
-  <p>© 2026 Datumvista. All Rights Reserved.</p>
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 Datumvista. All Rights Reserved.</p>
+  </div>
 </footer>
 
 </body>
