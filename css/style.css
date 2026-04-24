@@ -136,3 +136,22 @@ section { padding: 80px 0; }
   .nav-links { padding: 0; margin-top: 20px; }
   .hero h1 { font-size: 2rem; }
 }
+/* Logo Styling */
+.main-logo {
+  height: 120px; /* Increased from 50px */
+  width: auto;
+  display: block;
+  transition: transform 0.3s ease;
+  margin: 10px 0; /* Adds spacing above and below */
+}
+
+.main-logo:hover {
+  transform: scale(1.05); /* Subtle zoom effect on hover */
+}
+
+/* Adjusting the Nav bar to fit the larger logo */
+.nav {
+  padding: 5px 40px; /* Reducing vertical padding since the logo is taller */
+  display: flex;
+  align-items: center; /* Keeps menu items centered relative to the tall logo */
+}
