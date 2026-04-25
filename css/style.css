@@ -40,8 +40,43 @@ body { font-family: 'Outfit', sans-serif; background: #f8fafc; color: #1e293b; f
 .cform input, .cform textarea { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f8fafc; }
 .cform button { background: #2563eb; color: #fff; padding: 14px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
 
+/* --- ADVANCED MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
-    .nav-links-bar { display: none; }
-    .grid-3 { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 2.2rem; }
+    /* Fixes the Nav Bar overlap */
+    .nav-bar {
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-links-bar {
+        flex-wrap: wrap;       /* Allows links to wrap to a second line if needed */
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .nav-links-bar a {
+        font-size: 11px;       /* Slightly smaller text for phones */
+        letter-spacing: 0.05em;
+    }
+
+    /* Fixes Hero Text size */
+    .hero h1 {
+        font-size: 2.2rem;
+        padding: 0 10px;
+    }
+
+    /* Fixes the Grids (About, Services, Industries) */
+    .grid-3, .svc-grid, .sect-grid, .about-grid {
+        grid-template-columns: 1fr !important; /* Forces 1 column on mobile */
+        gap: 15px;
+    }
+
+    /* Fixes the About Timeline */
+    .tl-row {
+        flex-direction: column;
+        gap: 5px;
+    }
 }
