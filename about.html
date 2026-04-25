@@ -1,62 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Datumvista</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Datumvista</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific styles for the Timeline from your preview */
+        .tl { background: #0a0f1e; border-radius: 12px; padding: 28px; border: 1px solid rgba(37,99,235,0.2); text-align: left; }
+        .tl-row { display: flex; gap: 16px; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .tl-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .tl-yr { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 300; color: #60a5fa; min-width: 42px; }
+        .tl-body { color: rgba(255,255,255,0.55); font-size: 12.5px; line-height: 1.65; }
+        .tl-body b { color: rgba(255,255,255,0.85); display: block; margin-bottom: 3px; font-size: 13px; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
+        @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
-
-<header>
-  <div class="container">
-    <nav class="nav">
-      <div class="logo">
-        <a href="index.html">
-          <img src="css/Images/Dvlogo.png" alt="Datumvista Logo">
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo">
+            <div class="logo-mark">DV</div>
+            <span class="nav-brand-name">DATUM<span>VISTA</span></span>
         </a>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="industries.html">Industries</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+        <div class="nav-links-bar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="industries.html">Industries</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </nav>
-  </div>
-</header>
 
-<section class="hero">
-  <div class="container">
-    <h1>Who We Are</h1>
-    <p>A specialized firm bridging the gap between raw data and strategic growth.</p>
-  </div>
-</section>
-
-<section class="services">
-  <div class="container">
-    <h2>Our Mission</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Clarity</h3>
-        <p>Transform complex data into clear business insights.</p>
-      </div>
-      <div class="card">
-        <h3>Accuracy</h3>
-        <p>Deliver reliable and high-quality research outputs.</p>
-      </div>
-      <div class="card">
-        <h3>Impact</h3>
-        <p>Enable better strategic decisions for our clients.</p>
-      </div>
+    <div class="hero">
+        <div class="hero-inner">
+            <h1>Built from the<br><em>ground up</em></h1>
+            <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">A decade of fieldwork rigour and practitioner-level expertise.</p>
+        </div>
     </div>
-  </div>
-</section>
 
-<footer>
-  <p>© 2026 Datumvista. All Rights Reserved.</p>
-</footer>
+    <section class="sec">
+        <div class="inner">
+            <div class="about-grid">
+                <div style="text-align: left;">
+                    <h2 class="sec-h" style="text-align: left;">Our <em>Foundation</em></h2>
+                    <p class="sec-p" style="text-align: left; margin-left: 0;">Datumvista Research Ltd is a specialist market research firm with over a decade of fieldwork experience, formally established as a UK-registered company in 2024.</p>
+                    <p class="sec-p" style="text-align: left; margin-left: 0;">Our founder built this business beginning with customer experience evaluations for major retail brands and later leading large-scale survey operations across the GCC and beyond.</p>
+                    <p class="sec-p" style="text-align: left; margin-left: 0;">From mapping every cold store across an entire country to interviewing HNIs with USD 5M+ in assets, we bring practitioner-level expertise to every project.</p>
+                </div>
+                <div class="tl">
+                    <div class="tl-row"><div class="tl-yr">2010</div><div class="tl-body"><b>Customer Experience Evaluation</b> Branch-level mystery shopping for a major QSR chain.</div></div>
+                    <div class="tl-row"><div class="tl-yr">2012</div><div class="tl-body"><b>International Partnerships</b> Fieldwork for prepaid SIM user surveys and large-scale calling campaigns.</div></div>
+                    <div class="tl-row"><div class="tl-yr">2024</div><div class="tl-body"><b>Datumvista Established</b> Formally registered in England & Wales to expand international capability.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <footer class="footer">
+        <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
+        <p class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England & Wales.</p>
+    </footer>
 </body>
 </html>

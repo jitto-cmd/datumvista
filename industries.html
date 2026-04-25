@@ -1,61 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Industries | Datumvista</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industries | Datumvista</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .sect-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.15); border-radius: 10px; overflow: hidden; }
+        .sect-cell { background: #fff; padding: 30px 14px; text-align: center; transition: background 0.2s; }
+        .sect-cell:hover { background: #f1f5f9; }
+        .sect-cell .ic { font-size: 24px; display: block; margin-bottom: 10px; }
+        .sect-cell .nm { font-size: 13px; color: #1e293b; font-weight: 500; }
+        @media (max-width: 768px) { .sect-grid { grid-template-columns: repeat(2, 1fr); } }
+    </style>
 </head>
 <body>
-
-<header>
-  <div class="container">
-    <nav class="nav">
-      <div class="logo">
-        <a href="index.html">
-          <img src="css/Images/Dvlogo.png" alt="Datumvista Logo">
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo">
+            <div class="logo-mark">DV</div>
+            <span class="nav-brand-name">DATUM<span>VISTA</span></span>
         </a>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="industries.html">Industries</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+        <div class="nav-links-bar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="industries.html">Industries</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </nav>
-  </div>
-</header>
 
-<section class="hero">
-  <div class="container">
-    <h1>Sector Expertise</h1>
-    <p>Deep domain knowledge across high-growth industries.</p>
-  </div>
-</section>
-
-<section class="services">
-  <div class="container">
-    <div class="grid">
-      <div class="card">
-        <h3>Energy & Power</h3>
-        <p>Insights into oil, gas, and the renewable energy transition.</p>
-      </div>
-      <div class="card">
-        <h3>Retail & FMCG</h3>
-        <p>Analyzing consumer behavior and demand in local markets.</p>
-      </div>
-      <div class="card">
-        <h3>Financial Services</h3>
-        <p>Intelligence for Banking, Fintech, and regional investment.</p>
-      </div>
+    <div class="hero">
+        <div class="hero-inner">
+            <h1>Trusted across<br><em>every sector</em></h1>
+            <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">Providing data-driven clarity to global leaders in diverse markets.</p>
+        </div>
     </div>
-  </div>
-</section>
 
-<footer>
-  <p>© 2026 Datumvista. All Rights Reserved.</p>
-</footer>
+    <section class="sec">
+        <div class="inner">
+            <h2 class="sec-h">Industries we <em>serve</em></h2>
+            <div class="sect-grid">
+                <div class="sect-cell"><span class="ic">🏦</span><div class="nm">Banking & Finance</div></div>
+                <div class="sect-cell"><span class="ic">📱</span><div class="nm">Telecoms & Tech</div></div>
+                <div class="sect-cell"><span class="ic">🏘️</span><div class="nm">Real Estate</div></div>
+                <div class="sect-cell"><span class="ic">🚗</span><div class="nm">Automotive</div></div>
+                <div class="sect-cell"><span class="ic">✈️</span><div class="nm">Tourism & Hospitality</div></div>
+                <div class="sect-cell"><span class="ic">🛒</span><div class="nm">Consumer Goods</div></div>
+                <div class="sect-cell"><span class="ic">⚙️</span><div class="nm">Heavy Machinery</div></div>
+                <div class="sect-cell"><span class="ic">💳</span><div class="nm">FinTech</div></div>
+            </div>
+        </div>
+    </section>
 
+    <footer class="footer">
+        <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
+        <p class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England & Wales.</p>
+    </footer>
 </body>
 </html>
