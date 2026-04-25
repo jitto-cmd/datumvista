@@ -1,64 +1,110 @@
+/* --- 1. RESET & BASE --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: #334155;
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #334155;
 }
 
-/* NAVBAR - Fixes alignment shown in your screenshot */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- 2. NAVIGATION (This fixes your squashed header) --- */
+header {
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
 .nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 40px;
-  background: #fff;
-  border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
 }
 
-/* LOGO FIX - Constraints the large original file */
 .logo img {
-  height: 80px; 
-  width: auto;
-  display: block;
+    height: 80px; /* Limits the logo size on PC */
+    width: auto;
 }
 
 .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
+    display: flex;
+    list-style: none;
+    gap: 25px;
 }
 
 .nav-links a {
-  text-decoration: none;
-  color: #334155;
-  font-weight: 500;
+    text-decoration: none;
+    color: #334155;
+    font-weight: 600;
 }
 
-/* HERO SECTION */
+/* --- 3. HERO & GRIDS --- */
 .hero {
-  padding: 100px 20px;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: white;
-  text-align: center;
+    padding: 80px 20px;
+    background: #0f172a;
+    color: white;
+    text-align: center;
 }
 
-/* GRID & CARDS */
-section { padding: 60px 20px; }
-.grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-.card, .step {
-  flex: 1;
-  min-width: 250px;
-  padding: 30px;
-  background: #f8fafc;
-  border-radius: 8px;
-  text-align: center;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on PC */
+    gap: 20px;
+    padding: 40px 0;
 }
 
-/* FORM */
-.contact-form { max-width: 600px; margin: 0 auto; }
-input, textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #cbd5e1; border-radius: 5px; }
-.btn { padding: 12px 30px; border-radius: 5px; cursor: pointer; border: none; font-weight: bold; }
-.btn.primary { background: #3b82f6; color: white; text-decoration: none; display: inline-block; }
+.card {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
 
-footer { text-align: center; padding: 40px; background: #f1f5f9; }
+/* --- 4. RESPONSIVE BREAKPOINTS (The Magic Lines) --- */
+
+/* TABLET VIEW */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on Tablet */
+    }
+}
+
+/* MOBILE VIEW (This fixes your WhatsApp image issue) */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column; /* Stacks logo ABOVE the links */
+        text-align: center;
+        gap: 10px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;       /* Allows links to drop to a second line */
+        justify-content: center;
+        gap: 15px;
+        font-size: 14px;
+    }
+
+    .logo img {
+        height: 60px;          /* Shrinks logo so it fits on phone screens */
+    }
+
+    .grid {
+        grid-template-columns: 1fr; /* Stacks cards in 1 single column */
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+}
