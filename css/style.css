@@ -1,110 +1,36 @@
-/* --- 1. RESET & BASE --- */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* --- GLOBAL --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', sans-serif; color: #334155; overflow-x: hidden; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* --- NAV (Fixes the huge logo) --- */
+header { background: #fff; border-bottom: 1px solid #e2e8f0; padding: 10px 0; }
+.nav { display: flex; justify-content: space-between; align-items: center; }
+.logo img { height: 60px; width: auto; } /* This stops the logo from being giant */
+.nav-links { display: flex; list-style: none; gap: 20px; }
+.nav-links a { text-decoration: none; font-weight: 600; color: #334155; }
+
+/* --- HERO --- */
+.hero { background: #0f172a; color: white; padding: 80px 20px; text-align: center; }
+.hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
+/* --- GRID (Fixes the horizontal overlap) --- */
+.grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    padding: 40px 0; 
 }
+.card { background: #f8fafc; padding: 30px; border-radius: 8px; text-align: center; border: 1px solid #e2e8f0; }
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    color: #334155;
-}
+/* --- CONTACT FORM (Fixes the distorted inputs) --- */
+form { display: flex; flex-direction: column; max-width: 600px; margin: 40px auto; gap: 15px; }
+input, textarea { padding: 12px; border: 1px solid #cbd5e1; border-radius: 4px; width: 100%; }
+button { background: #0f172a; color: white; padding: 15px; border: none; border-radius: 4px; cursor: pointer; }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* --- 2. NAVIGATION (This fixes your squashed header) --- */
-header {
-    background: #fff;
-    border-bottom: 1px solid #e2e8f0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-}
-
-.logo img {
-    height: 80px; /* Limits the logo size on PC */
-    width: auto;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #334155;
-    font-weight: 600;
-}
-
-/* --- 3. HERO & GRIDS --- */
-.hero {
-    padding: 80px 20px;
-    background: #0f172a;
-    color: white;
-    text-align: center;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns on PC */
-    gap: 20px;
-    padding: 40px 0;
-}
-
-.card {
-    background: #f8fafc;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-/* --- 4. RESPONSIVE BREAKPOINTS (The Magic Lines) --- */
-
-/* TABLET VIEW */
-@media (max-width: 1024px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on Tablet */
-    }
-}
-
-/* MOBILE VIEW (This fixes your WhatsApp image issue) */
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    .nav {
-        flex-direction: column; /* Stacks logo ABOVE the links */
-        text-align: center;
-        gap: 10px;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;       /* Allows links to drop to a second line */
-        justify-content: center;
-        gap: 15px;
-        font-size: 14px;
-    }
-
-    .logo img {
-        height: 60px;          /* Shrinks logo so it fits on phone screens */
-    }
-
-    .grid {
-        grid-template-columns: 1fr; /* Stacks cards in 1 single column */
-    }
-
-    .hero h1 {
-        font-size: 1.8rem;
-    }
+    .nav { flex-direction: column; gap: 15px; }
+    .grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 1.8rem; }
 }
