@@ -1,36 +1,45 @@
-/* --- GLOBAL --- */
+/* --- GLOBAL RESET --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', sans-serif; color: #334155; overflow-x: hidden; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #334155; }
 
-/* --- NAV (Fixes the huge logo) --- */
-header { background: #fff; border-bottom: 1px solid #e2e8f0; padding: 10px 0; }
-.nav { display: flex; justify-content: space-between; align-items: center; }
-.logo img { height: 60px; width: auto; } /* This stops the logo from being giant */
+/* --- CONTAINERS --- */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
+section { padding: 60px 0; }
+
+/* --- NAVIGATION --- */
+header { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; }
+.nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; max-width: 1200px; margin: 0 auto; }
+.logo img { height: 60px; width: auto; }
 .nav-links { display: flex; list-style: none; gap: 20px; }
-.nav-links a { text-decoration: none; font-weight: 600; color: #334155; }
+.nav-links a { text-decoration: none; color: #334155; font-weight: 600; transition: 0.3s; }
+.nav-links a:hover { color: #2563eb; }
 
 /* --- HERO --- */
-.hero { background: #0f172a; color: white; padding: 80px 20px; text-align: center; }
-.hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+.hero { background: #0f172a; color: white; padding: 100px 20px; text-align: center; }
+.hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
 
-/* --- GRID (Fixes the horizontal overlap) --- */
-.grid { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; 
-    padding: 40px 0; 
-}
-.card { background: #f8fafc; padding: 30px; border-radius: 8px; text-align: center; border: 1px solid #e2e8f0; }
+/* --- TYPOGRAPHY --- */
+h2 { font-size: 2rem; margin-bottom: 30px; text-align: center; color: #0f172a; }
 
-/* --- CONTACT FORM (Fixes the distorted inputs) --- */
-form { display: flex; flex-direction: column; max-width: 600px; margin: 40px auto; gap: 15px; }
-input, textarea { padding: 12px; border: 1px solid #cbd5e1; border-radius: 4px; width: 100%; }
-button { background: #0f172a; color: white; padding: 15px; border: none; border-radius: 4px; cursor: pointer; }
+/* --- GRIDS & CARDS --- */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 20px; }
+.card { background: #f8fafc; padding: 30px; border-radius: 12px; border: 1px solid #e2e8f0; transition: 0.3s; }
+.card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
 
-/* --- RESPONSIVE --- */
+/* --- CONTACT FORM --- */
+form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; text-align: left; }
+input, textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 16px; }
+button { background: #0f172a; color: white; padding: 15px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+button:hover { background: #1e293b; }
+
+/* --- FOOTER (Centering Fix) --- */
+footer { background: #f1f5f9; padding: 40px 0; border-top: 1px solid #e2e8f0; text-align: center; width: 100%; }
+footer p { color: #64748b; font-size: 14px; }
+
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
     .nav { flex-direction: column; gap: 15px; }
     .grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 1.8rem; }
+    .nav-links { flex-wrap: wrap; justify-content: center; font-size: 14px; }
 }

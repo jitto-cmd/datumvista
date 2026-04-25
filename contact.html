@@ -1,58 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | Datumvista</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Datumvista</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header>
+        <nav class="nav">
+            <div class="logo"><img src="css/Images/Dvlogo.png" alt="Logo"></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="industries.html">Industries</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-  <div class="container">
-    <nav class="nav">
-      <div class="logo">
-        <a href="index.html">
-          <img src="css/Images/Dvlogo.png" alt="Datumvista Logo">
-        </a>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="industries.html">Industries</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+    <section class="hero">
+        <div class="container">
+            <h1>Start Your Project</h1>
+            <p>Contact us to receive a tailored research proposal.</p>
+        </div>
+    </section>
 
-<section class="hero">
-  <div class="container">
-    <h1>Start Your Project</h1>
-    <p>Contact us to receive a tailored research proposal.</p>
-  </div>
-</section>
+    <section>
+        <div class="container">
+            <form action="thankyou.html">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="text" placeholder="Company Name">
+                <textarea placeholder="Describe your requirement..." rows="5"></textarea>
+                <button type="submit">Submit Request</button>
+            </form>
+        </div>
+    </section>
 
-<section class="services">
-  <div class="container">
-    <form action="https://formsubmit.co/info@datumvista.com" method="POST" class="contact-form">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="text" name="company" placeholder="Company Name">
-      <textarea name="message" placeholder="Describe your requirement..." rows="5" required></textarea>
-      
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://jitto-cmd.github.io/datumvista/thankyou.html">
-      
-      <button type="submit" class="btn primary">Submit Request</button>
-    </form>
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 Datumvista. All Rights Reserved.</p>
-</footer>
-
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Datumvista. All Rights Reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
