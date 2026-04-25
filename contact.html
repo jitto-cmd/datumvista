@@ -1,29 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><title>Contact Us | Datumvista</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Datumvista</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo" style="text-decoration: none;">
+            <div class="logo-mark">DV</div>
+            <span class="nav-brand-name"><span>DATUM</span>VISTA</span>
+        </a>
+        <div class="nav-links-bar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="industries.html">Industries</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-inner">
+            <div class="hero-overline" style="font-size: 11px; letter-spacing: 0.22em; color: #60a5fa; text-transform: uppercase; margin-bottom: 24px;">Inquiry</div>
+            <h1>Start your <em>Project</em></h1>
+            <p style="color:rgba(255,255,255,0.45); max-width:600px; margin:0 auto;">All enquiries are treated with complete confidentiality under NDA.</p>
+        </div>
+    </div>
+
     <section class="sec">
         <div class="inner">
-            <h2 class="sec-h">Start your <em>Project</em></h2>
-            <p class="sec-p">Tell us about your research requirement. Enquiries are treated with complete confidentiality.</p>
-            <div class="cform">
-                <input type="text" placeholder="Full Name">
-                <input type="email" placeholder="Email Address">
-                <input type="text" placeholder="Organisation">
-                <textarea rows="5" placeholder="Describe your research requirement..."></textarea>
-                <button type="submit">Submit Request</button>
+            <div class="contact-wrap" style="max-width: 560px; margin: 0 auto; text-align: center;">
+                <p style="color:#64748b; font-size:13.5px; margin-bottom:30px;">Tell us about your research requirement and we will respond with a tailored proposal.</p>
+                <form class="cform" style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
+                    <input type="text" placeholder="Full Name" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 7px; background: #f8fafc;">
+                    <input type="email" placeholder="Email Address" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 7px; background: #f8fafc;">
+                    <input type="text" placeholder="Organisation" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 7px; background: #f8fafc;">
+                    <textarea rows="5" placeholder="Describe your research requirement..." style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 7px; background: #f8fafc;"></textarea>
+                    <button type="button" style="background: #2563eb; color: #fff; border: none; padding: 14px; border-radius: 7px; font-weight: 600; cursor: pointer;">Submit Request</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <div style="background:#0d1a33; padding:30px; color:rgba(255,255,255,0.6); text-align:center; border-top:1px solid rgba(37,99,235,0.2);">
-        <div class="inner">
-            <p style="font-size:13px;"><b>Client Confidentiality:</b> Relationships are governed by NDAs. Credentials available upon request.</p>
+    <div style="background:#0d1a33; padding:28px; border-top:1px solid rgba(37,99,235,0.2); border-bottom:1px solid rgba(37,99,235,0.2);">
+        <div class="inner" style="display:flex; align-items:center; gap:18px; color:rgba(255,255,255,0.55); font-size:13px; text-align:left;">
+            <div style="width:38px; height:38px; background:rgba(37,99,235,0.15); border-radius:8px; flex-shrink:0;"></div>
+            <div>
+                <b style="color:#93c5fd; display:block; margin-bottom:2px;">Client Confidentiality</b>
+                All client relationships are governed by Non-Disclosure Agreements.
+            </div>
         </div>
     </div>
 
-    </body>
+    <footer class="footer">
+        <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
+        <p class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England & Wales.</p>
+    </footer>
+</body>
 </html>
