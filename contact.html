@@ -1,63 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Start your next research project with Datumvista. Contact us for tailored proposals. All inquiries are strictly confidential.">
-    <title>Contact Us | Datumvista</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Datumvista Research Ltd to start your market research project. All enquiries are treated with complete confidentiality under NDA.">
+  <title>Contact Us | Datumvista Research Ltd</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .contact-info h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .contact-info p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-icon {
+      width: 34px;
+      height: 34px;
+      background: #eff6ff;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .info-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--blue);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    .info-value {
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 400;
+    }
+    @media (max-width: 768px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 36px; }
+    }
+  </style>
 </head>
 <body>
-    <nav class="nav-bar">
-        <a href="index.html" class="nav-logo" style="text-decoration: none;">
-            <div class="logo-mark">DV</div>
-            <span class="nav-brand-name"><span>DATUM</span>VISTA</span>
-        </a>
-        <div class="nav-links-bar">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="industries.html">Industries</a>
-            <a href="contact.html">Contact</a>
-        </div>
-    </nav>
 
-    <div class="hero">
-        <div class="hero-inner">
-            <div class="hero-overline" style="font-size: 11px; letter-spacing: 0.22em; color: #60a5fa; text-transform: uppercase; margin-bottom: 24px;">Inquiry</div>
-            <h1>Start your <em>Project</em></h1>
-            <p style="color:rgba(255,255,255,0.45); max-width:600px; margin:0 auto;">All enquiries are treated with complete confidentiality under NDA.</p>
-        </div>
+  <!-- ── NAVIGATION ── -->
+  <nav class="nav-bar" id="mainNav">
+    <a href="index.html" class="nav-logo">
+      <img src="css/Dvlogo.png" alt="Datumvista Logo" class="logo-img">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links-bar" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="contact.html" class="nav-cta">Start a Project</a>
     </div>
+  </nav>
 
-    <section class="sec">
-        <div class="inner">
-            <div class="contact-wrap" style="max-width: 560px; margin: 0 auto; text-align: center;">
-                <p style="color:#64748b; font-size:13.5px; margin-bottom:30px;">Tell us about your research requirement and we will respond with a tailored proposal.</p>
-                <form class="cform" style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
-                    <input type="text" placeholder="Full Name" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 7px; background: #f8fafc;">
-                    <input type="email" placeholder="Email Address" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 7px; background: #f8fafc;">
-                    <input type="text" placeholder="Organisation" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 7px; background: #f8fafc;">
-                    <textarea rows="5" placeholder="Describe your research requirement..." style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 7px; background: #f8fafc;"></textarea>
-                    <button type="button" style="background: #2563eb; color: #fff; border: none; padding: 14px; border-radius: 7px; font-weight: 600; cursor: pointer;">Submit Request</button>
-                </form>
-            </div>
-        </div>
-    </section>
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-overline">Get In Touch</div>
+      <h1>Start your <em>Project</em></h1>
+      <p class="hero-desc">Tell us about your research requirement and we will respond with a tailored proposal. All enquiries are treated with complete confidentiality.</p>
+    </div>
+  </div>
 
-    <div style="background:#0d1a33; padding:28px; border-top:1px solid rgba(37,99,235,0.2); border-bottom:1px solid rgba(37,99,235,0.2);">
-        <div class="inner" style="display:flex; align-items:center; gap:18px; color:rgba(255,255,255,0.55); font-size:13px; text-align:left;">
-            <div style="width:38px; height:38px; background:rgba(37,99,235,0.15); border-radius:8px; flex-shrink:0;"></div>
+  <!-- ── CONTACT SECTION ── -->
+  <section class="sec bg-white">
+    <div class="inner">
+      <div class="contact-layout">
+
+        <!-- Left: Info -->
+        <div class="contact-info">
+          <h3>How we <em style="font-style:italic;color:var(--blue);">work together</em></h3>
+          <p>Whether you have a fully scoped brief or just an initial question, we welcome the conversation. We will confirm receipt of your enquiry within one business day and respond with a tailored proposal within three working days.</p>
+
+          <div class="info-row">
+            <div class="info-icon">📬</div>
             <div>
-                <b style="color:#93c5fd; display:block; margin-bottom:2px;">Client Confidentiality</b>
-                All client relationships are governed by Non-Disclosure Agreements.
+              <div class="info-label">Response Time</div>
+              <div class="info-value">Within 1 business day for all enquiries</div>
             </div>
-        </div>
-    </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">📋</div>
+            <div>
+              <div class="info-label">Proposal Delivery</div>
+              <div class="info-value">Tailored proposal within 3 working days</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">🔒</div>
+            <div>
+              <div class="info-label">Confidentiality</div>
+              <div class="info-value">All enquiries handled under strict NDA</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">🌍</div>
+            <div>
+              <div class="info-label">Markets We Serve</div>
+              <div class="info-value">GCC · Africa · South Asia · Southeast Asia · Europe</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">🏢</div>
+            <div>
+              <div class="info-label">Registered Office</div>
+              <div class="info-value">England &amp; Wales (UK Company)</div>
+            </div>
+          </div>
 
-    <footer class="footer">
-        <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
-        <p class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England & Wales.</p>
-    </footer>
+          <div style="margin-top:28px;background:var(--slate);border-radius:10px;padding:20px;">
+            <p style="font-size:12.5px;color:var(--text-mid);margin-bottom:0;line-height:1.7;font-weight:300;">
+              <strong style="font-weight:500;color:var(--dark);display:block;margin-bottom:6px;">Not sure what you need?</strong>
+              That's fine. Share your business challenge or decision you are trying to make — we will suggest the right research approach, methodology, and scope.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div>
+          <p class="sec-eyebrow">Send an Enquiry</p>
+          <h2 class="sec-h" style="text-align:left;margin-bottom:6px;">We'd love to <em>hear from you</em></h2>
+          <div class="sec-rule"></div>
+
+          <form class="cform" action="thankyou.html" method="get">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" name="organisation" placeholder="Organisation / Company">
+            <input type="text" name="country" placeholder="Country">
+            <select name="service">
+              <option value="" disabled selected>Research Type (optional)</option>
+              <option>Qualitative Research (IDIs / Focus Groups)</option>
+              <option>Quantitative Survey</option>
+              <option>Mystery Shopping</option>
+              <option>Brand Tracking</option>
+              <option>Retail Distribution Mapping</option>
+              <option>HNI Research</option>
+              <option>Price Survey / Footfall Study</option>
+              <option>Online Survey / Digital Research</option>
+              <option>Multi-Market Research</option>
+              <option>Other / Not Sure</option>
+            </select>
+            <textarea name="message" rows="5" placeholder="Describe your research requirement or business challenge..."></textarea>
+            <button type="submit">Submit Enquiry →</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONF BAR ── -->
+  <div class="conf-bar">
+    <div class="conf-inner">
+      <div class="conf-icon">🔒</div>
+      <div class="conf-copy">
+        <b>Client Confidentiality</b>
+        All enquiries and client relationships are governed by Non-Disclosure Agreements. We do not publicly disclose client names, project specifics, or commercially sensitive details. You can share your requirements with confidence.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <img src="css/Dvlogo.png" alt="Datumvista" class="footer-logo-img">
+    <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
+    <div class="footer-tag">Where Data Becomes Decisive Insight</div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England &amp; Wales. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => { links.style.display = 'none'; });
+    });
+  </script>
+
 </body>
 </html>

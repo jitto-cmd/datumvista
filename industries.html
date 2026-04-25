@@ -1,60 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industries | Datumvista</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        .sect-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.15); border-radius: 10px; overflow: hidden; }
-        .sect-cell { background: #fff; padding: 30px 14px; text-align: center; transition: background 0.2s; }
-        .sect-cell:hover { background: #f1f5f9; }
-        .sect-cell .ic { font-size: 24px; display: block; margin-bottom: 10px; }
-        .sect-cell .nm { font-size: 13px; color: #1e293b; font-weight: 500; }
-        @media (max-width: 768px) { .sect-grid { grid-template-columns: repeat(2, 1fr); } }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Datumvista Research Ltd serves 16+ industries including Banking, Telecoms, Healthcare, Automotive, FinTech, Heavy Machinery, and Government across the GCC and beyond.">
+  <title>Industries | Datumvista Research Ltd</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Industry detail cards */
+    .ind-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .ind-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .ind-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 6px 20px rgba(37,99,235,0.07);
+    }
+    .ind-card-icon {
+      font-size: 26px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ind-card h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .ind-card p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    @media (max-width: 768px) {
+      .ind-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <nav class="nav-bar">
-        <a href="index.html" class="nav-logo">
-            <div class="logo-mark">DV</div>
-            <span class="nav-brand-name">DATUM<span>VISTA</span></span>
-        </a>
-        <div class="nav-links-bar">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="industries.html">Industries</a>
-            <a href="contact.html">Contact</a>
-        </div>
-    </nav>
 
-    <div class="hero">
-        <div class="hero-inner">
-            <h1>Trusted across<br><em>every sector</em></h1>
-            <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">Providing data-driven clarity to global leaders in diverse markets.</p>
-        </div>
+  <!-- ── NAVIGATION ── -->
+  <nav class="nav-bar" id="mainNav">
+    <a href="index.html" class="nav-logo">
+      <img src="css/Dvlogo.png" alt="Datumvista Logo" class="logo-img">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links-bar" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="industries.html" class="active">Industries</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Start a Project</a>
     </div>
+  </nav>
 
-    <section class="sec">
-        <div class="inner">
-            <h2 class="sec-h">Industries we <em>serve</em></h2>
-            <div class="sect-grid">
-                <div class="sect-cell"><span class="ic">🏦</span><div class="nm">Banking & Finance</div></div>
-                <div class="sect-cell"><span class="ic">📱</span><div class="nm">Telecoms & Tech</div></div>
-                <div class="sect-cell"><span class="ic">🏘️</span><div class="nm">Real Estate</div></div>
-                <div class="sect-cell"><span class="ic">🚗</span><div class="nm">Automotive</div></div>
-                <div class="sect-cell"><span class="ic">✈️</span><div class="nm">Tourism & Hospitality</div></div>
-                <div class="sect-cell"><span class="ic">🛒</span><div class="nm">Consumer Goods</div></div>
-                <div class="sect-cell"><span class="ic">⚙️</span><div class="nm">Heavy Machinery</div></div>
-                <div class="sect-cell"><span class="ic">💳</span><div class="nm">FinTech</div></div>
-            </div>
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-overline">Sector Expertise</div>
+      <h1>Trusted across<br><em>every sector</em></h1>
+      <p class="hero-desc">Deep domain knowledge and established methodology across 16 industries — from banking and telecoms to heavy machinery and government.</p>
+    </div>
+  </div>
+
+  <!-- ── SECTOR QUICK GRID ── -->
+  <section class="sec bg-dark">
+    <div class="inner">
+      <div class="sec-header-center">
+        <p class="sec-eyebrow" style="color:var(--blue-light);">All Sectors</p>
+        <h2 class="sec-h light">Industries we <em>serve</em></h2>
+      </div>
+      <div class="sect-grid">
+        <div class="sect-cell"><span class="ic">🏦</span><div class="nm">Banking & Finance</div></div>
+        <div class="sect-cell"><span class="ic">📱</span><div class="nm">Telecoms & Technology</div></div>
+        <div class="sect-cell"><span class="ic">🏥</span><div class="nm">Healthcare & Medical</div></div>
+        <div class="sect-cell"><span class="ic">🎓</span><div class="nm">Education & Government</div></div>
+        <div class="sect-cell"><span class="ic">🛡️</span><div class="nm">Insurance</div></div>
+        <div class="sect-cell"><span class="ic">🏘️</span><div class="nm">Real Estate</div></div>
+        <div class="sect-cell"><span class="ic">🚗</span><div class="nm">Automotive</div></div>
+        <div class="sect-cell"><span class="ic">✈️</span><div class="nm">Tourism & Hospitality</div></div>
+        <div class="sect-cell"><span class="ic">💄</span><div class="nm">Luxury & Beauty</div></div>
+        <div class="sect-cell"><span class="ic">🛒</span><div class="nm">Consumer Goods & FMCG</div></div>
+        <div class="sect-cell"><span class="ic">🍔</span><div class="nm">Food & Beverage</div></div>
+        <div class="sect-cell"><span class="ic">🎨</span><div class="nm">Paints & Coatings</div></div>
+        <div class="sect-cell"><span class="ic">⚙️</span><div class="nm">Heavy Machinery</div></div>
+        <div class="sect-cell"><span class="ic">🛢️</span><div class="nm">Engine Oil & Lubricants</div></div>
+        <div class="sect-cell"><span class="ic">💳</span><div class="nm">FinTech</div></div>
+        <div class="sect-cell"><span class="ic">📡</span><div class="nm">Regulatory Bodies</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── INDUSTRY DETAIL ── -->
+  <section class="sec bg-white">
+    <div class="inner">
+      <div class="sec-header-center">
+        <p class="sec-eyebrow">Domain Depth</p>
+        <h2 class="sec-h">What we do in <em>each sector</em></h2>
+        <div class="sec-rule" style="margin:0 auto 0;"></div>
+      </div>
+      <div class="ind-grid" style="margin-top:8px;">
+        <div class="ind-card">
+          <div class="ind-card-icon">🏦</div>
+          <div>
+            <h3>Banking & Finance</h3>
+            <p>Customer satisfaction studies, mystery shopping of branch and digital services, product awareness surveys, and HNI banking research for retail and private banking institutions.</p>
+          </div>
         </div>
-    </section>
+        <div class="ind-card">
+          <div class="ind-card-icon">📱</div>
+          <div>
+            <h3>Telecoms & Technology</h3>
+            <p>Prepaid and postpaid customer research, churn analysis, brand tracking, distribution mapping of SIM card retail points, and NPS measurement across telecom providers.</p>
+          </div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-icon">🏥</div>
+          <div>
+            <h3>Healthcare & Medical</h3>
+            <p>Patient experience studies, healthcare provider satisfaction research, medical institution mystery shopping, and public health awareness surveys.</p>
+          </div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-icon">🎓</div>
+          <div>
+            <h3>Education & Government</h3>
+            <p>Ministry-commissioned survey programmes including school-level research with child populations, policy awareness studies, and citizen satisfaction measurement.</p>
+          </div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-icon">🛡️</div>
+          <div>
+            <h3>Insurance</h3>
+            <p>Customer awareness, product penetration research, claims experience studies, and mystery shopping of insurance advisors and call centres.</p>
+          </div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-icon">🏘️</div>
+          <div>
+            <h3>Real Estate</h3>
+            <p>Market demand studies, buyer and tenant preference research, competitive landscape analysis, and HNI property investment behaviour research.</p>
+          </div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-icon">🚗</div>
+          <div>
+            <h3>Automotive</h3>
+            <p>Dealership mystery shopping, test-drive experience evaluation, brand perception tracking, and aftersales service quality audits across regional dealer networks.</p>
+          </div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-icon">✈️</div>
+          <div>
+            <h3>Tourism & Hospitality</h3>
+            <p>Visitor satisfaction studies, tourism behaviour research, hotel and hospitality mystery shopping, and national tourism awareness programmes commissioned by government bodies.</p>
+          </div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-icon">💄</div>
+          <div>
+            <h3>Luxury & Beauty</h3>
+            <p>Mystery shopping for luxury beauty retail environments, brand perception studies, consumer preference research, and in-store experience evaluation.</p>
+          </div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-icon">🛒</div>
+          <div>
+            <h3>Consumer Goods & FMCG</h3>
+            <p>Retail distribution mapping, price surveys, shopper behaviour studies, product awareness tracking, and in-store audit programmes across national markets.</p>
+          </div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-icon">⚙️</div>
+          <div>
+            <h3>Heavy Machinery</h3>
+            <p>Dealer network mystery shopping via in-person visits and telephone evaluations — assessing enquiry handling, technical knowledge, and sales responsiveness across multi-country dealer footprints.</p>
+          </div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-icon">💳</div>
+          <div>
+            <h3>FinTech</h3>
+            <p>User experience research, product awareness surveys, competitor intelligence, and digital financial services adoption studies across emerging markets including Saudi Arabia and Bahrain.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer class="footer">
-        <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
-        <p class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England & Wales.</p>
-    </footer>
+  <!-- ── GEOGRAPHIC REACH ── -->
+  <section class="sec bg-slate">
+    <div class="inner">
+      <div class="reach-grid">
+        <div>
+          <p class="sec-eyebrow">Geographic Reach</p>
+          <h2 class="sec-h">Research across<br><em>borders and markets</em></h2>
+          <div class="sec-rule"></div>
+          <p class="sec-p" style="text-align:left;max-width:100%;margin-bottom:14px;">We operate across the GCC, South Asia, Southeast Asia, Africa, and Europe — delivering fieldwork execution and research management across each market with the same standard of rigour.</p>
+          <p class="sec-p" style="text-align:left;max-width:100%;margin-bottom:24px;">Our multi-market capability allows clients to run consistent, comparable studies across geographies without managing multiple vendors.</p>
+          <div class="method-tags">
+            <span class="mtag">CAPI / Tablet</span>
+            <span class="mtag">CATI / Telemetric</span>
+            <span class="mtag">Online Surveys</span>
+            <span class="mtag">Pen &amp; Paper</span>
+            <span class="mtag">IDIs</span>
+            <span class="mtag">Focus Groups</span>
+            <span class="mtag">Mystery Shopping</span>
+            <span class="mtag">Retail Audits</span>
+            <span class="mtag">HNI Panels</span>
+            <span class="mtag">Footfall Studies</span>
+            <span class="mtag">Price Surveys</span>
+          </div>
+        </div>
+        <div class="reach-panel">
+          <div class="reach-panel-label">Markets We Operate In</div>
+          <div class="c-row"><span class="c-pip"></span>Bahrain</div>
+          <div class="c-row"><span class="c-pip"></span>Saudi Arabia</div>
+          <div class="c-row"><span class="c-pip"></span>United Arab Emirates</div>
+          <div class="c-row"><span class="c-pip"></span>Kuwait</div>
+          <div class="c-row"><span class="c-pip"></span>Oman</div>
+          <div class="c-row"><span class="c-pip"></span>Morocco</div>
+          <div class="c-row"><span class="c-pip"></span>South Africa</div>
+          <div class="c-row"><span class="c-pip"></span>India</div>
+          <div class="c-row"><span class="c-pip"></span>Singapore</div>
+          <div class="c-row"><span class="c-pip"></span>United Kingdom</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONF BAR ── -->
+  <div class="conf-bar">
+    <div class="conf-inner">
+      <div class="conf-icon">🔒</div>
+      <div class="conf-copy">
+        <b>Client Confidentiality</b>
+        All client relationships are governed by Non-Disclosure Agreements. We do not publicly disclose client names, project specifics, or commercially sensitive details. Credentials available under mutual NDA.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CTA ── -->
+  <section class="sec bg-white" style="padding-top:52px;padding-bottom:52px;">
+    <div class="inner" style="text-align:center;">
+      <p class="sec-eyebrow">Commission a Study</p>
+      <h2 class="sec-h">Research tailored to <em>your industry</em></h2>
+      <p class="sec-p" style="max-width:460px;margin:0 auto 28px;">Every project is designed from scratch to fit your sector, market, and specific decision-making context.</p>
+      <a href="contact.html" class="btn-primary">Start a Project</a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <img src="css/Dvlogo.png" alt="Datumvista" class="footer-logo-img">
+    <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
+    <div class="footer-tag">Where Data Becomes Decisive Insight</div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England &amp; Wales. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => { links.style.display = 'none'; });
+    });
+  </script>
+
 </body>
 </html>

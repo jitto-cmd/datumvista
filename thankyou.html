@@ -2,15 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Thank You | Datumvista</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You | Datumvista Research Ltd</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<section class="hero">
-  <h1>Thank You</h1>
-  <p>Your request has been submitted. We will contact you shortly.</p>
-</section>
+  <!-- ── NAVIGATION ── -->
+  <nav class="nav-bar" id="mainNav">
+    <a href="index.html" class="nav-logo">
+      <img src="css/Dvlogo.png" alt="Datumvista Logo" class="logo-img">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links-bar" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Start a Project</a>
+    </div>
+  </nav>
+
+  <!-- ── THANK YOU ── -->
+  <section class="sec bg-white">
+    <div class="inner">
+      <div class="thankyou-wrap">
+        <div class="thankyou-icon">✅</div>
+        <p class="sec-eyebrow">Enquiry Received</p>
+        <h1 class="sec-h">Thank you for <em>reaching out</em></h1>
+        <p class="sec-p" style="max-width:460px;margin:0 auto 32px;">Your enquiry has been submitted successfully. A member of our team will review your requirement and respond within one business day. All enquiries are handled in strict confidence.</p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+          <a href="index.html" class="btn-primary">Return to Home</a>
+          <a href="services.html" class="btn-secondary">Explore Our Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <img src="css/Dvlogo.png" alt="Datumvista" class="footer-logo-img">
+    <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
+    <div class="footer-tag">Where Data Becomes Decisive Insight</div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England &amp; Wales. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => { links.style.display = 'none'; });
+    });
+  </script>
 
 </body>
 </html>

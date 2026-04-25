@@ -1,69 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover our full-spectrum research capabilities, from Qualitative IDIs and Quantitative Surveys to Mystery Shopping and HNI access.">
-    <title>Our Services | Datumvista</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Datumvista Research Ltd — Full-spectrum research capability: Qualitative, Quantitative, Mystery Shopping, Brand Tracking, HNI Research, and more.">
+  <title>Our Services | Datumvista Research Ltd</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="nav-bar">
-        <a href="index.html" class="nav-logo" style="text-decoration: none;">
-            <div class="logo-mark">DV</div>
-            <span class="nav-brand-name"><span>DATUM</span>VISTA</span>
-        </a>
-        <div class="nav-links-bar">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="industries.html">Industries</a>
-            <a href="contact.html">Contact</a>
-        </div>
-    </nav>
 
-    <div class="hero">
-        <div class="hero-inner">
-            <div class="hero-overline" style="font-size: 11px; letter-spacing: 0.22em; color: #60a5fa; text-transform: uppercase; margin-bottom: 24px;">Our Expertise</div>
-            <h1>Full-spectrum<br><em>Research Capability</em></h1>
-            <p style="color:rgba(255,255,255,0.45); max-width:600px; margin:0 auto;">Methodological depth and practitioner-level expertise across all major research disciplines.</p>
-        </div>
+  <!-- ── NAVIGATION ── -->
+  <nav class="nav-bar" id="mainNav">
+    <a href="index.html" class="nav-logo">
+      <img src="css/Dvlogo.png" alt="Datumvista Logo" class="logo-img">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links-bar" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Start a Project</a>
     </div>
+  </nav>
 
-    <section class="sec bg-slate">
-        <div class="inner">
-            <div class="svc-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
-                <div class="svc" style="background:#fff; border-radius:10px; padding:24px; border:1px solid #e8edf3;">
-                    <h3 style="font-size:15px; margin-bottom:10px;">Qualitative Research</h3>
-                    <p style="font-size:12.5px; color:#64748b;">In-Depth Interviews (IDIs) and Focus Groups that reveal motivations beyond surface responses.</p>
-                </div>
-                <div class="svc" style="background:#fff; border-radius:10px; padding:24px; border:1px solid #e8edf3;">
-                    <h3 style="font-size:15px; margin-bottom:10px;">Quantitative Surveys</h3>
-                    <p style="font-size:12.5px; color:#64748b;">Face-to-face (CAPI), online, and telemetric surveys executed with precision.</p>
-                </div>
-                <div class="svc" style="background:#fff; border-radius:10px; padding:24px; border:1px solid #e8edf3;">
-                    <h3 style="font-size:15px; margin-bottom:10px;">Mystery Shopping</h3>
-                    <p style="font-size:12.5px; color:#64748b;">Discreet evaluations of customer experience across retail, automotive, and beauty sectors.</p>
-                </div>
-                <div class="svc" style="background:#fff; border-radius:10px; padding:24px; border:1px solid #e8edf3;">
-                    <h3 style="font-size:15px; margin-bottom:10px;">Brand Tracking</h3>
-                    <p style="font-size:12.5px; color:#64748b;">Continuous or periodic tracking of brand awareness and preference across target markets.</p>
-                </div>
-                <div class="svc" style="background:#fff; border-radius:10px; padding:24px; border:1px solid #e8edf3;">
-                    <h3 style="font-size:15px; margin-bottom:10px;">Retail Mapping</h3>
-                    <p style="font-size:12.5px; color:#64748b;">Nationwide outlet mapping and auditing competitor product presence.</p>
-                </div>
-                <div class="svc" style="background:#fff; border-radius:10px; padding:24px; border:1px solid #e8edf3;">
-                    <h3 style="font-size:15px; margin-bottom:10px;">HNI Research</h3>
-                    <p style="font-size:12.5px; color:#64748b;">Established access for interviewing individuals with USD 5M+ in assets.</p>
-                </div>
-            </div>
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-overline">Our Expertise</div>
+      <h1>Full-spectrum<br><em>Research Capability</em></h1>
+      <p class="hero-desc">Methodological depth and practitioner-level expertise across all major research disciplines — designed for high-stakes decisions.</p>
+    </div>
+  </div>
+
+  <!-- ── CORE SERVICES ── -->
+  <section class="sec bg-white">
+    <div class="inner">
+      <div class="sec-header-center">
+        <p class="sec-eyebrow">Core Services</p>
+        <h2 class="sec-h">What we <em>deliver</em></h2>
+        <div class="sec-rule" style="margin:0 auto 0;"></div>
+      </div>
+      <div class="svc-grid" style="margin-top:8px;">
+        <div class="svc">
+          <div class="svc-icon">🔍</div>
+          <h3>Qualitative Research</h3>
+          <p>In-Depth Interviews (IDIs), Focus Groups, and ethnographic approaches that reveal motivations, attitudes, and emotional drivers beyond surface-level responses. Conducted face-to-face or remotely.</p>
         </div>
-    </section>
+        <div class="svc">
+          <div class="svc-icon">📊</div>
+          <h3>Quantitative Surveys</h3>
+          <p>Face-to-face (CAPI), online, telemetric (CATI), and paper-based surveys. We handle large, complex sample sizes with structured field management and quality control across multiple locations.</p>
+        </div>
+        <div class="svc">
+          <div class="svc-icon">👁️</div>
+          <h3>Mystery Shopping</h3>
+          <p>Discreet evaluations of customer experience and service quality across retail, QSR, automotive, luxury beauty, telecoms, heavy machinery dealerships, and other specialist environments.</p>
+        </div>
+        <div class="svc">
+          <div class="svc-icon">📈</div>
+          <h3>Brand Tracking</h3>
+          <p>Continuous or periodic studies measuring brand awareness, perception, preference, and competitive positioning over time — helping clients understand how their brand is moving in the market.</p>
+        </div>
+        <div class="svc">
+          <div class="svc-icon">🗺️</div>
+          <h3>Retail Distribution Mapping</h3>
+          <p>Comprehensive nationwide outlet mapping — identifying missing stockists, auditing product placement, measuring competitor presence, and understanding distribution gaps across cold stores, mini-markets, and retail outlets.</p>
+        </div>
+        <div class="svc">
+          <div class="svc-icon">💎</div>
+          <h3>HNI & Specialist Research</h3>
+          <p>Proven access and tailored methodology for interviewing High Net Worth Individuals with USD 5M+ in assets — a rare and carefully managed capability for premium financial, investment, real estate, and lifestyle research.</p>
+        </div>
+        <div class="svc">
+          <div class="svc-icon">📞</div>
+          <h3>Telephone Mystery Evaluations</h3>
+          <p>Structured telephone-based mystery audits across multi-country dealer networks and service centres — assessing responsiveness, product knowledge, and service quality standards without an in-person visit.</p>
+        </div>
+        <div class="svc">
+          <div class="svc-icon">🏪</div>
+          <h3>Price Surveys & Footfall Studies</h3>
+          <p>Retail price data collection across multiple outlets, and structured visitor measurement studies for commercial and retail properties — supporting competitive intelligence and investment decisions.</p>
+        </div>
+        <div class="svc">
+          <div class="svc-icon">💻</div>
+          <h3>Online Surveys & Digital Research</h3>
+          <p>End-to-end design and deployment of digital surveys across banking, fintech, insurance, and consumer product categories — including panel management and data validation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer class="footer">
-        <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
-        <p class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England & Wales.</p>
-    </footer>
+  <!-- ── METHODOLOGIES ── -->
+  <section class="sec bg-slate">
+    <div class="inner">
+      <div class="sec-header-center">
+        <p class="sec-eyebrow">How We Work</p>
+        <h2 class="sec-h">Methodologies we <em>master</em></h2>
+        <div class="sec-rule" style="margin:0 auto 0;"></div>
+      </div>
+      <div class="spec-grid" style="margin-top:8px;">
+        <div class="spec">
+          <h4>CAPI — Computer Assisted Personal Interviewing</h4>
+          <p>Tablet-based face-to-face surveys with real-time data validation, GPS tracking, and quality control — replacing pen-and-paper with accuracy.</p>
+        </div>
+        <div class="spec">
+          <h4>CATI — Computer Assisted Telephone Interviewing</h4>
+          <p>Structured telephone surveys using trained callers with scripted questionnaires — ideal for large sample sizes and national coverage.</p>
+        </div>
+        <div class="spec">
+          <h4>IDI — In-Depth Interview</h4>
+          <p>One-to-one structured or semi-structured interviews lasting 30–90 minutes, conducted in-person or remotely, with expert moderators.</p>
+        </div>
+        <div class="spec">
+          <h4>Focus Groups</h4>
+          <p>Facilitated group discussions of 6–10 participants for exploratory research, concept testing, and consumer sentiment studies.</p>
+        </div>
+        <div class="spec">
+          <h4>Online Surveys & Panels</h4>
+          <p>Self-administered digital surveys with panel recruitment, logic branching, quota management, and multi-device compatibility.</p>
+        </div>
+        <div class="spec">
+          <h4>Pen & Paper Field Surveys</h4>
+          <p>Traditional paper-based data collection for environments where digital tools are not appropriate — with rigorous manual QC processes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SPECIALIST CAPABILITIES ── -->
+  <section class="sec bg-white">
+    <div class="inner">
+      <div class="sec-header-center">
+        <p class="sec-eyebrow">Specialist Capabilities</p>
+        <h2 class="sec-h">Rare capabilities <em>built through practice</em></h2>
+        <div class="sec-rule" style="margin:0 auto 0;"></div>
+      </div>
+      <div class="spec-grid" style="margin-top:8px;">
+        <div class="spec">
+          <h4>Multi-Country Mystery Shopping</h4>
+          <p>Coordinated mystery shopping programmes across Bahrain, UAE, Kuwait, Oman, and Saudi Arabia — run to a single protocol with consistent scoring.</p>
+        </div>
+        <div class="spec">
+          <h4>Government & Regulatory Surveys</h4>
+          <p>Commissioned programmes for Ministries and regulatory authorities — including sensitive populations such as school-age children, under IRB-equivalent protocols.</p>
+        </div>
+        <div class="spec">
+          <h4>Ultra-HNI Interviewing</h4>
+          <p>Specialist access to individuals with USD 5M+ in net assets for financial, real estate, and investment research — managed with the highest discretion.</p>
+        </div>
+        <div class="spec">
+          <h4>Retail Price Intelligence</h4>
+          <p>Systematic collection of retail price data across city-wide outlet networks — conducted for international professional services clients and regulatory bodies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONF BAR ── -->
+  <div class="conf-bar">
+    <div class="conf-inner">
+      <div class="conf-icon">🔒</div>
+      <div class="conf-copy">
+        <b>Client Confidentiality</b>
+        All client relationships are governed by Non-Disclosure Agreements. We do not publicly disclose client names, project specifics, or commercially sensitive details. Credentials and case references are available upon request under mutual NDA.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CTA ── -->
+  <section class="sec bg-slate" style="padding-top:52px;padding-bottom:52px;">
+    <div class="inner" style="text-align:center;">
+      <p class="sec-eyebrow">Commission a Study</p>
+      <h2 class="sec-h">Let's design your <em>research programme</em></h2>
+      <p class="sec-p" style="max-width:460px;margin:0 auto 28px;">Tell us what you need to understand and we will propose the right methodology, scope, and timeline.</p>
+      <a href="contact.html" class="btn-primary">Start a Project</a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <img src="css/Dvlogo.png" alt="Datumvista" class="footer-logo-img">
+    <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
+    <div class="footer-tag">Where Data Becomes Decisive Insight</div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England &amp; Wales. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => { links.style.display = 'none'; });
+    });
+  </script>
+
 </body>
 </html>
