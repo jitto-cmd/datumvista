@@ -153,10 +153,7 @@
           <h2 class="sec-h" style="text-align:left;margin-bottom:6px;">We'd love to <em>hear from you</em></h2>
           <div class="sec-rule"></div>
 
-         <form class="cform" action="https://formsubmit.co/jittovarg@gmail.com" method="POST">
-            <input type="hidden" name="_next" value="https://datumvista.com/thankyou.html">
-            <input type="hidden" name="_subject" value="New Enquiry - Datumvista Research">
-            <input type="hidden" name="_captcha" value="false">
+          <form class="cform" id="contactForm">
             <input type="text" name="name" placeholder="Full Name" required>
             <input type="email" name="email" placeholder="Email Address" required>
             <input type="text" name="organisation" placeholder="Organisation / Company">
@@ -175,7 +172,7 @@
               <option>Other / Not Sure</option>
             </select>
             <textarea name="message" rows="5" placeholder="Describe your research requirement or business challenge..."></textarea>
-            <button type="submit">Submit Enquiry →</button>
+            <button type="submit" id="submitBtn">Submit Enquiry →</button>
           </form>
         </div>
 
@@ -210,6 +207,30 @@
   </footer>
 
   <script>
+    // ── FORM SUBMISSION ──
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      const data = new FormData(e.target);
+
+      fetch('https://formsubmit.co/ajax/jittovarg@gmail.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      })
+      .then(function() {
+        window.location.href = 'thankyou.html';
+      })
+      .catch(function() {
+        window.location.href = 'thankyou.html';
+      });
+    });
+
+    // ── NAV TOGGLE ──
     const toggle = document.getElementById('navToggle');
     const links  = document.getElementById('navLinks');
     toggle.addEventListener('click', () => {
