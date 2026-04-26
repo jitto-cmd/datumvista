@@ -6,18 +6,538 @@
   <meta name="description" content="Datumvista Research Ltd — Specialist market research and strategic intelligence across the GCC, Africa, Asia, and beyond.">
   <title>Datumvista | Where Data Becomes Decisive Insight</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a0f1e;
+      --navy-mid: #111827;
+      --blue: #2563eb;
+      --blue-light: #60a5fa;
+      --slate-bg: #f1f5f9;
+      --white: #ffffff;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --dark: #0a0f1e;
+      --gold: #c9a84c;
+    }
+
+    /* ── NAV ── */
+    .dv-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 68px;
+      background: rgba(10,15,30,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .dv-nav .logo-img { height: 34px; display: block; }
+    .dv-nav-links { display: flex; align-items: center; gap: 36px; }
+    .dv-nav-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .dv-nav-links a:hover, .dv-nav-links a.active { color: #fff; }
+    .dv-nav-links .nav-cta {
+      background: var(--blue);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .dv-nav-links .nav-cta:hover { background: #1d4ed8; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block; width: 22px; height: 2px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 2px;
+    }
+
+    /* ── HERO ── */
+    .dv-hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dv-hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(ellipse at center, rgba(37,99,235,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .dv-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    }
+    .hero-inner-dv {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .hero-left { position: relative; }
+    .hero-overline-dv {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-overline-dv::before {
+      content: '';
+      display: block;
+      width: 32px; height: 1px;
+      background: var(--blue-light);
+      opacity: 0.6;
+    }
+    .hero-h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(42px, 5vw, 64px);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.12;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--blue-light);
+    }
+    .hero-desc-dv {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+      margin-bottom: 40px;
+      max-width: 440px;
+    }
+    .hero-btns-dv { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-prim {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      background: var(--blue);
+      color: #fff;
+      padding: 13px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-prim:hover { background: #1d4ed8; transform: translateY(-1px); }
+    .btn-sec {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      padding: 13px 28px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.15);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-sec:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+    .hero-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .stat-box {
+      background: rgba(255,255,255,0.03);
+      padding: 32px 28px;
+      transition: background 0.2s;
+    }
+    .stat-box:hover { background: rgba(255,255,255,0.06); }
+    .stat-box + .stat-box { border-left: 1px solid rgba(255,255,255,0.06); }
+    .stat-row-2 .stat-box { border-top: 1px solid rgba(255,255,255,0.06); }
+    .stat-val-dv {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-lbl-dv {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── SERVICES SECTION ── */
+    .dv-sec {
+      padding: 96px 48px;
+    }
+    .dv-inner { max-width: 1100px; margin: 0 auto; }
+
+    .bg-white { background: var(--white); }
+    .bg-slate { background: var(--slate-bg); }
+    .bg-navy { background: var(--navy); }
+
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--blue);
+      opacity: 0.5;
+    }
+    .eyebrow.light { color: var(--blue-light); }
+    .eyebrow.light::before { background: var(--blue-light); }
+
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 0;
+      letter-spacing: -0.01em;
+    }
+    .sec-title em { font-style: italic; color: var(--blue); }
+    .sec-title.light { color: #fff; }
+    .sec-title.light em { color: var(--blue-light); }
+
+    /* Services - editorial split layout */
+    .svc-editorial {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 64px;
+      margin-top: 60px;
+      align-items: start;
+    }
+    .svc-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+    .svc-sidebar p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .svc-list { display: flex; flex-direction: column; gap: 0; }
+    .svc-item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 20px;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      align-items: start;
+    }
+    .svc-item:last-child { border-bottom: 1px solid var(--border); }
+    .svc-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--blue);
+      opacity: 0.6;
+      padding-top: 3px;
+    }
+    .svc-content h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .svc-content p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Why section - horizontal tiles */
+    .why-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-bottom: 56px;
+      align-items: end;
+    }
+    .why-header p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.8;
+      padding-top: 12px;
+    }
+    .why-tiles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .why-tile {
+      padding: 36px 28px;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .why-tile:last-child { border-right: none; }
+    .why-tile:hover { background: #f8fafc; }
+    .why-tile-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      color: var(--blue);
+      opacity: 0.5;
+      letter-spacing: 0.12em;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .why-tile h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .why-tile p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Sectors */
+    .sectors-wrap {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 48px;
+    }
+    .sectors-intro p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .sector-cell {
+      padding: 20px 18px;
+      background: rgba(255,255,255,0.02);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.01em;
+      transition: background 0.2s, color 0.2s;
+      cursor: default;
+    }
+    .sector-cell:hover { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.85); }
+
+    /* Conf bar */
+    .dv-conf {
+      background: #0f172a;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 28px 48px;
+    }
+    .dv-conf-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .dv-conf-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      white-space: nowrap;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+    .dv-conf-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.7;
+    }
+    .dv-conf-text b { color: rgba(255,255,255,0.65); font-weight: 500; }
+
+    /* CTA */
+    .dv-cta {
+      background: var(--white);
+      padding: 96px 48px;
+      text-align: center;
+    }
+    .dv-cta-inner { max-width: 560px; margin: 0 auto; }
+    .dv-cta p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14.5px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin: 20px 0 36px;
+    }
+
+    /* Footer */
+    .dv-footer {
+      background: var(--navy);
+      padding: 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .dv-footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 14px; }
+    .footer-brand img { height: 28px; opacity: 0.8; }
+    .footer-brand-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-brand-name span { color: rgba(255,255,255,0.65); }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+    .footer-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+    .footer-copy {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.2);
+      width: 100%;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .dv-nav { padding: 0 24px; }
+      .dv-nav-links { display: none; flex-direction: column; position: fixed; top: 68px; left: 0; right: 0; background: rgba(10,15,30,0.98); padding: 24px; gap: 20px; }
+      .dv-nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .dv-hero { padding: 100px 24px 60px; }
+      .hero-inner-dv { grid-template-columns: 1fr; gap: 48px; }
+      .hero-right { grid-template-columns: 1fr 1fr; }
+      .svc-editorial { grid-template-columns: 1fr; gap: 40px; }
+      .svc-sidebar { position: static; }
+      .why-header { grid-template-columns: 1fr; gap: 20px; }
+      .why-tiles { grid-template-columns: 1fr 1fr; }
+      .why-tile { border-bottom: 1px solid var(--border); }
+      .sectors-wrap { grid-template-columns: 1fr; gap: 32px; }
+      .sectors-grid { grid-template-columns: 1fr 1fr; }
+      .dv-sec { padding: 64px 24px; }
+      .dv-conf { padding: 24px; }
+      .dv-cta { padding: 64px 24px; }
+      .dv-footer { padding: 40px 24px; }
+      .dv-footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .why-tiles { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: 1fr 1fr; }
+      .hero-right { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ── NAVIGATION ── -->
-  <nav class="nav-bar" id="mainNav">
+  <!-- NAV -->
+  <nav class="dv-nav" id="mainNav">
     <a href="index.html" class="nav-logo">
       <img src="css/Images/Dvlogo.png" alt="Datumvista Logo" class="logo-img">
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
-    <div class="nav-links-bar" id="navLinks">
+    <div class="dv-nav-links" id="navLinks">
       <a href="index.html" class="active">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
@@ -27,93 +547,129 @@
     </div>
   </nav>
 
-  <!-- ── HERO ── -->
-  <div class="hero">
-    <div class="hero-inner">
-      <div class="hero-overline">Market Research &nbsp;·&nbsp; Consumer Insights &nbsp;·&nbsp; Strategic Intelligence</div>
-      <h1>Where Data Becomes<br><em>Decisive Insight</em></h1>
-      <p class="hero-desc">We help organisations understand markets, consumers, and competitors — with fieldwork rigour, methodological depth, and over a decade of on-the-ground experience across emerging and established markets.</p>
-      <div class="hero-btns">
-        <a href="services.html" class="btn-primary">Explore Our Services</a>
-        <a href="about.html" class="btn-secondary">Our Story</a>
+  <!-- HERO -->
+  <div class="dv-hero">
+    <div class="hero-inner-dv">
+      <div class="hero-left">
+        <div class="hero-overline-dv">Market Research &nbsp;·&nbsp; Consumer Insights &nbsp;·&nbsp; Strategic Intelligence</div>
+        <h1 class="hero-h1">Where Data Becomes<br><em>Decisive Insight</em></h1>
+        <p class="hero-desc-dv">We help organisations understand markets, consumers, and competitors — with fieldwork rigour, methodological depth, and over a decade of on-the-ground experience across emerging and established markets.</p>
+        <div class="hero-btns-dv">
+          <a href="services.html" class="btn-prim">Explore Our Services</a>
+          <a href="about.html" class="btn-sec">Our Story</a>
+        </div>
       </div>
-      <div class="stats-strip">
-        <div class="stat-cell"><div class="stat-val">12+</div><div class="stat-lbl">Years Active</div></div>
-        <div class="stat-cell"><div class="stat-val">100s</div><div class="stat-lbl">Projects / Year</div></div>
-        <div class="stat-cell"><div class="stat-val">9+</div><div class="stat-lbl">Markets Covered</div></div>
-        <div class="stat-cell"><div class="stat-val">HNI</div><div class="stat-lbl">Specialist Access</div></div>
+      <div>
+        <div class="hero-right">
+          <div class="stat-box">
+            <div class="stat-val-dv">12+</div>
+            <div class="stat-lbl-dv">Years Active</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val-dv">100s</div>
+            <div class="stat-lbl-dv">Projects / Year</div>
+          </div>
+          <div class="stat-box stat-row-2">
+            <div class="stat-val-dv">9+</div>
+            <div class="stat-lbl-dv">Markets Covered</div>
+          </div>
+          <div class="stat-box stat-row-2">
+            <div class="stat-val-dv">HNI</div>
+            <div class="stat-lbl-dv">Specialist Access</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ── CORE SERVICES SNAPSHOT ── -->
-  <section class="sec bg-white">
-    <div class="inner">
-      <div class="sec-header-center">
-        <p class="sec-eyebrow">What We Do</p>
-        <h2 class="sec-h">Full-spectrum <em>research capability</em></h2>
-        <div class="sec-rule" style="margin:0 auto 0;"></div>
-      </div>
-      <div class="svc-grid">
-        <div class="svc">
-          <div class="svc-icon">🔍</div>
-          <h3>Qualitative Research</h3>
-          <p>In-Depth Interviews, Focus Groups, and ethnographic methods that reveal motivations and attitudes beyond surface responses.</p>
+  <!-- CORE SERVICES -->
+  <section class="dv-sec bg-white">
+    <div class="dv-inner">
+      <div class="eyebrow">What We Do</div>
+      <h2 class="sec-title">Full-spectrum <em>research capability</em></h2>
+      <div class="svc-editorial">
+        <div class="svc-sidebar">
+          <p>Every methodology we offer has been executed by our own team across real projects — not subcontracted, not theoretical. From large-scale quantitative fieldwork to specialist qualitative access, we deliver with precision.</p>
+          <a href="services.html" class="btn-prim" style="display:inline-block;">View All Services</a>
         </div>
-        <div class="svc">
-          <div class="svc-icon">📊</div>
-          <h3>Quantitative Surveys</h3>
-          <p>Face-to-face (CAPI), online, telemetric (CATI), and paper-based surveys. Large sample sizes executed with precision.</p>
+        <div class="svc-list">
+          <div class="svc-item">
+            <div class="svc-num">01</div>
+            <div class="svc-content">
+              <h3>Qualitative Research</h3>
+              <p>In-Depth Interviews, Focus Groups, and ethnographic methods that reveal motivations and attitudes beyond surface responses.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">02</div>
+            <div class="svc-content">
+              <h3>Quantitative Surveys</h3>
+              <p>Face-to-face (CAPI), online, telemetric (CATI), and paper-based surveys. Large sample sizes executed with precision.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">03</div>
+            <div class="svc-content">
+              <h3>Mystery Shopping</h3>
+              <p>Discreet evaluations of customer experience across retail, automotive, beauty, telecoms, and specialist environments.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">04</div>
+            <div class="svc-content">
+              <h3>Brand Tracking</h3>
+              <p>Continuous or periodic measurement of brand awareness, perception, preference, and competitive positioning.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">05</div>
+            <div class="svc-content">
+              <h3>Retail Distribution Mapping</h3>
+              <p>Nationwide outlet mapping — identifying missing stockists, measuring competitor presence, and auditing retail coverage.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">06</div>
+            <div class="svc-content">
+              <h3>HNI & Specialist Research</h3>
+              <p>Established access to High Net Worth Individuals (USD 5M+) for premium financial, property, and lifestyle studies.</p>
+            </div>
+          </div>
         </div>
-        <div class="svc">
-          <div class="svc-icon">👁️</div>
-          <h3>Mystery Shopping</h3>
-          <p>Discreet evaluations of customer experience across retail, automotive, beauty, telecoms, and specialist environments.</p>
-        </div>
-        <div class="svc">
-          <div class="svc-icon">📈</div>
-          <h3>Brand Tracking</h3>
-          <p>Continuous or periodic measurement of brand awareness, perception, preference, and competitive positioning.</p>
-        </div>
-        <div class="svc">
-          <div class="svc-icon">🗺️</div>
-          <h3>Retail Distribution Mapping</h3>
-          <p>Nationwide outlet mapping — identifying missing stockists, measuring competitor presence, and auditing retail coverage.</p>
-        </div>
-        <div class="svc">
-          <div class="svc-icon">💎</div>
-          <h3>HNI & Specialist Research</h3>
-          <p>Established access to High Net Worth Individuals (USD 5M+) for premium financial, property, and lifestyle studies.</p>
-        </div>
-      </div>
-      <div style="text-align:center; margin-top:36px;">
-        <a href="services.html" class="btn-primary">View All Services</a>
       </div>
     </div>
   </section>
 
-  <!-- ── WHY DATUMVISTA ── -->
-  <section class="sec bg-slate">
-    <div class="inner">
-      <div class="sec-header-center">
-        <p class="sec-eyebrow">Why Datumvista</p>
-        <h2 class="sec-h">Practitioner expertise, <em>not just process</em></h2>
-        <div class="sec-rule" style="margin:0 auto 0;"></div>
+  <!-- WHY DATUMVISTA -->
+  <section class="dv-sec bg-slate">
+    <div class="dv-inner">
+      <div class="why-header">
+        <div>
+          <div class="eyebrow">Why Datumvista</div>
+          <h2 class="sec-title">Practitioner expertise,<br><em>not just process</em></h2>
+        </div>
+        <div>
+          <p>We are a research practice built on execution — not sales decks. Twelve years of on-the-ground fieldwork across demanding markets has shaped an organisation that understands what rigorous research actually requires.</p>
+        </div>
       </div>
-      <div class="spec-grid" style="margin-top:8px;">
-        <div class="spec">
+      <div class="why-tiles">
+        <div class="why-tile">
+          <span class="why-tile-num">01</span>
           <h4>Over a Decade of Fieldwork</h4>
           <p>Every methodology we offer has been executed by our own team in real projects — not subcontracted or described from textbooks.</p>
         </div>
-        <div class="spec">
+        <div class="why-tile">
+          <span class="why-tile-num">02</span>
           <h4>Multi-Market Reach</h4>
           <p>We operate across 9+ markets in the GCC, Africa, Asia, and Europe — giving clients consistent quality across geographies.</p>
         </div>
-        <div class="spec">
+        <div class="why-tile">
+          <span class="why-tile-num">03</span>
           <h4>Sensitive Audience Access</h4>
           <p>From government ministries and regulatory bodies to Ultra HNIs, we have proven capability in hard-to-reach audiences.</p>
         </div>
-        <div class="spec">
+        <div class="why-tile">
+          <span class="why-tile-num">04</span>
           <h4>Full Confidentiality</h4>
           <p>All client relationships are governed by NDAs. We never disclose project details, client names, or commercially sensitive data.</p>
         </div>
@@ -121,77 +677,78 @@
     </div>
   </section>
 
-  <!-- ── SECTORS STRIP ── -->
-  <section class="sec bg-dark">
-    <div class="inner">
-      <div class="sec-header-center">
-        <p class="sec-eyebrow" style="color:var(--blue-light);">Industries We Serve</p>
-        <h2 class="sec-h light">Trusted across <em>every sector</em></h2>
-      </div>
-      <div class="sect-grid">
-        <div class="sect-cell"><span class="ic">🏦</span><div class="nm">Banking & Finance</div></div>
-        <div class="sect-cell"><span class="ic">📱</span><div class="nm">Telecoms & Tech</div></div>
-        <div class="sect-cell"><span class="ic">🏥</span><div class="nm">Healthcare</div></div>
-        <div class="sect-cell"><span class="ic">🎓</span><div class="nm">Education & Govt</div></div>
-        <div class="sect-cell"><span class="ic">🚗</span><div class="nm">Automotive</div></div>
-        <div class="sect-cell"><span class="ic">🛒</span><div class="nm">Consumer Goods</div></div>
-        <div class="sect-cell"><span class="ic">💄</span><div class="nm">Luxury & Beauty</div></div>
-        <div class="sect-cell"><span class="ic">💳</span><div class="nm">FinTech</div></div>
-      </div>
-      <div style="text-align:center;margin-top:32px;">
-        <a href="industries.html" class="btn-secondary">See All Industries</a>
+  <!-- SECTORS -->
+  <section class="dv-sec bg-navy">
+    <div class="dv-inner">
+      <div class="eyebrow light">Industries We Serve</div>
+      <div class="sectors-wrap">
+        <div class="sectors-intro">
+          <h2 class="sec-title light">Trusted across<br><em>every sector</em></h2>
+          <p>Deep domain knowledge and established methodology across 16 industries — from banking and telecoms to heavy machinery and government.</p>
+          <a href="industries.html" class="btn-sec">See All Industries</a>
+        </div>
+        <div class="sectors-grid">
+          <div class="sector-cell">Banking & Finance</div>
+          <div class="sector-cell">Telecoms & Tech</div>
+          <div class="sector-cell">Healthcare</div>
+          <div class="sector-cell">Education & Govt</div>
+          <div class="sector-cell">Automotive</div>
+          <div class="sector-cell">Consumer Goods</div>
+          <div class="sector-cell">Luxury & Beauty</div>
+          <div class="sector-cell">FinTech</div>
+          <div class="sector-cell">Real Estate</div>
+          <div class="sector-cell">Insurance</div>
+          <div class="sector-cell">Heavy Machinery</div>
+          <div class="sector-cell">Regulatory Bodies</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ── CONFIDENTIALITY BAR ── -->
-  <div class="conf-bar">
-    <div class="conf-inner">
-      <div class="conf-icon">🔒</div>
-      <div class="conf-copy">
-        <b>Client Confidentiality</b>
-        All client relationships are governed by Non-Disclosure Agreements. We do not publicly disclose client names, project specifics, or commercially sensitive details. Credentials and case references are available upon request under mutual NDA.
+  <!-- CONF BAR -->
+  <div class="dv-conf">
+    <div class="dv-conf-inner">
+      <div class="dv-conf-label">Confidentiality</div>
+      <div class="dv-conf-text">
+        <b>Client Confidentiality — </b>All client relationships are governed by Non-Disclosure Agreements. We do not publicly disclose client names, project specifics, or commercially sensitive details. Credentials and case references are available upon request under mutual NDA.
       </div>
     </div>
   </div>
 
-  <!-- ── CTA STRIP ── -->
-  <section class="sec bg-white" style="padding-top:56px;padding-bottom:56px;">
-    <div class="inner" style="text-align:center;">
-      <p class="sec-eyebrow">Ready to Start?</p>
-      <h2 class="sec-h">Tell us about your <em>research need</em></h2>
-      <p class="sec-p" style="max-width:480px;margin:0 auto 28px;">We respond with tailored proposals. No obligation, full confidentiality.</p>
-      <a href="contact.html" class="btn-primary">Start a Project</a>
+  <!-- CTA -->
+  <div class="dv-cta">
+    <div class="dv-cta-inner">
+      <div class="eyebrow" style="justify-content:center;">Ready to Start?</div>
+      <h2 class="sec-title" style="text-align:center;">Tell us about your<br><em>research need</em></h2>
+      <p>We respond with tailored proposals. No obligation, full confidentiality.</p>
+      <a href="contact.html" class="btn-prim">Start a Project</a>
     </div>
-  </section>
+  </div>
 
-  <!-- ── FOOTER ── -->
-  <footer class="footer">
-    <img src="css/Images/Dvlogo.png" alt="Datumvista" class="footer-logo-img">
-    <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
-    <div class="footer-tag">Where Data Becomes Decisive Insight</div>
-    <nav class="footer-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="industries.html">Industries</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England &amp; Wales. All rights reserved.</div>
+  <!-- FOOTER -->
+  <footer class="dv-footer">
+    <div class="dv-footer-inner">
+      <div class="footer-brand">
+        <img src="css/Images/Dvlogo.png" alt="Datumvista">
+        <div class="footer-brand-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England &amp; Wales. All rights reserved.</div>
+    </div>
   </footer>
 
   <script>
-    // Mobile nav toggle
     const toggle = document.getElementById('navToggle');
-    const nav    = document.getElementById('mainNav');
     const links  = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => {
-      const open = links.style.display === 'flex';
-      links.style.display = open ? 'none' : 'flex';
-    });
-    // Close menu on link click
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
     links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => { links.style.display = 'none'; });
+      a.addEventListener('click', () => links.classList.remove('open'));
     });
   </script>
 

@@ -6,18 +6,521 @@
   <meta name="description" content="Datumvista Research Ltd — Full-spectrum research capability: Qualitative, Quantitative, Mystery Shopping, Brand Tracking, HNI Research, and more.">
   <title>Our Services | Datumvista Research Ltd</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a0f1e;
+      --blue: #2563eb;
+      --blue-light: #60a5fa;
+      --slate-bg: #f1f5f9;
+      --white: #ffffff;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    /* ── NAV ── */
+    .dv-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 68px;
+      background: rgba(10,15,30,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .dv-nav .logo-img { height: 34px; display: block; }
+    .dv-nav-links { display: flex; align-items: center; gap: 36px; }
+    .dv-nav-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .dv-nav-links a:hover, .dv-nav-links a.active { color: #fff; }
+    .dv-nav-links .nav-cta {
+      background: var(--blue);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .dv-nav-links .nav-cta:hover { background: #1d4ed8; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.7); border-radius: 2px; }
+
+    /* ── HERO ── */
+    .dv-hero {
+      background: var(--navy);
+      padding: 160px 48px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dv-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: -100px;
+      width: 500px; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(37,99,235,0.05));
+      pointer-events: none;
+    }
+    .hero-inner-dv {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 64px;
+      align-items: end;
+    }
+    .hero-overline-dv {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-overline-dv::before {
+      content: '';
+      display: block;
+      width: 32px; height: 1px;
+      background: var(--blue-light);
+      opacity: 0.6;
+    }
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 4.5vw, 58px);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+    }
+    .hero-h1 em { font-style: italic; color: var(--blue-light); }
+    .hero-desc-dv {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+      margin-top: 24px;
+    }
+    .hero-disciplines {
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding-left: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .discipline-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.35);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .discipline-tag:last-child { border-bottom: none; }
+    .discipline-tag:hover { color: rgba(255,255,255,0.7); }
+
+    /* ── SHARED ── */
+    .dv-sec { padding: 96px 48px; }
+    .dv-inner { max-width: 1100px; margin: 0 auto; }
+    .bg-white { background: var(--white); }
+    .bg-slate { background: var(--slate-bg); }
+    .bg-navy { background: var(--navy); }
+
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--blue);
+      opacity: 0.5;
+    }
+    .eyebrow.light { color: var(--blue-light); }
+    .eyebrow.light::before { background: var(--blue-light); }
+
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .sec-title em { font-style: italic; color: var(--blue); }
+    .sec-title.light { color: #fff; }
+    .sec-title.light em { color: var(--blue-light); }
+
+    .btn-prim {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      background: var(--blue);
+      color: #fff;
+      padding: 13px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-prim:hover { background: #1d4ed8; transform: translateY(-1px); }
+    .btn-sec {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      padding: 13px 28px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.15);
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-sec:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+    /* ── CORE SERVICES — large numbered list ── */
+    .svc-sec-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-bottom: 56px;
+      align-items: end;
+    }
+    .svc-sec-header p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .svc-table { border-top: 1px solid var(--border); }
+    .svc-row {
+      display: grid;
+      grid-template-columns: 64px 1fr 1fr;
+      gap: 40px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      transition: background 0.15s;
+    }
+    .svc-row:hover { background: #fafbfd; margin: 0 -24px; padding-left: 24px; padding-right: 24px; }
+    .svc-row-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--border);
+      line-height: 1;
+      padding-top: 4px;
+    }
+    .svc-row-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.3;
+      padding-top: 4px;
+    }
+    .svc-row-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* ── METHODOLOGIES — alternating blocks ── */
+    .methods-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 48px;
+      gap: 48px;
+    }
+    .methods-header p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 380px;
+    }
+    .methods-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .method-block {
+      background: var(--white);
+      padding: 36px 32px;
+      transition: background 0.2s;
+    }
+    .method-block:hover { background: #f8fafc; }
+    .method-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(37,99,235,0.08);
+      padding: 4px 10px;
+      border-radius: 3px;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+    .method-block h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .method-block p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* ── SPECIALIST CAPABILITIES — dark feature section ── */
+    .spec-intro {
+      max-width: 560px;
+      margin-bottom: 56px;
+    }
+    .spec-intro p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+      margin-top: 20px;
+    }
+    .spec-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .spec-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 36px 32px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .spec-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.14);
+    }
+    .spec-card-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      opacity: 0.7;
+      margin-bottom: 16px;
+    }
+    .spec-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .spec-card p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
+    }
+
+    /* ── CONF BAR ── */
+    .dv-conf {
+      background: #0f172a;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 28px 48px;
+    }
+    .dv-conf-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .dv-conf-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      white-space: nowrap;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+    .dv-conf-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.7;
+    }
+    .dv-conf-text b { color: rgba(255,255,255,0.65); font-weight: 500; }
+
+    /* ── CTA ── */
+    .dv-cta {
+      background: var(--slate-bg);
+      padding: 96px 48px;
+    }
+    .dv-cta-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 64px;
+      align-items: center;
+    }
+    .dv-cta-inner p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-top: 16px;
+      max-width: 480px;
+    }
+
+    /* ── FOOTER ── */
+    .dv-footer {
+      background: var(--navy);
+      padding: 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .dv-footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 14px; }
+    .footer-brand img { height: 28px; opacity: 0.8; }
+    .footer-brand-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-brand-name span { color: rgba(255,255,255,0.65); }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+    .footer-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+    .footer-copy {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.2);
+      width: 100%;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 8px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .dv-nav { padding: 0 24px; }
+      .dv-nav-links { display: none; flex-direction: column; position: fixed; top: 68px; left: 0; right: 0; background: rgba(10,15,30,0.98); padding: 24px; gap: 20px; }
+      .dv-nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .dv-hero { padding: 110px 24px 72px; }
+      .hero-inner-dv { grid-template-columns: 1fr; gap: 40px; }
+      .hero-disciplines { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); padding-left: 0; padding-top: 24px; flex-direction: row; flex-wrap: wrap; gap: 8px; }
+      .discipline-tag { border: 1px solid rgba(255,255,255,0.08); padding: 6px 12px; border-radius: 20px; font-size: 11px; }
+      .svc-sec-header { grid-template-columns: 1fr; gap: 20px; }
+      .svc-row { grid-template-columns: 48px 1fr; gap: 20px; }
+      .svc-row-desc { display: none; }
+      .methods-header { flex-direction: column; gap: 20px; }
+      .methods-grid { grid-template-columns: 1fr; }
+      .spec-cards { grid-template-columns: 1fr; }
+      .dv-cta-inner { grid-template-columns: 1fr; gap: 28px; }
+      .dv-sec { padding: 64px 24px; }
+      .dv-conf { padding: 24px; }
+      .dv-footer { padding: 40px 24px; }
+      .dv-footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .svc-row { grid-template-columns: 1fr; }
+      .svc-row-num { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ── NAVIGATION ── -->
-  <nav class="nav-bar" id="mainNav">
+  <!-- NAV -->
+  <nav class="dv-nav" id="mainNav">
     <a href="index.html" class="nav-logo">
       <img src="css/Images/Dvlogo.png" alt="Datumvista Logo" class="logo-img">
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
-    <div class="nav-links-bar" id="navLinks">
+    <div class="dv-nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html" class="active">Services</a>
@@ -27,103 +530,125 @@
     </div>
   </nav>
 
-  <!-- ── HERO ── -->
-  <div class="hero">
-    <div class="hero-inner">
-      <div class="hero-overline">Our Expertise</div>
-      <h1>Full-spectrum<br><em>Research Capability</em></h1>
-      <p class="hero-desc">Methodological depth and practitioner-level expertise across all major research disciplines — designed for high-stakes decisions.</p>
+  <!-- HERO -->
+  <div class="dv-hero">
+    <div class="hero-inner-dv">
+      <div>
+        <div class="hero-overline-dv">Our Expertise</div>
+        <h1 class="hero-h1">Full-spectrum<br><em>Research Capability</em></h1>
+        <p class="hero-desc-dv">Methodological depth and practitioner-level expertise across all major research disciplines — designed for high-stakes decisions.</p>
+      </div>
+      <div class="hero-disciplines">
+        <div class="discipline-tag">Qualitative Research</div>
+        <div class="discipline-tag">Quantitative Surveys</div>
+        <div class="discipline-tag">Mystery Shopping</div>
+        <div class="discipline-tag">Brand Tracking</div>
+        <div class="discipline-tag">Retail Distribution Mapping</div>
+        <div class="discipline-tag">HNI & Specialist Research</div>
+        <div class="discipline-tag">Price Surveys & Footfall</div>
+        <div class="discipline-tag">Online & Digital Research</div>
+      </div>
     </div>
   </div>
 
-  <!-- ── CORE SERVICES ── -->
-  <section class="sec bg-white">
-    <div class="inner">
-      <div class="sec-header-center">
-        <p class="sec-eyebrow">Core Services</p>
-        <h2 class="sec-h">What we <em>deliver</em></h2>
-        <div class="sec-rule" style="margin:0 auto 0;"></div>
+  <!-- CORE SERVICES -->
+  <section class="dv-sec bg-white">
+    <div class="dv-inner">
+      <div class="svc-sec-header">
+        <div>
+          <div class="eyebrow">Core Services</div>
+          <h2 class="sec-title">What we <em>deliver</em></h2>
+        </div>
+        <p>We handle large, complex studies across multiple geographies. Every service below has been delivered by our own team across real engagements — not subcontracted or described from textbooks.</p>
       </div>
-      <div class="svc-grid" style="margin-top:8px;">
-        <div class="svc">
-          <div class="svc-icon">🔍</div>
-          <h3>Qualitative Research</h3>
-          <p>In-Depth Interviews (IDIs), Focus Groups, and ethnographic approaches that reveal motivations, attitudes, and emotional drivers beyond surface-level responses. Conducted face-to-face or remotely.</p>
+      <div class="svc-table">
+        <div class="svc-row">
+          <div class="svc-row-num">01</div>
+          <div class="svc-row-title">Qualitative Research</div>
+          <div class="svc-row-desc">In-Depth Interviews (IDIs), Focus Groups, and ethnographic approaches that reveal motivations, attitudes, and emotional drivers beyond surface-level responses. Conducted face-to-face or remotely.</div>
         </div>
-        <div class="svc">
-          <div class="svc-icon">📊</div>
-          <h3>Quantitative Surveys</h3>
-          <p>Face-to-face (CAPI), online, telemetric (CATI), and paper-based surveys. We handle large, complex sample sizes with structured field management and quality control across multiple locations.</p>
+        <div class="svc-row">
+          <div class="svc-row-num">02</div>
+          <div class="svc-row-title">Quantitative Surveys</div>
+          <div class="svc-row-desc">Face-to-face (CAPI), online, telemetric (CATI), and paper-based surveys. We handle large, complex sample sizes with structured field management and quality control across multiple locations.</div>
         </div>
-        <div class="svc">
-          <div class="svc-icon">👁️</div>
-          <h3>Mystery Shopping</h3>
-          <p>Discreet evaluations of customer experience and service quality across retail, QSR, automotive, luxury beauty, telecoms, heavy machinery dealerships, and other specialist environments.</p>
+        <div class="svc-row">
+          <div class="svc-row-num">03</div>
+          <div class="svc-row-title">Mystery Shopping</div>
+          <div class="svc-row-desc">Discreet evaluations of customer experience and service quality across retail, QSR, automotive, luxury beauty, telecoms, heavy machinery dealerships, and other specialist environments.</div>
         </div>
-        <div class="svc">
-          <div class="svc-icon">📈</div>
-          <h3>Brand Tracking</h3>
-          <p>Continuous or periodic studies measuring brand awareness, perception, preference, and competitive positioning over time — helping clients understand how their brand is moving in the market.</p>
+        <div class="svc-row">
+          <div class="svc-row-num">04</div>
+          <div class="svc-row-title">Brand Tracking</div>
+          <div class="svc-row-desc">Continuous or periodic studies measuring brand awareness, perception, preference, and competitive positioning over time — helping clients understand how their brand is moving in the market.</div>
         </div>
-        <div class="svc">
-          <div class="svc-icon">🗺️</div>
-          <h3>Retail Distribution Mapping</h3>
-          <p>Comprehensive nationwide outlet mapping — identifying missing stockists, auditing product placement, measuring competitor presence, and understanding distribution gaps across cold stores, mini-markets, and retail outlets.</p>
+        <div class="svc-row">
+          <div class="svc-row-num">05</div>
+          <div class="svc-row-title">Retail Distribution Mapping</div>
+          <div class="svc-row-desc">Comprehensive nationwide outlet mapping — identifying missing stockists, auditing product placement, measuring competitor presence, and understanding distribution gaps across cold stores, mini-markets, and retail outlets.</div>
         </div>
-        <div class="svc">
-          <div class="svc-icon">💎</div>
-          <h3>HNI & Specialist Research</h3>
-          <p>Proven access and tailored methodology for interviewing High Net Worth Individuals with USD 5M+ in assets — a rare and carefully managed capability for premium financial, investment, real estate, and lifestyle research.</p>
+        <div class="svc-row">
+          <div class="svc-row-num">06</div>
+          <div class="svc-row-title">HNI & Specialist Research</div>
+          <div class="svc-row-desc">Proven access and tailored methodology for interviewing High Net Worth Individuals with USD 5M+ in assets — a rare and carefully managed capability for premium financial, investment, real estate, and lifestyle research.</div>
         </div>
-        <div class="svc">
-          <div class="svc-icon">📞</div>
-          <h3>Telephone Mystery Evaluations</h3>
-          <p>Structured telephone-based mystery audits across multi-country dealer networks and service centres — assessing responsiveness, product knowledge, and service quality standards without an in-person visit.</p>
+        <div class="svc-row">
+          <div class="svc-row-num">07</div>
+          <div class="svc-row-title">Telephone Mystery Evaluations</div>
+          <div class="svc-row-desc">Structured telephone-based mystery audits across multi-country dealer networks and service centres — assessing responsiveness, product knowledge, and service quality standards without an in-person visit.</div>
         </div>
-        <div class="svc">
-          <div class="svc-icon">🏪</div>
-          <h3>Price Surveys & Footfall Studies</h3>
-          <p>Retail price data collection across multiple outlets, and structured visitor measurement studies for commercial and retail properties — supporting competitive intelligence and investment decisions.</p>
+        <div class="svc-row">
+          <div class="svc-row-num">08</div>
+          <div class="svc-row-title">Price Surveys & Footfall Studies</div>
+          <div class="svc-row-desc">Retail price data collection across multiple outlets, and structured visitor measurement studies for commercial and retail properties — supporting competitive intelligence and investment decisions.</div>
         </div>
-        <div class="svc">
-          <div class="svc-icon">💻</div>
-          <h3>Online Surveys & Digital Research</h3>
-          <p>End-to-end design and deployment of digital surveys across banking, fintech, insurance, and consumer product categories — including panel management and data validation.</p>
+        <div class="svc-row">
+          <div class="svc-row-num">09</div>
+          <div class="svc-row-title">Online Surveys & Digital Research</div>
+          <div class="svc-row-desc">End-to-end design and deployment of digital surveys across banking, fintech, insurance, and consumer product categories — including panel management and data validation.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── METHODOLOGIES ── -->
-  <section class="sec bg-slate">
-    <div class="inner">
-      <div class="sec-header-center">
-        <p class="sec-eyebrow">How We Work</p>
-        <h2 class="sec-h">Methodologies we <em>master</em></h2>
-        <div class="sec-rule" style="margin:0 auto 0;"></div>
+  <!-- METHODOLOGIES -->
+  <section class="dv-sec bg-slate">
+    <div class="dv-inner">
+      <div class="methods-header">
+        <div>
+          <div class="eyebrow">How We Work</div>
+          <h2 class="sec-title">Methodologies we <em>master</em></h2>
+        </div>
+        <p>The right methodology depends on the question. We advise on and execute across the full spectrum — often combining approaches within a single programme.</p>
       </div>
-      <div class="spec-grid" style="margin-top:8px;">
-        <div class="spec">
-          <h4>CAPI — Computer Assisted Personal Interviewing</h4>
+      <div class="methods-grid">
+        <div class="method-block">
+          <div class="method-tag">CAPI</div>
+          <h4>Computer Assisted Personal Interviewing</h4>
           <p>Tablet-based face-to-face surveys with real-time data validation, GPS tracking, and quality control — replacing pen-and-paper with accuracy.</p>
         </div>
-        <div class="spec">
-          <h4>CATI — Computer Assisted Telephone Interviewing</h4>
+        <div class="method-block">
+          <div class="method-tag">CATI</div>
+          <h4>Computer Assisted Telephone Interviewing</h4>
           <p>Structured telephone surveys using trained callers with scripted questionnaires — ideal for large sample sizes and national coverage.</p>
         </div>
-        <div class="spec">
-          <h4>IDI — In-Depth Interview</h4>
+        <div class="method-block">
+          <div class="method-tag">IDI</div>
+          <h4>In-Depth Interview</h4>
           <p>One-to-one structured or semi-structured interviews lasting 30–90 minutes, conducted in-person or remotely, with expert moderators.</p>
         </div>
-        <div class="spec">
+        <div class="method-block">
+          <div class="method-tag">FGD</div>
           <h4>Focus Groups</h4>
           <p>Facilitated group discussions of 6–10 participants for exploratory research, concept testing, and consumer sentiment studies.</p>
         </div>
-        <div class="spec">
+        <div class="method-block">
+          <div class="method-tag">Online</div>
           <h4>Online Surveys & Panels</h4>
           <p>Self-administered digital surveys with panel recruitment, logic branching, quota management, and multi-device compatibility.</p>
         </div>
-        <div class="spec">
+        <div class="method-block">
+          <div class="method-tag">F2F</div>
           <h4>Pen & Paper Field Surveys</h4>
           <p>Traditional paper-based data collection for environments where digital tools are not appropriate — with rigorous manual QC processes.</p>
         </div>
@@ -131,28 +656,32 @@
     </div>
   </section>
 
-  <!-- ── SPECIALIST CAPABILITIES ── -->
-  <section class="sec bg-white">
-    <div class="inner">
-      <div class="sec-header-center">
-        <p class="sec-eyebrow">Specialist Capabilities</p>
-        <h2 class="sec-h">Rare capabilities <em>built through practice</em></h2>
-        <div class="sec-rule" style="margin:0 auto 0;"></div>
+  <!-- SPECIALIST CAPABILITIES -->
+  <section class="dv-sec bg-navy">
+    <div class="dv-inner">
+      <div class="eyebrow light">Specialist Capabilities</div>
+      <div class="spec-intro">
+        <h2 class="sec-title light">Rare capabilities<br><em>built through practice</em></h2>
+        <p>Some of what we do cannot be replicated quickly. These capabilities were built over years of operating in demanding markets with demanding clients.</p>
       </div>
-      <div class="spec-grid" style="margin-top:8px;">
-        <div class="spec">
+      <div class="spec-cards">
+        <div class="spec-card">
+          <div class="spec-card-label">Multi-Market</div>
           <h4>Multi-Country Mystery Shopping</h4>
-          <p>Coordinated mystery shopping programmes across Bahrain, UAE, Kuwait, Oman, and Saudi Arabia — run to a single protocol with consistent scoring.</p>
+          <p>Coordinated mystery shopping programmes across Bahrain, UAE, Kuwait, Oman, and Saudi Arabia — run to a single protocol with consistent scoring and cross-market reporting.</p>
         </div>
-        <div class="spec">
+        <div class="spec-card">
+          <div class="spec-card-label">Government & Regulatory</div>
           <h4>Government & Regulatory Surveys</h4>
           <p>Commissioned programmes for Ministries and regulatory authorities — including sensitive populations such as school-age children, under IRB-equivalent protocols.</p>
         </div>
-        <div class="spec">
+        <div class="spec-card">
+          <div class="spec-card-label">HNI Access</div>
           <h4>Ultra-HNI Interviewing</h4>
           <p>Specialist access to individuals with USD 5M+ in net assets for financial, real estate, and investment research — managed with the highest discretion.</p>
         </div>
-        <div class="spec">
+        <div class="spec-card">
+          <div class="spec-card-label">Competitive Intelligence</div>
           <h4>Retail Price Intelligence</h4>
           <p>Systematic collection of retail price data across city-wide outlet networks — conducted for international professional services clients and regulatory bodies.</p>
         </div>
@@ -160,50 +689,52 @@
     </div>
   </section>
 
-  <!-- ── CONF BAR ── -->
-  <div class="conf-bar">
-    <div class="conf-inner">
-      <div class="conf-icon">🔒</div>
-      <div class="conf-copy">
-        <b>Client Confidentiality</b>
-        All client relationships are governed by Non-Disclosure Agreements. We do not publicly disclose client names, project specifics, or commercially sensitive details. Credentials and case references are available upon request under mutual NDA.
+  <!-- CONF BAR -->
+  <div class="dv-conf">
+    <div class="dv-conf-inner">
+      <div class="dv-conf-label">Confidentiality</div>
+      <div class="dv-conf-text">
+        <b>Client Confidentiality — </b>All client relationships are governed by Non-Disclosure Agreements. We do not publicly disclose client names, project specifics, or commercially sensitive details. Credentials and case references are available upon request under mutual NDA.
       </div>
     </div>
   </div>
 
-  <!-- ── CTA ── -->
-  <section class="sec bg-slate" style="padding-top:52px;padding-bottom:52px;">
-    <div class="inner" style="text-align:center;">
-      <p class="sec-eyebrow">Commission a Study</p>
-      <h2 class="sec-h">Let's design your <em>research programme</em></h2>
-      <p class="sec-p" style="max-width:460px;margin:0 auto 28px;">Tell us what you need to understand and we will propose the right methodology, scope, and timeline.</p>
-      <a href="contact.html" class="btn-primary">Start a Project</a>
+  <!-- CTA -->
+  <div class="dv-cta">
+    <div class="dv-cta-inner">
+      <div>
+        <div class="eyebrow">Commission a Study</div>
+        <h2 class="sec-title">Let's design your<br><em>research programme</em></h2>
+        <p>Tell us what you need to understand and we will propose the right methodology, scope, and timeline. No obligation, full confidentiality.</p>
+      </div>
+      <a href="contact.html" class="btn-prim">Start a Project</a>
     </div>
-  </section>
+  </div>
 
-  <!-- ── FOOTER ── -->
-  <footer class="footer">
-    <img src="css/Images/Dvlogo.png" alt="Datumvista" class="footer-logo-img">
-    <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
-    <div class="footer-tag">Where Data Becomes Decisive Insight</div>
-    <nav class="footer-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="industries.html">Industries</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England &amp; Wales. All rights reserved.</div>
+  <!-- FOOTER -->
+  <footer class="dv-footer">
+    <div class="dv-footer-inner">
+      <div class="footer-brand">
+        <img src="css/Images/Dvlogo.png" alt="Datumvista">
+        <div class="footer-brand-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England &amp; Wales. All rights reserved.</div>
+    </div>
   </footer>
 
   <script>
     const toggle = document.getElementById('navToggle');
     const links  = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => {
-      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-    });
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
     links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => { links.style.display = 'none'; });
+      a.addEventListener('click', () => links.classList.remove('open'));
     });
   </script>
 
