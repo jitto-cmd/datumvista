@@ -38,13 +38,13 @@ a  { text-decoration: none; color: inherit; }
 
 /* ── NAVIGATION ───────────────────────────────────────────── */
 .nav-bar {
-  background: var(--dark);
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
   height: 68px;
-  border-bottom: 1px solid rgba(37,99,235,0.3);
+  border-bottom: 1px solid #e2e8f0;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -89,7 +89,7 @@ a  { text-decoration: none; color: inherit; }
 }
 
 .nav-links-bar a {
-  color: rgba(255,255,255,0.55);
+  color: #1e293b;
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.04em;
@@ -97,7 +97,7 @@ a  { text-decoration: none; color: inherit; }
   white-space: nowrap;
 }
 .nav-links-bar a:hover,
-.nav-links-bar a.active { color: var(--blue-pale); }
+.nav-links-bar a.active { color: #2563eb;; }
 
 .nav-cta {
   background: transparent;
