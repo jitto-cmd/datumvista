@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Datumvista Research & Insights — Published studies, market reports, and research findings.">
+  <title>Research & Insights | Datumvista</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a0f1e;
+      --navy-mid: #111827;
+      --blue: #2563eb;
+      --blue-light: #60a5fa;
+      --slate-bg: #f1f5f9;
+      --white: #ffffff;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --dark: #0a0f1e;
+      --gold: #c9a84c;
+    }
+
+    /* ── NAV ── */
+    .dv-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 68px;
+      background: rgba(10,15,30,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .dv-nav .logo-img { height: 68px; display: block; }
+    .dv-nav-links { display: flex; align-items: center; gap: 36px; }
+    .dv-nav-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .dv-nav-links a:hover, .dv-nav-links a.active { color: #fff; }
+    .dv-nav-links .nav-cta {
+      background: #1d4ed8;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block; width: 22px; height: 2px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 2px;
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--navy);
+      padding: 140px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse at center, rgba(37,99,235,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--blue-light);
+      opacity: 0.5;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--blue-light); }
+    .page-hero p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      max-width: 520px;
+    }
+
+    /* ── STUDIES GRID ── */
+    .studies-section {
+      background: var(--slate-bg);
+      padding: 80px 48px;
+    }
+    .studies-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .studies-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .studies-header-left .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .studies-header-left .sec-title em { font-style: italic; color: var(--blue); }
+    .studies-count {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* Study Cards */
+    .studies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .study-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .study-card:hover {
+      box-shadow: 0 12px 40px rgba(10,15,30,0.10);
+      transform: translateY(-2px);
+    }
+    .study-card-top {
+      background: var(--navy);
+      padding: 28px 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .study-card-top::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 120px; height: 120px;
+      background: radial-gradient(ellipse at bottom right, rgba(37,99,235,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .study-tag {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      border: 1px solid rgba(96,165,250,0.3);
+      border-radius: 2px;
+      padding: 3px 9px;
+      margin-bottom: 16px;
+    }
+    .study-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+    .study-card-body {
+      padding: 24px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .study-card-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+    .study-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+    .study-meta-info {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+    .study-meta-info span {
+      display: block;
+      font-size: 10.5px;
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+    .study-read-link {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--blue);
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .study-read-link svg {
+      transition: transform 0.2s;
+    }
+    .study-card:hover .study-read-link svg {
+      transform: translateX(3px);
+    }
+
+    /* ── FOOTER ── */
+    .dv-footer {
+      background: var(--navy);
+      padding: 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .dv-footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 14px; }
+    .footer-brand img { height: 28px; opacity: 0.8; }
+    .footer-brand-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-brand-name span { color: rgba(255,255,255,0.65); }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+    .footer-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+    .footer-copy {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.2);
+      width: 100%;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 8px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .dv-nav { padding: 0 24px; }
+      .dv-nav-links { display: none; flex-direction: column; position: fixed; top: 68px; left: 0; right: 0; background: rgba(10,15,30,0.98); padding: 24px; gap: 20px; }
+      .dv-nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .page-hero { padding: 110px 24px 60px; }
+      .studies-section { padding: 60px 24px; }
+      .dv-footer { padding: 40px 24px; }
+      .dv-footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .studies-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="dv-nav" id="mainNav">
+    <a href="index.html" class="nav-logo">
+      <img src="css/Images/Dvlogo.png" alt="Datumvista Logo" class="logo-img">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="dv-nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="research.html" class="active">Insights</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Start a Project</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="eyebrow">Research &amp; Insights</div>
+      <h1>Published studies &amp;<br><em>market intelligence</em></h1>
+      <p>Original research from our team — covering utility markets, consumer behaviour, and sector-specific intelligence across the GCC and beyond.</p>
+    </div>
+  </div>
+
+  <!-- STUDIES -->
+  <section class="studies-section">
+    <div class="studies-inner">
+      <div class="studies-header">
+        <div class="studies-header-left">
+          <div class="eyebrow" style="color: var(--blue);">
+            <span style="display:block;width:24px;height:1px;background:var(--blue);opacity:0.5;"></span>
+            Latest Publications
+          </div>
+          <div class="sec-title">Available <em>studies</em></div>
+        </div>
+        <div class="studies-count">1 study published</div>
+      </div>
+
+      <div class="studies-grid">
+
+        <!-- STUDY CARD 1 — EWA Utility Cost Study -->
+        <a href="datumvista_ewa_utility_study_v2.html" class="study-card">
+          <div class="study-card-top">
+            <div class="study-tag">Utility &amp; Infrastructure</div>
+            <div class="study-card-title">EWA Utility Cost Study — Bahrain</div>
+          </div>
+          <div class="study-card-body">
+            <p class="study-card-desc">An analysis of electricity and water costs across residential and commercial segments in Bahrain, benchmarked against regional utility providers.</p>
+            <div class="study-card-meta">
+              <div class="study-meta-info">
+                Datumvista Research Ltd
+                <span>2025 · Bahrain / GCC</span>
+              </div>
+              <div class="study-read-link">
+                Read Study
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 7h10M8 3l4 4-4 4" stroke="#2563eb" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- ADD FUTURE STUDY CARDS BELOW THIS LINE -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="dv-footer">
+    <div class="dv-footer-inner">
+      <div class="footer-brand">
+        <img src="css/Images/Dvlogo.png" alt="Datumvista">
+        <div class="footer-brand-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="industries.html">Industries</a>
+        <a href="research.html">Insights</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+      </div>
+      <div class="footer-copy">© 2024 Datumvista Research Ltd. Registered in England &amp; Wales. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+  </script>
+
+</body>
+</html>
