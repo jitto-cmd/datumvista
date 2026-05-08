@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EWA Utility Cost Study — Datumvista Research Ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a1a;--ink2:#3d3d3d;--ink3:#777;
+  --rule:#ddd6c8;--bg:#f9f7f3;--paper:#fff;
+  --navy:#1c3f6e;--red:#b83232;--green:#2d6a4f;--amber:#7d4e00;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Source Sans 3',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
+
+/* TOPBAR */
+#topbar{background:var(--navy);color:#fff;padding:.55rem 2rem;display:flex;align-items:center;justify-content:space-between;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;position:sticky;top:0;z-index:200}
+#dl-btn{background:#fff;color:var(--navy);border:none;border-radius:2px;padding:.35rem 1rem;font-family:var(--sans);font-size:.72rem;font-weight:700;cursor:pointer;display:none}
+#dl-btn:hover{opacity:.85}
+
+/* HERO */
+#hero{background:var(--navy);color:#fff;padding:3.5rem 2rem 3rem;text-align:center}
+.hero-tag{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-bottom:.9rem}
+#hero h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;line-height:1.2;max-width:680px;margin:0 auto .8rem}
+#hero p{font-size:.95rem;opacity:.75;max-width:520px;margin:0 auto 1.5rem;line-height:1.65}
+.hero-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;font-size:.76rem;opacity:.6;letter-spacing:.04em}
+
+/* STATS STRIP */
+#stats-strip{background:var(--paper);border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;justify-content:center}
+.stat{padding:1.1rem 2rem;text-align:center;border-right:1px solid var(--rule)}
+.stat:last-child{border-right:none}
+.stat .num{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--navy);line-height:1}
+.stat .num.r{color:var(--red)}
+.stat .lbl{font-size:.75rem;color:var(--ink3);margin-top:.3rem;max-width:130px;line-height:1.35}
+
+/* WRAP */
+#wrap{max-width:800px;margin:0 auto;padding:0 1.5rem}
+
+/* PREVIEW */
+#preview{padding:2.5rem 0 0}
+
+/* FADE */
+#fade-wall{position:relative;margin-top:-140px;height:180px;background:linear-gradient(to bottom,transparent 0%,var(--bg) 75%);pointer-events:none}
+
+/* GATE */
+#gate-card{background:var(--paper);border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin:0 0 3rem;box-shadow:0 8px 40px rgba(28,63,110,.10)}
+.gc-head{background:var(--navy);color:#fff;padding:1.75rem 2rem 1.5rem}
+.gc-head .ey{font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;opacity:.65;margin-bottom:.5rem}
+.gc-head h2{font-family:var(--serif);font-size:1.3rem;font-weight:600;line-height:1.25;margin-bottom:.4rem}
+.gc-head p{font-size:.82rem;opacity:.78;line-height:1.5}
+.gc-body{padding:1.5rem 2rem}
+.gc-body .intro{font-size:.86rem;color:var(--ink2);line-height:1.65;padding-bottom:1rem;border-bottom:1px solid var(--rule);margin-bottom:1rem}
+.gc-body label{display:block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:.3rem;margin-top:.85rem}
+.gc-body label:first-of-type{margin-top:0}
+.gc-body input,.gc-body select,.gc-body textarea{width:100%;border:1px solid #ccc4b8;border-radius:3px;padding:.5rem .7rem;font-family:var(--sans);font-size:.875rem;color:var(--ink);background:#fdfcfb;outline:none;transition:border-color .18s}
+.gc-body input:focus,.gc-body select:focus,.gc-body textarea:focus{border-color:var(--navy)}
+.gc-body textarea{resize:vertical;min-height:56px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.decl{background:#f5f2ed;border-left:3px solid var(--amber);border-radius:0 3px 3px 0;padding:.85rem 1rem;margin-top:1rem;font-size:.79rem;color:var(--ink2);line-height:1.6}
+.decl strong{display:block;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--amber);margin-bottom:.35rem}
+.chk-row{display:flex;align-items:flex-start;gap:.55rem;margin-top:.85rem}
+.chk-row input[type=checkbox]{margin-top:3px;accent-color:var(--navy);width:14px;height:14px;flex-shrink:0}
+.chk-row span{font-size:.8rem;color:var(--ink2);line-height:1.5}
+.gate-actions{display:flex;gap:.75rem;margin-top:1.2rem;flex-wrap:wrap}
+#btn-read{flex:1;padding:.7rem;background:var(--navy);color:#fff;border:none;border-radius:3px;font-family:var(--sans);font-size:.875rem;font-weight:700;cursor:pointer;min-width:150px}
+#btn-dl{flex:1;padding:.7rem;background:#fff;color:var(--navy);border:1.5px solid var(--navy);border-radius:3px;font-family:var(--sans);font-size:.875rem;font-weight:700;cursor:pointer;min-width:150px}
+.err{color:var(--red);font-size:.77rem;margin-top:.5rem;display:none}
+.gate-note{text-align:center;font-size:.72rem;color:var(--ink3);margin-top:.75rem;line-height:1.5}
+
+/* FULL REPORT */
+#full-report{display:none;padding:2rem 0 5rem}
+
+/* SHARED STYLES */
+.sec{margin-bottom:2.2rem}
+.sec-lbl{font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--navy);margin-bottom:.45rem}
+.sec h2{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--ink);margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule)}
+.sec h3{font-size:.88rem;font-weight:700;color:var(--ink);margin:1.1rem 0 .4rem;text-transform:uppercase;letter-spacing:.04em}
+p.body{font-size:.93rem;line-height:1.8;color:var(--ink2);margin-bottom:.75rem}
+hr.rule{border:none;border-top:1px solid var(--rule);margin:1.8rem 0}
+
+/* FINDINGS GRID */
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:1.1rem 0}
+.fi{background:var(--paper);padding:.9rem 1rem}
+.fi .n{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--navy);line-height:1}
+.fi .n.r{color:var(--red)}
+.fi .l{font-size:.74rem;color:var(--ink3);margin-top:.25rem;line-height:1.35}
+
+/* TABLES */
+.dt{width:100%;border-collapse:collapse;font-size:.82rem;margin:.9rem 0}
+.dt thead tr{border-bottom:2px solid var(--ink)}
+.dt th{font-weight:700;font-size:.69rem;letter-spacing:.07em;text-transform:uppercase;padding:.48rem .65rem;text-align:left;color:var(--ink3)}
+.dt td{padding:.44rem .65rem;border-bottom:1px solid var(--rule);color:var(--ink2)}
+.dt tbody tr:last-child td{border-bottom:none}
+.dt .hi{color:var(--red);font-weight:600}
+.dt .lo{color:var(--green);font-weight:600}
+.dt .am{color:var(--amber);font-weight:600}
+.dt .hlr td{background:#fef5f5}
+
+/* CALLOUTS */
+.cb{border-left:3px solid var(--navy);padding:.72rem 1rem;margin:.85rem 0;background:#eef3fa}
+.cb.warn{border-color:var(--amber);background:#fdf5e6}
+.cb.red{border-color:var(--red);background:#fdf0f0}
+.cb.grn{border-color:var(--green);background:#edf7f2}
+.cb p{font-size:.83rem;line-height:1.6;color:var(--ink2)}
+.cb strong{display:block;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.28rem;color:var(--navy)}
+.cb.warn strong{color:var(--amber)}
+.cb.red strong{color:var(--red)}
+.cb.grn strong{color:var(--green)}
+
+/* CHARTS */
+.ca{margin:1.1rem 0}
+.ct{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:.4rem}
+.cl{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:7px;font-size:12px;color:var(--ink3)}
+.cl span{display:flex;align-items:center;gap:5px}
+.ld{width:10px;height:10px;border-radius:2px;display:inline-block}
+
+/* NOTES */
+.note{font-size:.73rem;color:var(--ink3);line-height:1.5;margin-top:.4rem;padding-top:.4rem;border-top:1px solid var(--rule)}
+
+/* FOOTER */
+.rfooter{margin-top:2.5rem;padding-top:1.4rem;border-top:2px solid var(--ink);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.73rem;color:var(--ink3)}
+.disc{max-width:500px;line-height:1.55}
+
+@media print{
+  #topbar,#hero,#stats-strip,#fade-wall,#gate-card,#preview{display:none!important}
+  #full-report{display:block!important;padding:0}
+  #wrap{padding:0;max-width:100%}
+  body{background:#fff}
+  .sec{page-break-inside:avoid}
+}
+@media(max-width:580px){
+  .two-col{grid-template-columns:1fr}
+  .gc-body,.gc-head{padding-left:1.25rem;padding-right:1.25rem}
+  .stat{padding:.85rem 1.1rem;border-right:none;border-bottom:1px solid var(--rule)}
+  .stat:last-child{border-bottom:none}
+  .gate-actions{flex-direction:column}
+  #hero h1{font-size:1.5rem}
+  #topbar .ref{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <span style="font-weight:600;opacity:.75">Datumvista Research Ltd</span>
+  <span class="ref" style="opacity:.5">DVR-BH-2025-EWA-001</span>
+  <button id="dl-btn" onclick="window.print()">&#8595; Download PDF</button>
+</div>
+
+<div id="hero">
+  <div class="hero-tag">Public Research Series &mdash; Bahrain</div>
+  <h1>Understanding Utility Bills for Expatriate Households in Bahrain</h1>
+  <p>A plain-language analysis of electricity and water billing trends, costs, and household financial impact &mdash; 2020 to 2026</p>
+  <div class="hero-meta">
+    <span>Ref: DVR-BH-2025-EWA-001</span>
+    <span>Jan 2020 &ndash; Mar 2026</span>
+    <span>Published May 2026</span>
+    <span>Public Research</span>
+  </div>
+</div>
+
+<div id="stats-strip">
+  <div class="stat"><div class="num">75</div><div class="lbl">Months of billing data analysed</div></div>
+  <div class="stat"><div class="num r">+54%</div><div class="lbl">Rise in average monthly bill, 2020 to 2024</div></div>
+  <div class="stat"><div class="num">BD 280</div><div class="lbl">Extra spent on utilities per year by 2024 vs 2020</div></div>
+  <div class="stat"><div class="num r">3&times;</div><div class="lbl">Disconnection notices received over 5 years</div></div>
+</div>
+
+<div id="wrap">
+
+<!-- ═══ FREE PREVIEW ═══ -->
+<div id="preview">
+
+  <div class="sec" style="padding-top:2.5rem">
+    <div class="sec-lbl">Section 1</div>
+    <h2>What This Study Is About</h2>
+    <p class="body">Every month, expatriate families living in Bahrain receive an electricity and water bill from the Electricity and Water Authority (EWA). For many families, this bill is one of the biggest regular expenses they face — and it has been growing steadily over the years.</p>
+    <p class="body">This study looks at <strong>75 months of real billing data</strong> (January 2020 to March 2026) for a standard two-bedroom flat in Block 327, Manama. All names and personal details have been removed. The goal is simple: to understand how much these bills cost, why they change, and what impact they have on a family's budget.</p>
+    <p class="body">The findings are presented in plain language so that anyone — whether a researcher, a policymaker, a journalist, or simply an expatriate family trying to understand their bills — can follow along easily.</p>
+
+    <div class="fg">
+      <div class="fi"><div class="n">BD 56</div><div class="l">Lowest monthly bill recorded (Feb 2022 — newly moved in)</div></div>
+      <div class="fi"><div class="n r">BD 128</div><div class="l">Highest monthly bill recorded (Sep 2024)</div></div>
+      <div class="fi"><div class="n">BD 68</div><div class="l">Average monthly bill across all 75 months</div></div>
+      <div class="fi"><div class="n r">BD 816</div><div class="l">Average annual utility bill across the study period</div></div>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <div class="sec">
+    <div class="sec-lbl">Section 2</div>
+    <h2>How an EWA Bill Is Made Up</h2>
+    <p class="body">Before looking at the numbers, it helps to understand what you are actually paying for each month. An EWA bill for an expatriate household in a rented flat has three main parts:</p>
+
+    <table class="dt">
+      <thead><tr><th>Charge</th><th>What it is</th><th>How it works</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Electricity charge</strong></td><td>Cost of the electricity you use</td><td>Billed at 29 fils per kWh + BD 1 admin fee</td></tr>
+        <tr><td><strong>Water charge</strong></td><td>Cost of the water you use</td><td>Billed at 75 fils per m&sup3; + BD 1 admin fee</td></tr>
+        <tr><td><strong>Municipality fee</strong></td><td>A housing tax charged via the utility bill</td><td>10% of monthly rent — collected by EWA on behalf of the municipality</td></tr>
+      </tbody>
+    </table>
+
+    <div class="cb warn">
+      <strong>About the Municipality Fee</strong>
+      <p>This fee is not for electricity or water — it is a rental tax equal to 10% of your monthly rent, added to your utility bill as a collection mechanism. For this household, it was consistently BD 28 per month, which means the monthly rent was BD 280. This fee applies to expatriate tenants and is a significant fixed cost regardless of how much electricity or water is used.</p>
+    </div>
+
+    <p class="body">So if your electricity use goes up in summer, your bill goes up. But the municipality fee stays the same every month — it never goes down, even if you use very little electricity or water.</p>
+  </div>
+
+  <hr class="rule">
+
+  <div class="sec">
+    <div class="sec-lbl">Section 3 — Preview</div>
+    <h2>How Bills Have Changed Over Time</h2>
+    <p class="body">The table below shows the average monthly bill for each year where we have complete data. The trend is clear: bills have gone up significantly since 2020, rising much faster than general price inflation in Bahrain.</p>
+
+    <table class="dt">
+      <thead><tr><th>Year</th><th>Avg monthly bill (BD)</th><th>Annual total (BD)</th><th>Change vs 2020</th></tr></thead>
+      <tbody>
+        <tr><td>2020</td><td>60.71</td><td>728.51</td><td class="lo">— Baseline</td></tr>
+        <tr><td>2021</td><td>66.13</td><td>793.57</td><td class="am">+8.9%</td></tr>
+        <tr><td>2022</td><td>82.35</td><td>988.20</td><td class="hi">+35.7%</td></tr>
+        <tr><td>2023 (full yr est.)</td><td>~78.00</td><td>~936</td><td class="hi">+28%</td></tr>
+        <tr class="hlr"><td>2024</td><td>91.88</td><td>1,102.57</td><td class="hi">+51.4%</td></tr>
+        <tr><td>2025</td><td>88.30</td><td>1,059.65</td><td class="hi">+45.5%</td></tr>
+        <tr><td>2026 (Jan–Mar only)</td><td>75.24</td><td>225.71 †</td><td class="hi">+24%</td></tr>
+      </tbody>
+    </table>
+    <p class="note">† Partial year. 2021 and 2022 figures derived from original invoices. 2023 Jan–Jul estimated from invoice trend charts. † 2026 includes new Sanitary Fee introduced from January 2026.</p>
+  </div>
+
+</div><!-- /preview -->
+
+<div id="fade-wall"></div>
+
+<!-- ═══ GATE CARD ═══ -->
+<div id="gate-card">
+  <div class="gc-head">
+    <div class="ey">Free access &mdash; complete the short form to continue</div>
+    <h2>You have seen the introduction. The full study has much more.</h2>
+    <p>The remaining sections cover: what drove the bill increases, seasonal patterns, the arrears crisis, the impact on household budgets, and key findings. Fill in the form below to unlock and read or download.</p>
+  </div>
+  <div class="gc-body">
+    <p class="intro">Access is completely free. We collect your details only to maintain a responsible-use record for this public research. No marketing. No sharing with third parties.</p>
+
+    <div class="two-col">
+      <div><label>Full name *</label><input type="text" id="f-name" placeholder="Your full name"></div>
+      <div><label>Email address *</label><input type="email" id="f-email" placeholder="you@example.com"></div>
+    </div>
+    <div class="two-col">
+      <div><label>Organisation (optional)</label><input type="text" id="f-org" placeholder="Company, university, or independent"></div>
+      <div><label>Purpose of access *</label>
+        <select id="f-purpose">
+          <option value="">— Select —</option>
+          <option>Academic research</option>
+          <option>Policy analysis</option>
+          <option>Journalism / media</option>
+          <option>Personal reference</option>
+          <option>Legal or financial advisory</option>
+          <option>NGO / advocacy work</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <label>Brief description of intended use *</label>
+    <textarea id="f-desc" placeholder="e.g. Understanding utility cost trends for a research paper on expat living costs in the GCC&hellip;"></textarea>
+
+    <div class="decl">
+      <strong>Declaration of Responsible Use</strong>
+      By accessing this report I confirm that: (1) I will use the data for lawful purposes only; (2) I will cite this study properly if I reference it in published work; (3) I will not redistribute the data in any way that identifies any individual; (4) I understand this report is for information only and is not legal or financial advice.
+    </div>
+    <div class="chk-row">
+      <input type="checkbox" id="f-agree">
+      <span>I have read and agree to the Declaration above, and confirm the information I provided is accurate.</span>
+    </div>
+    <div id="err-msg" class="err">Please fill in all required fields and accept the declaration.</div>
+
+    <div class="gate-actions">
+      <button id="btn-read" onclick="unlock('read')">Continue reading &#8594;</button>
+      <button id="btn-dl" onclick="unlock('dl')">&#8595; Unlock &amp; download PDF</button>
+    </div>
+    <p class="gate-note">Ref: DVR-BH-2025-EWA-001 &nbsp;&middot;&nbsp; datumvista.com</p>
+  </div>
+</div>
+
+<!-- ═══ FULL REPORT ═══ -->
+<div id="full-report">
+
+  <hr class="rule">
+
+  <!-- S3 FULL -->
+  <div class="sec">
+    <div class="sec-lbl">Section 3 — continued</div>
+    <h2>How Bills Have Changed Over Time</h2>
+
+    <h3>The big picture in one chart</h3>
+    <div class="ca">
+      <div class="ct">Monthly total bill — January 2020 to March 2026 (BD)</div>
+      <div class="cl">
+        <span><span class="ld" style="background:#1c3f6e"></span>Monthly bill (BD)</span>
+        <span><span class="ld" style="background:#1c3f6e;opacity:.4"></span>2026 provisional</span>
+      </div>
+      <div style="position:relative;height:250px"><canvas id="c1" role="img" aria-label="Line chart of monthly EWA bills Jan 2020 to Mar 2026."></canvas></div>
+      <p class="note">The chart shows all 75 months. Bills are lowest in winter (Jan–Mar) and highest in summer (Jul–Sep) every year. The overall level has risen noticeably from 2020 to 2024.</p>
+    </div>
+
+    <h3>Why have bills gone up?</h3>
+    <p class="body">Looking at the data carefully, the electricity rate per unit (fils per kWh) has <strong>not changed</strong> — it stayed at 29 fils throughout the entire 6-year period. So the rise in bills is not caused by the electricity price going up.</p>
+    <p class="body">The main reasons bills have increased are:</p>
+
+    <table class="dt">
+      <thead><tr><th>Reason</th><th>Details</th><th>Impact</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Water charges increased sharply</strong></td><td>From avg BD 6.90/month in 2020 to BD 30/month in 2023–2025. This happened because the shared water meter was activated mid-2022 and began billing the full water consumption of the flat from that point</td><td class="hi">Very high — biggest single driver</td></tr>
+        <tr><td><strong>Higher electricity use</strong></td><td>Electricity consumption grew from typical 150–400 kWh in winter 2020 to 350–500 kWh in winter 2024–25, suggesting more appliances or occupants over time</td><td class="am">Moderate</td></tr>
+        <tr><td><strong>Municipality fee unchanged</strong></td><td>At BD 28/month (10% of BD 280 rent), this fixed cost has not changed in 6 years. But as a share of a tighter household budget, it feels bigger every year</td><td class="am">Fixed — but regressive over time</td></tr>
+        <tr><td><strong>New Sanitary Fee (2026)</strong></td><td>From January 2026, EWA introduced a new sanitary fee — BD 0.20 in Jan, rising to BD 6.25 in Feb and BD 6.05 in Mar. This is a new cost that did not exist before</td><td class="am">Growing — ~BD 72/year if continued</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Bills compared to inflation</h3>
+    <p class="body">Bahrain&rsquo;s general price inflation between 2020 and 2024 was approximately 7–9% in total. If utility bills had simply kept pace with inflation, the 2020 average of BD 60.71 would be about BD 65 in 2024 terms. Instead, the actual 2024 average was BD 91.88 — about BD 27 per month more than inflation alone would explain. That is roughly BD 320 extra per year that families are paying above what general cost-of-living changes would justify.</p>
+
+    <div class="cb">
+      <strong>Simple Summary</strong>
+      <p>Bills went up mainly because the water meter started being billed in full from mid-2022 onwards. The electricity tariff rate itself has not changed. Families are now paying around BD 320 more per year than they were in 2020, adjusted for inflation.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- S4 -->
+  <div class="sec">
+    <div class="sec-lbl">Section 4</div>
+    <h2>Seasonal Patterns — Summer Is the Hard Month</h2>
+    <p class="body">One of the most consistent patterns in the data is the summer peak. Every single year without exception, bills spike between June and September and drop in the cooler months of January to April.</p>
+
+    <div class="ca">
+      <div class="ct">Seasonal bill pattern — comparing 2020, 2022, 2024, and 2025 (BD)</div>
+      <div class="cl">
+        <span><span class="ld" style="background:#aaa"></span>2020</span>
+        <span><span class="ld" style="background:#6b93c4"></span>2022</span>
+        <span><span class="ld" style="background:#b83232"></span>2024</span>
+        <span><span class="ld" style="background:#1c3f6e"></span>2025</span>
+      </div>
+      <div style="position:relative;height:230px"><canvas id="c2" role="img" aria-label="Seasonal comparison chart showing summer peaks and winter troughs across years."></canvas></div>
+    </div>
+
+    <table class="dt">
+      <thead><tr><th>Period</th><th>Typical bill range</th><th>What drives it</th></tr></thead>
+      <tbody>
+        <tr><td>Jan–Apr (winter/spring)</td><td class="lo">BD 37–78</td><td>Low electricity — fans and mild weather. Water steady.</td></tr>
+        <tr><td>May–Jun (build-up)</td><td class="am">BD 65–107</td><td>Air conditioning starts. Bills begin climbing quickly.</td></tr>
+        <tr class="hlr"><td>Jul–Sep (peak summer)</td><td class="hi">BD 90–128</td><td>AC running almost continuously. Temperatures exceed 40°C. Bills at their highest.</td></tr>
+        <tr><td>Oct–Dec (cooling)</td><td class="am">BD 73–110</td><td>AC use drops. Bills fall but remain above winter levels.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="cb red">
+      <strong>Why Summer Bills Cannot Be Reduced Easily</strong>
+      <p>In Bahrain&rsquo;s summer, air conditioning is not a luxury — it is a health necessity. Temperatures regularly exceed 40°C with high humidity. A family cannot simply switch off the AC to save money without serious health risks. This means the high summer bills are largely unavoidable, regardless of the household&rsquo;s income level.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- S5 -->
+  <div class="sec">
+    <div class="sec-lbl">Section 5</div>
+    <h2>The Arrears Problem — When Bills Cannot Be Paid on Time</h2>
+    <p class="body">One of the most striking findings from the original invoice data (2021–2023) is the persistent build-up of unpaid arrears. This household received <strong>three formal disconnection notices</strong> during the study period — in June 2021, August 2021, and December 2022 — and consistently carried outstanding balances of BD 140–360 on top of each month&rsquo;s new bill.</p>
+
+    <table class="dt">
+      <thead><tr><th>Period</th><th>Outstanding arrears</th><th>New bill that month</th><th>Total owed</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Jun 2021</td><td>BD 242.89</td><td>BD 85.00</td><td class="hi">BD 327.89</td><td class="hi">Overdue / Red Bill</td></tr>
+        <tr><td>Aug 2021</td><td>BD 257.98</td><td>BD 102.49</td><td class="hi">BD 360.47</td><td class="hi">Overdue + Disconnection Notice</td></tr>
+        <tr><td>Jun 2022</td><td>BD 160.82</td><td>BD 93.53</td><td class="hi">BD 254.35</td><td class="hi">Red Bill</td></tr>
+        <tr><td>Dec 2022</td><td>BD 90.23</td><td>BD 77.00</td><td>BD 167.23</td><td class="am">Disconnection Notice issued</td></tr>
+        <tr><td>Aug 2023</td><td>BD 256.47</td><td>BD 99.42</td><td class="hi">BD 355.89</td><td class="hi">Settlement agreement active</td></tr>
+      </tbody>
+    </table>
+
+    <p class="body">By mid-2023, the household had entered a formal EWA settlement agreement, with a direct debit of BD 121/month being automatically collected on top of the current bill. This means the family was effectively paying <strong>over BD 200 per month</strong> to EWA during 2023 — current bill plus arrears instalment — while still struggling to keep up.</p>
+
+    <div class="cb warn">
+      <strong>What This Tells Us</strong>
+      <p>Arrears do not happen because a family is irresponsible. They happen when bills consistently exceed what a household can comfortably pay in a single month. Once arrears begin, the total owed grows quickly — and the threat of disconnection adds serious stress to an already difficult financial situation.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- S6 -->
+  <div class="sec">
+    <div class="sec-lbl">Section 6</div>
+    <h2>What These Bills Mean for a Family&rsquo;s Budget</h2>
+    <p class="body">To understand the real impact of these bills, we need to put them in the context of what expatriate workers typically earn in Bahrain. The table below shows what the utility bill represents as a percentage of income at different salary levels.</p>
+
+    <table class="dt">
+      <thead><tr><th>Monthly salary (BD)</th><th>Avg bill % (2020)</th><th>Avg bill % (2024)</th><th>Peak summer % (2024)</th><th>Assessment</th></tr></thead>
+      <tbody>
+        <tr class="hlr"><td>BD 300 or less</td><td class="hi">20%</td><td class="hi">31%</td><td class="hi">43%</td><td class="hi">Very difficult</td></tr>
+        <tr><td>BD 400–500</td><td class="hi">13–15%</td><td class="hi">18–23%</td><td class="hi">26–32%</td><td class="hi">Difficult</td></tr>
+        <tr><td>BD 600–800</td><td class="am">8–10%</td><td class="am">11–15%</td><td class="am">16–21%</td><td class="am">Manageable with care</td></tr>
+        <tr><td>BD 1,000–1,500</td><td>4–6%</td><td>6–9%</td><td>9–13%</td><td class="lo">Comfortable</td></tr>
+        <tr><td>BD 2,000+</td><td>3%</td><td>4–5%</td><td>6–7%</td><td class="lo">Low burden</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Bahrain has no statutory minimum wage for expatriate workers. Many workers in retail, construction, cleaning, and domestic service earn BD 200–400/month.</p>
+
+    <h3>For a salaried worker</h3>
+    <p class="body">Imagine a worker earning BD 400/month — a common salary in sectors like retail, hospitality, or office support. After paying the utility bill (BD 88 on average in 2024), they have BD 312 left. From that, they must pay rent, buy food, cover transport, and send money home to family. In the summer months, when the bill can reach BD 110–128, the situation becomes even tighter.</p>
+
+    <div class="cb red">
+      <strong>A Realistic Example</strong>
+      <p>A worker earns BD 400/month. They send BD 100 home to family (25%). That leaves BD 300 for everything else. In August 2024, the utility bill alone was BD 98.96. After paying it, they have BD 201 left for rent, food, transport, phone, and any other expense — for an entire month.</p>
+    </div>
+
+    <h3>For a self-employed person or small business owner</h3>
+    <p class="body">Self-employed expatriates face a double challenge. They pay utility bills at their shop or workplace on top of their home bill. And unlike a salaried worker who receives the same pay every month, a business owner&rsquo;s income can vary a lot — some months good, some months slow. The utility bill, however, does not vary based on how the business is doing. It comes every month, and in summer it is at its highest, which is also often a slower business period in Bahrain.</p>
+
+    <div class="ca">
+      <div class="ct">Bill composition — average monthly breakdown by year (BD)</div>
+      <div class="cl">
+        <span><span class="ld" style="background:#1c3f6e"></span>Electricity</span>
+        <span><span class="ld" style="background:#2d6a4f"></span>Water</span>
+        <span><span class="ld" style="background:#b5914a"></span>Municipality fee</span>
+      </div>
+      <div style="position:relative;height:220px"><canvas id="c3" role="img" aria-label="Stacked bar chart showing bill composition by year."></canvas></div>
+      <p class="note">Water charges rose dramatically from 2022 onwards when the shared water meter was activated. The municipality fee has remained fixed at BD 28 throughout.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- S7 -->
+  <div class="sec">
+    <div class="sec-lbl">Section 7</div>
+    <h2>Notable Observations from the Data</h2>
+    <p class="body">Going through 75 months of bills reveals some interesting details worth flagging:</p>
+
+    <table class="dt">
+      <thead><tr><th>#</th><th>Observation</th><th>Period</th><th>Likely explanation</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Water charge recorded as &ndash;BD 3.44 (negative) despite actual water use of 7.6 m&sup3;</td><td>Jul 2020</td><td>Billing credit — possibly correcting an overcharge from the previous month</td></tr>
+        <tr><td>2</td><td>Water use was near-zero (0.2–3.5 m&sup3;/month) from Jan 2021 to Apr 2022</td><td>2021–early 2022</td><td>The shared water meter had not yet been assigned to this account. Water was being used but not yet billed separately</td></tr>
+        <tr><td>3</td><td>Water charges jump from ~BD 3/month to ~BD 28–35/month from mid-2022 onwards</td><td>From Jun 2022</td><td>Shared water meter activated and assigned — full water consumption began appearing on bills</td></tr>
+        <tr><td>4</td><td>Electricity meter replaced with a new unit</td><td>Jun 2022</td><td>Meter replacement — new meter installed, readings reset</td></tr>
+        <tr><td>5</td><td>Highest ever bill: BD 127.84 with 2,421 kWh electricity use</td><td>Sep 2024</td><td>Extended hot weather into late September, likely with peak AC use</td></tr>
+        <tr><td>6</td><td>Unusually low bill: BD 68.96 with only 343 kWh used</td><td>Apr 2025</td><td>Possibly a period of absence or reduced occupancy</td></tr>
+        <tr><td>7</td><td>New Sanitary Fee introduced: BD 0.20 rising to BD 6.05–6.25/month</td><td>Jan 2026 onwards</td><td>New charge introduced by EWA — adds approximately BD 72/year to the annual bill</td></tr>
+        <tr><td>8</td><td>Three formal disconnection notices received</td><td>Jun 2021, Aug 2021, Dec 2022</td><td>Result of arrears accumulation — bills exceeded what the household could pay in full each month</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="rule">
+
+  <!-- S8 -->
+  <div class="sec">
+    <div class="sec-lbl">Section 8</div>
+    <h2>Key Findings</h2>
+
+    <p class="body"><strong>Bills have risen significantly — but not because of tariff increases.</strong> The rate charged per unit of electricity (29 fils/kWh) has not changed in 6 years. The main reasons for higher bills are: the full activation of the shared water meter from mid-2022, higher electricity consumption over time, and the introduction of a new sanitary fee from 2026.</p>
+
+    <p class="body"><strong>Water charges are the biggest new cost.</strong> Before mid-2022, water was either not metered or not billed to this account separately. Once the shared meter was activated, water charges went from near-zero to BD 25–35 per month overnight. This single change added approximately BD 300–400 to the annual bill.</p>
+
+    <p class="body"><strong>Summer bills are largely unavoidable.</strong> The sharp seasonal increase in summer is driven by air conditioning, which cannot be switched off safely in temperatures exceeding 40°C. Families have very little ability to reduce summer bills through behavioural changes alone.</p>
+
+    <p class="body"><strong>Lower-income households are hit hardest.</strong> At a BD 400/month salary — common in many service sectors — the average 2024 bill of BD 88 takes up over 22% of income. In peak summer months that rises above 30%. This leaves very little for rent, food, and other necessities.</p>
+
+    <p class="body"><strong>Arrears create a spiral that is hard to escape.</strong> Once a household falls behind on payments, the total owed grows every month. By 2023 this household owed over BD 250 in arrears on top of the current bill, requiring a structured settlement agreement that added a further BD 121/month in automatic payments. The combination of current bill plus arrears repayment often exceeded BD 200/month.</p>
+
+    <p class="body"><strong>The new 2026 Sanitary Fee is an additional pressure.</strong> The newly introduced sanitary fee adds approximately BD 72 per year to household bills. While modest at higher income levels, for lower-income families every additional BD matters.</p>
+
+    <div class="cb grn">
+      <strong>Research Gaps</strong>
+      <p>This study is based on one anonymised household. To draw wider conclusions, researchers would need data from multiple households of different sizes, income levels, and building types. This dataset provides a solid foundation and a clear picture of one family&rsquo;s experience — which is likely representative of many others in similar situations.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- FOOTER -->
+  <div class="rfooter">
+    <div class="disc"><strong>Disclaimer:</strong> This report is published for public information and research purposes only. All household data has been fully anonymised — no individual can be identified from anything in this report. The findings reflect the billing experience of one household and may not represent all households in Bahrain. This report does not constitute legal, financial, or regulatory advice. Datumvista Research Ltd makes no warranty as to the accuracy or completeness of the underlying data.</div>
+    <div style="text-align:right;flex-shrink:0">
+      <div>&copy; 2026 Datumvista Research Ltd</div>
+      <div style="margin-top:.3rem">Ref: DVR-BH-2025-EWA-001</div>
+      <div style="margin-top:.3rem;color:var(--navy)">datumvista.com</div>
+    </div>
+  </div>
+
+</div><!-- /full-report -->
+</div><!-- /wrap -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+function unlock(action){
+  var n=document.getElementById('f-name').value.trim();
+  var e=document.getElementById('f-email').value.trim();
+  var pu=document.getElementById('f-purpose').value;
+  var d=document.getElementById('f-desc').value.trim();
+  var ag=document.getElementById('f-agree').checked;
+  var err=document.getElementById('err-msg');
+  if(!n||!e||!pu||!d||!ag){err.style.display='block';return;}
+  err.style.display='none';
+  document.getElementById('fade-wall').style.display='none';
+  document.getElementById('gate-card').style.display='none';
+  document.getElementById('full-report').style.display='block';
+  document.getElementById('dl-btn').style.display='inline-block';
+  buildCharts();
+  if(action==='dl'){setTimeout(function(){window.print();},700);}
+  else{document.getElementById('full-report').scrollIntoView({behavior:'smooth'});}
+}
+
+function buildCharts(){
+  // Full monthly data - all 75 months
+  // 2020 Jan-Dec (from Excel)
+  var d2020=[41.19,40.24,40.03,44.08,48.09,74.83,73.64,98.54,89.26,78.86,55.40,44.35];
+  // 2021 Jan-Dec (from PDFs)
+  var d2021=[43.26,43.28,41.51,44.02,65.87,85.00,90.09,102.49,92.13,68.51,58.16,39.58];
+  // 2022 Jan-Dec (from PDFs)
+  var d2022=[37.23,37.54,40.84,64.86,85.35,93.53,110.34,111.82,106.74,97.96,90.23,77.00];
+  // 2023 Jan-Jul estimated from trend charts, Aug-Dec from Excel
+  var d2023=[68.89,70.07,69.11,65.32,85.23,93.65,90.97,99.42,86.64,107.60,98.72,80.84];
+  // 2024 Jan-Dec (from Excel)
+  var d2024=[73.98,70.38,72.05,78.30,82.93,95.27,119.73,98.96,127.84,110.17,92.10,80.86];
+  // 2025 Jan-Dec (from Excel)
+  var d2025=[71.82,70.77,72.52,68.96,89.31,107.04,113.23,100.10,111.22,93.51,87.59,73.58];
+  // 2026 Jan-Mar (from Excel, provisional)
+  var d2026=[70.29,77.91,77.51];
+
+  var allBills=d2020.concat(d2021).concat(d2022).concat(d2023).concat(d2024).concat(d2025).concat(d2026);
+  var allLabels=[];
+  var yrs=['2020','2021','2022','2023','2024','2025'];
+  var mos=['J','F','M','A','M','J','J','A','S','O','N','D'];
+  yrs.forEach(function(y){mos.forEach(function(m){allLabels.push(m+"'"+y.slice(2));});});
+  ['J','F','M'].forEach(function(m){allLabels.push(m+"'26");});
+
+  var prov=allBills.map(function(v,i){return i>=72?v:null;});
+
+  new Chart(document.getElementById('c1'),{type:'line',data:{labels:allLabels,datasets:[
+    {data:allBills,borderColor:'#1c3f6e',backgroundColor:'rgba(28,63,110,0.08)',fill:true,tension:0.35,pointRadius:1.5,borderWidth:2,spanGaps:true,label:'Bill'},
+    {data:prov,borderColor:'#1c3f6e',borderDash:[5,4],backgroundColor:'transparent',tension:0.35,pointRadius:2,borderWidth:1.5,spanGaps:true,label:'Provisional'}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return 'BD '+c.parsed.y.toFixed(2);}}}},
+  scales:{x:{ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:20,font:{size:9}}},y:{min:30,title:{display:true,text:'BD',font:{size:10}}}}}});
+
+  var mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  new Chart(document.getElementById('c2'),{type:'line',data:{labels:mo,datasets:[
+    {label:'2020',data:d2020,borderColor:'#aaa',borderDash:[3,3],tension:0.3,pointRadius:2,borderWidth:1.5,backgroundColor:'transparent'},
+    {label:'2022',data:d2022,borderColor:'#6b93c4',tension:0.3,pointRadius:2,borderWidth:2,backgroundColor:'transparent'},
+    {label:'2024',data:d2024,borderColor:'#b83232',tension:0.3,pointRadius:2,borderWidth:2,backgroundColor:'transparent'},
+    {label:'2025',data:d2025,borderColor:'#1c3f6e',tension:0.3,pointRadius:2,borderWidth:2,backgroundColor:'transparent'}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+  scales:{x:{ticks:{font:{size:10}}},y:{min:30,title:{display:true,text:'BD',font:{size:10}}}}}});
+
+  // Composition data from full dataset
+  // Elec avg, Water avg, Muni (all BD, monthly avg)
+  var compLabels=['2020','2021','2022','2023','2024','2025'];
+  var eAvg=[26.6,27.7,35.8,35.0,33.3,34.6];
+  var wAvg=[5.7,2.5,20.1,27.2,30.0,28.6];
+  var mAvg=[28,26.7,28,27.3,28,28];
+
+  new Chart(document.getElementById('c3'),{type:'bar',data:{labels:compLabels,datasets:[
+    {label:'Electricity',data:eAvg,backgroundColor:'#1c3f6e'},
+    {label:'Water',data:wAvg,backgroundColor:'#2d6a4f'},
+    {label:'Municipality fee',data:mAvg,backgroundColor:'#b5914a'}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+  scales:{x:{stacked:true,ticks:{font:{size:11}}},y:{stacked:true,title:{display:true,text:'BD/month avg',font:{size:10}}}}}});
+}
+</script>
+</body>
+</html>
