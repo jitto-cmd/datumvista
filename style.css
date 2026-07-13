@@ -1,9 +1,9 @@
 /* ============================================================
    DATUMVISTA RESEARCH LTD — Global Stylesheet
-   Fonts: Fraunces (display serif) + Outfit (body sans)
+   Font: Poppins (headings + body)
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
 /* ── RESET & BASE ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,7 +25,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: var(--cream);
   color: var(--text);
   font-size: 15px;
@@ -107,7 +107,7 @@ a  { text-decoration: none; color: inherit; }
   border-radius: 6px;
   font-size: 13px;
   font-weight: 500;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Poppins', sans-serif;
   letter-spacing: 0.04em;
   cursor: pointer;
   transition: all 0.2s;
@@ -171,9 +171,9 @@ a  { text-decoration: none; color: inherit; }
 }
 
 .hero h1 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: clamp(2.2rem, 5vw, 3.5rem);
-  font-weight: 300;
+  font-weight: 800;
   line-height: 1.12;
   margin-bottom: 18px;
   letter-spacing: -0.01em;
@@ -182,7 +182,7 @@ a  { text-decoration: none; color: inherit; }
 
 .hero h1 em {
   color: var(--blue-light);
-  font-style: italic;
+  font-style: normal;
 }
 
 .hero-desc {
@@ -214,9 +214,9 @@ a  { text-decoration: none; color: inherit; }
 .stat-cell:last-child { border-right: none; }
 
 .stat-val {
-  font-family: 'Fraunces', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 2rem;
-  font-weight: 300;
+  font-weight: 700;
   color: var(--blue-light);
   line-height: 1;
 }
@@ -248,7 +248,7 @@ a  { text-decoration: none; color: inherit; }
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Poppins', sans-serif;
   letter-spacing: 0.03em;
   transition: background 0.2s;
   display: inline-block;
@@ -263,7 +263,7 @@ a  { text-decoration: none; color: inherit; }
   border-radius: 7px;
   font-size: 13px;
   cursor: pointer;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Poppins', sans-serif;
   transition: border-color 0.2s, color 0.2s;
   display: inline-block;
 }
@@ -290,14 +290,14 @@ a  { text-decoration: none; color: inherit; }
 }
 
 .sec-h {
-  font-family: 'Fraunces', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: clamp(1.8rem, 3.5vw, 2.2rem);
-  font-weight: 300;
+  font-weight: 700;
   color: var(--dark);
   line-height: 1.18;
   margin-bottom: 18px;
 }
-.sec-h em { color: var(--blue); font-style: italic; }
+.sec-h em { color: var(--blue); font-style: normal; }
 .sec-h.light { color: #fff; }
 .sec-h.light em { color: var(--blue-light); }
 
@@ -351,9 +351,9 @@ a  { text-decoration: none; color: inherit; }
 .tl-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
 .tl-yr {
-  font-family: 'Fraunces', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 600;
   color: var(--blue-light);
   min-width: 42px;
   padding-top: 2px;
@@ -611,7 +611,7 @@ a  { text-decoration: none; color: inherit; }
   border: 1px solid var(--border);
   border-radius: 7px;
   font-size: 13.5px;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: var(--text);
   background: var(--cream);
   font-weight: 300;
@@ -631,7 +631,7 @@ a  { text-decoration: none; color: inherit; }
   font-weight: 500;
   font-size: 14px;
   cursor: pointer;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Poppins', sans-serif;
   letter-spacing: 0.03em;
   transition: background 0.2s;
 }
@@ -653,9 +653,9 @@ a  { text-decoration: none; color: inherit; }
 }
 
 .footer-name {
-  font-family: 'Fraunces', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.3rem;
-  font-weight: 300;
+  font-weight: 600;
   color: #fff;
   letter-spacing: 0.05em;
   margin-bottom: 6px;
