@@ -34,6 +34,7 @@
   --text:        #1e293b;
   --text-mid:    #475569;
   --text-muted:  #64748b;
+  --header-h:    78px;
 }
 
 html { scroll-behavior: smooth; }
@@ -45,22 +46,32 @@ body {
   font-size: 15px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  padding-top: var(--header-h);
 }
 
 img { max-width: 100%; display: block; }
 a  { text-decoration: none; color: inherit; }
 
-/* ── NAVIGATION ───────────────────────────────────────────── */
+/* ── SITE HEADER ──────────────────────────────────────────────
+   ONE implementation for every page. Markup, sizes, spacing and colours are
+   identical everywhere; only aria-current="page" differs per page.
+   Markup contract:
+     header.nav-bar > a.nav-logo > img.logo-img
+                    + button.nav-toggle
+                    + nav.nav-links-bar > a (x6) + a.nav-cta
+   ────────────────────────────────────────────────────────────── */
 .nav-bar {
   background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 48px;
-  height: 78px;
+  height: var(--header-h);
   border-bottom: 1px solid #e2e8f0;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
 }
 
@@ -73,12 +84,12 @@ a  { text-decoration: none; color: inherit; }
 }
 
 .logo-img {
-  height: 78px;
+  height: var(--header-h);
   width: auto;
   display: block;
 }
 
-/* Hamburger – hidden on desktop */
+/* Hamburger – hidden until the 900px breakpoint */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -111,28 +122,23 @@ a  { text-decoration: none; color: inherit; }
   transition: color 0.2s;
   white-space: nowrap;
 }
-.nav-links-bar a:hover,
-.nav-links-bar a.active { color: #0a0f1e; }
+.nav-links-bar a:hover { color: #2563eb; }
 
-.nav-cta {
+/* Current page */
+.nav-links-bar a[aria-current="page"] {
+  color: #2563eb;
+}
+
+/* CTA button — declared after the link rules so it keeps white text */
+.nav-links-bar a.nav-cta {
   background: #1d4ed8;
   color: #ffffff;
-  border: 1px solid #1d4ed8;
   padding: 8px 20px;
   border-radius: 4px;
-  font-size: 13px;
   font-weight: 500;
-  font-family: 'Poppins', sans-serif;
   letter-spacing: 0.02em;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
 }
-.nav-cta:hover {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
-  color: #ffffff;
-}
+.nav-links-bar a.nav-cta:hover { background: #1d4ed8; color: #ffffff; }
 
 /* ── HERO ─────────────────────────────────────────────────── */
 .hero {
@@ -177,18 +183,26 @@ a  { text-decoration: none; color: inherit; }
   margin: 0 auto;
 }
 
-/* Breadcrumb trail */
+/* Breadcrumb trail — shared by every interior page, on a dark hero */
 .bc {
-  font-size: 11px;
-  letter-spacing: 0.06em;
+  font-size: 12px;
+  letter-spacing: 0.04em;
   margin-bottom: 18px;
-  color: rgba(255,255,255,0.62);
+  color: rgba(255,255,255,0.92);
   position: relative;
   z-index: 2;
 }
-.bc a { color: rgba(255,255,255,0.85); text-decoration: none; }
-.bc a:hover { text-decoration: underline; }
-.bc span[aria-current] { color: #ffffff; }
+.bc a {
+  color: rgba(255,255,255,0.92);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.bc a:hover { color: #ffffff; }
+.bc span[aria-current] {
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+}
 
 .hero-overline {
   font-size: 11px;
@@ -779,21 +793,17 @@ a  { text-decoration: none; color: inherit; }
 /* ── TABLET (≤ 900px) ─────────────────────────────────────── */
 @media (max-width: 900px) {
 
-  /* Nav */
+  /* Header — same bar, collapsed menu */
   .nav-bar {
     padding: 0 24px;
-    height: auto;
-    flex-wrap: wrap;
-    gap: 0;
   }
 
-  .nav-logo { padding: 14px 0; }
   .logo-img { height: 56px; }
 
   .nav-toggle {
     display: flex;
     margin-left: auto;
-    padding: 14px 0;
+    padding: 6px;
   }
 
   .nav-links-bar {
@@ -801,10 +811,16 @@ a  { text-decoration: none; color: inherit; }
     flex-direction: column;
     align-items: center;
     gap: 0;
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
     width: 100%;
-    padding: 12px 0 18px;
-    border-top: 1px solid rgba(37,99,235,0.15);
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 12px 24px 18px;
   }
+  .nav-links-bar.open { display: flex; }
 
   .nav-links-bar a {
     padding: 10px 0;
@@ -813,7 +829,7 @@ a  { text-decoration: none; color: inherit; }
     font-size: 13.5px;
   }
 
-  .nav-links-bar .nav-cta {
+  .nav-links-bar a.nav-cta {
     margin-top: 8px;
   }
 
