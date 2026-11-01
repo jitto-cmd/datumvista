@@ -56,8 +56,8 @@ a  { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
-  height: 68px;
+  padding: 0 48px;
+  height: 78px;
   border-bottom: 1px solid #e2e8f0;
   position: sticky;
   top: 0;
@@ -73,8 +73,9 @@ a  { text-decoration: none; color: inherit; }
 }
 
 .logo-img {
-  height: 42px;
+  height: 78px;
   width: auto;
+  display: block;
 }
 
 /* Hamburger – hidden on desktop */
@@ -91,7 +92,7 @@ a  { text-decoration: none; color: inherit; }
   display: block;
   width: 22px;
   height: 2px;
-  background: rgba(255,255,255,0.7);
+  background: #1e293b;
   border-radius: 2px;
   transition: all 0.25s;
 }
@@ -99,37 +100,38 @@ a  { text-decoration: none; color: inherit; }
 .nav-links-bar {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 36px;
 }
 
 .nav-links-bar a {
   color: #1e293b;
   font-size: 13px;
   font-weight: 400;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   transition: color 0.2s;
   white-space: nowrap;
 }
 .nav-links-bar a:hover,
-.nav-links-bar a.active { color: #2563eb;; }
+.nav-links-bar a.active { color: #0a0f1e; }
 
 .nav-cta {
-  background: transparent;
-  color: var(--blue-light);
-  border: 1px solid rgba(96,165,250,0.4);
-  padding: 8px 22px;
-  border-radius: 6px;
+  background: #1d4ed8;
+  color: #ffffff;
+  border: 1px solid #1d4ed8;
+  padding: 8px 20px;
+  border-radius: 4px;
   font-size: 13px;
   font-weight: 500;
   font-family: 'Poppins', sans-serif;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
 }
 .nav-cta:hover {
-  background: rgba(37,99,235,0.15);
-  border-color: var(--blue-light);
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  color: #ffffff;
 }
 
 /* ── HERO ─────────────────────────────────────────────────── */
@@ -786,6 +788,7 @@ a  { text-decoration: none; color: inherit; }
   }
 
   .nav-logo { padding: 14px 0; }
+  .logo-img { height: 56px; }
 
   .nav-toggle {
     display: flex;
