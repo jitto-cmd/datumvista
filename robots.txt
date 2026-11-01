@@ -39,3 +39,6 @@ User-agent: Claude-SearchBot
 Allow: /
 
 Sitemap: https://datumvista.com/sitemap.xml
+
+# Plain-markdown site summary for AI answer engines:
+# https://datumvista.com/llms.txt

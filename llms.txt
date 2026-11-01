@@ -1,8 +1,26 @@
-# Datumvista Research Limited
+# Datumvista Research Ltd
 
-> Premier Market Research Fieldwork & Data Collection Agency for the Middle East.
+> Independent market research and fieldwork across the GCC, Africa, Asia and Europe.
 
-Datumvista Research Limited is an independent market research and fieldwork operations firm. The agency specializes in high-quality, on-the-ground data collection, localized sampling, and quantitative/qualitative logistics across the Gulf Cooperation Council (GCC) and the broader Middle East region.
+Datumvista Research Ltd is a market research and fieldwork firm registered in England & Wales, with over a decade of practitioner experience and operations across 9+ markets. Its teams deliver qualitative research, quantitative surveys, mystery shopping, brand tracking, retail distribution mapping and high-net-worth individual (HNI) research, executed in-house rather than subcontracted. Published studies form a free-to-read public research series.
+
+## Key pages
+
+- [Services](https://datumvista.com/services.html) — the nine research services offered, the survey methodologies used (CAPI, CATI, online, pen and paper, IDIs, focus groups), and answers to common questions.
+- [Industries](https://datumvista.com/industries.html) — the 16 sectors covered, from banking, telecoms and healthcare to heavy machinery and government, plus the markets operated in.
+- [Published research](https://datumvista.com/research.html) — index of Datumvista's published studies and market intelligence.
+- [Bahrain utility cost study](https://datumvista.com/research/bahrain-utility-cost-study-2025/) — public study analysing 75 months of EWA electricity, water and municipality charges for an expatriate household in Manama, 2020–2026 (ref DVR-BH-2025-EWA-001).
+- [About](https://datumvista.com/about.html) — company history from 2010 to registration in 2024, working principles and proven capabilities.
+- [Contact](https://datumvista.com/contact.html) — how to commission a study; enquiries are answered within one business day and quoted within three working days.
+
+## Notes
+
+- Company: Datumvista Research Ltd, registered in England & Wales.
+- Markets: Bahrain, Saudi Arabia, UAE, Kuwait, Oman, Morocco, South Africa, India, Singapore, United Kingdom.
+- Coverage of the public study: one anonymised household; findings are indicative, not statistically representative.
+- Client work is under NDA, so client names and project specifics are usually not public.
+- All pages are plain HTML and readable without JavaScript; see https://datumvista.com/sitemap.xml for the canonical URL list.
+
 
 ## Core Services & Operational Capabilities
 - **Quantitative Research Operations:** Face-to-Face (F2F) CAPI/PAPI interviewing, Central Location Testing (CLT), door-to-door consumer surveys, and retail audits.
