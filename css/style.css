@@ -452,7 +452,7 @@ a  { text-decoration: none; color: inherit; }
 }
 .spec:hover { box-shadow: 0 4px 16px rgba(37,99,235,0.07); }
 
-.spec h4 {
+.spec h3, .spec h4 {
   font-size: 13px;
   font-weight: 500;
   color: var(--dark);
