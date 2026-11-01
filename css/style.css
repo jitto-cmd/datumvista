@@ -39,7 +39,13 @@
   --on-dark-muted: rgba(255,255,255,0.78);
   --on-dark-soft:  rgba(255,255,255,0.68);
   --focus-ring: #1d4ed8;
+  --container: 1200px;
+  --gutter: 48px;
   --header-h:    78px;
+}
+
+@media (max-width: 900px) {
+  :root { --gutter: 24px; }
 }
 
 html { scroll-behavior: smooth; }
@@ -1105,6 +1111,7 @@ body .policy-meta-item strong {
 body #hero .hero-tag { font-size: 13px; }
 body .dt th { font-size: 13px; }
 body #topbar .ref { font-size: 13px; }
+body #topbar > span:first-child { font-size: 13px; opacity: 1; }
 
 /* ---- 4. Placeholders and dim helper text ---- */
 body ::placeholder {
@@ -1419,6 +1426,14 @@ body .stat-box:hover { background: rgba(255,255,255,0.04); }
 body .stat-box + .stat-box { border-left-color: rgba(255,255,255,0.08); }
 body .stat-row-2 .stat-box { border-top-color: rgba(255,255,255,0.08); }
 
+/* Stat labels: one line on desktop so the tiles stay short; mobile may wrap */
+@media (min-width: 901px) {
+  body .stat-lbl-dv {
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+  }
+}
+
 /* Mobile: stack the three controls, primary full width */
 @media (max-width: 900px) {
   body .hero-btns-dv {
@@ -1433,14 +1448,31 @@ body .stat-row-2 .stat-box { border-top-color: rgba(255,255,255,0.08); }
   body .hero-overline-dv::before { display: none; }
 }
 
-/* ---- 11. One grid: header inset matches the hero container ---- */
-/* Keeps the bar full-bleed but pushes its contents in to the same edges the
-   hero content uses, so the logo and the nav's last item line up with it. */
-@media (min-width: 901px) {
-  body .nav-bar {
-    padding-left: max(48px, calc((100vw - 1200px) / 2));
-    padding-right: max(48px, calc((100vw - 1200px) / 2));
-  }
+/* ---- 11. One grid: every container shares one width and gutter ---- */
+/* The bar stays full-bleed but its contents inset to the container edges, and the
+   section containers use the same width so the logo, the content and the nav's
+   last item all line up on every page. */
+body .nav-bar {
+  padding-left: max(var(--gutter), calc((100vw - var(--container)) / 2));
+  padding-right: max(var(--gutter), calc((100vw - var(--container)) / 2));
+}
+
+body .hero-inner-dv,
+body .dv-inner,
+body .inner,
+body .studies-inner,
+body .footer-inner {
+  max-width: var(--container);
+}
+
+body .sec,
+body .dv-sec,
+body .dv-hero,
+body .dv-cta,
+body .dv-conf,
+body .conf-bar {
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
 }
 .trust-strip {
   display: flex;
