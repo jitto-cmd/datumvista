@@ -704,6 +704,19 @@ a  { text-decoration: none; color: inherit; }
   font-weight: 300;
 }
 
+/* Consistent company / contact block in every footer */
+.footer-about {
+  max-width: 620px;
+  margin: 18px auto 14px;
+  font-size: 12px;
+  line-height: 1.8;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+}
+.footer-about strong { color: rgba(255,255,255,0.72); font-weight: 500; }
+.footer-about a { color: var(--blue-light); text-decoration: none; }
+.footer-about a:hover { text-decoration: underline; }
+
 /* ── INDUSTRIES PAGE — LIGHT VARIANT ─────────────────────── */
 .sect-grid.light .sect-cell {
   background: #fff;
