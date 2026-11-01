@@ -34,53 +34,12 @@
       --border: #e2e8f0;
     }
 
-    /* ── NAV ── */
-    .dv-nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 48px;
-      height: 78px;
-      background: #ffffff;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    .dv-nav-links { display: flex; align-items: center; gap: 36px; }
-    .dv-nav-links a {
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      color: #1e293b;
-      text-decoration: none;
-      letter-spacing: 0.03em;
-      transition: color 0.2s;
-    }
-    .dv-nav-links a:hover, .dv-nav-links a.active { color: #0a0f1e; }
-    .dv-nav-links .nav-cta {
-      background: var(--blue);
-      color: #fff;
-      padding: 8px 20px;
-      border-radius: 4px;
-      font-weight: 500;
-    }
-    .dv-nav-links .nav-cta:hover { background: #1d4ed8; }
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .nav-toggle span { display: block; width: 22px; height: 2px; background: #1e293b; border-radius: 2px; }
+    /* Header styles live in css/style.css (one shared header for every page) */
 
     /* ── HERO ── */
     .dv-hero {
       background: var(--navy);
-      padding: 160px 48px 100px;
+      padding: 82px 48px 100px;
       position: relative;
       overflow: hidden;
     }
@@ -100,7 +59,6 @@
       gap: 64px;
       align-items: end;
     }
-    .bc{font-size:11px;letter-spacing:.06em;margin-bottom:18px;color:rgba(255,255,255,.62)}.bc a{color:rgba(255,255,255,.85);text-decoration:none}.bc a:hover{text-decoration:underline}.bc span[aria-current]{color:#fff}
 
     .hero-overline-dv {
       font-family: 'Poppins', sans-serif;
@@ -524,11 +482,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .dv-nav { padding: 0 24px; }
-      .dv-nav-links { display: none; flex-direction: column; position: fixed; top: 78px; left: 0; right: 0; background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 24px; gap: 20px; }
-      .dv-nav-links.open { display: flex; }
-      .nav-toggle { display: flex; }
-      .dv-hero { padding: 110px 24px 72px; }
+      .dv-hero { padding: 32px 24px 72px; }
       .hero-inner-dv { grid-template-columns: 1fr; gap: 40px; }
       .hero-disciplines { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); padding-left: 0; padding-top: 24px; flex-direction: row; flex-wrap: wrap; gap: 8px; }
       .discipline-tag { border: 1px solid rgba(255,255,255,0.08); padding: 6px 12px; border-radius: 20px; font-size: 11px; }
@@ -711,24 +665,23 @@
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="dv-nav" id="mainNav">
+    <header class="nav-bar" id="mainNav">
     <a href="/" class="nav-logo">
-      <img src="css/Images/Dvlogo.png" alt="Datumvista Research Ltd — home" class="logo-img" width="160" height="161" decoding="async">
+      <img src="/css/Images/Dvlogo.png" alt="Datumvista logo" class="logo-img" width="160" height="161" decoding="async">
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
-    <div class="dv-nav-links" id="navLinks">
+    <nav class="nav-links-bar" id="navLinks" aria-label="Main">
       <a href="/">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html" class="active">Services</a>
-      <a href="industries.html">Industries</a>
-      <a href="research.html">Insights</a>
-      <a href="contact.html">Contact</a>
-      <a href="contact.html" class="nav-cta">Start a Project</a>
-    </div>
-  </nav>
+      <a href="/about.html">About</a>
+      <a href="/services.html" aria-current="page">Services</a>
+      <a href="/industries.html">Industries</a>
+      <a href="/research.html">Insights</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/contact.html" class="nav-cta">Start a Project</a>
+    </nav>
+  </header>
 
   <!-- HERO -->
   <div class="dv-hero">
@@ -981,12 +934,18 @@
   </footer>
 
   <script>
-    const toggle = document.getElementById('navToggle');
-    const links  = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => links.classList.toggle('open'));
-    links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => links.classList.remove('open'));
-    });
+    // HEADER MENU TOGGLE
+    (function () {
+      const toggle = document.getElementById('navToggle');
+      const links  = document.getElementById('navLinks');
+      if (!toggle || !links) return;
+      const setOpen = (open) => {
+        links.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+      toggle.addEventListener('click', () => setOpen(!links.classList.contains('open')));
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    })();
   </script>
 
 </body>
