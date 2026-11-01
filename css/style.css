@@ -161,6 +161,19 @@ a  { text-decoration: none; color: inherit; }
   margin: 0 auto;
 }
 
+/* Breadcrumb trail */
+.bc {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+  color: rgba(255,255,255,0.62);
+  position: relative;
+  z-index: 2;
+}
+.bc a { color: rgba(255,255,255,0.85); text-decoration: none; }
+.bc a:hover { text-decoration: underline; }
+.bc span[aria-current] { color: #ffffff; }
+
 .hero-overline {
   font-size: 11px;
   letter-spacing: 0.24em;
