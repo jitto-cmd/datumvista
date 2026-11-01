@@ -67,6 +67,32 @@
       .contact-layout { grid-template-columns: 1fr; gap: 36px; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": "https://datumvista.com/contact.html#page",
+        "url": "https://datumvista.com/contact.html",
+        "name": "Contact Datumvista Research",
+        "inLanguage": "en",
+        "about": { "@id": "https://datumvista.com/#organization" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://datumvista.com/contact.html#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://datumvista.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://datumvista.com/contact.html" }
+        ]
+      }
+    ]
+  }
+  </script>
+  <!-- TODO(SEO): add a contactPoint/email and telephone to the Organization once the
+       domain email address and phone number are confirmed. Form submissions currently
+       go to a Gmail address held in the JS on this page. -->
 </head>
 <body>
 

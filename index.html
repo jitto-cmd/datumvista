@@ -540,6 +540,60 @@
       .hero-right { grid-template-columns: 1fr 1fr; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://datumvista.com/#organization",
+        "name": "Datumvista Research Ltd",
+        "alternateName": "Datumvista",
+        "url": "https://datumvista.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://datumvista.com/css/Images/Dvlogo.png",
+          "width": 556,
+          "height": 560
+        },
+        "description": "Market research and fieldwork company delivering qualitative research, quantitative surveys, mystery shopping, brand tracking and retail mapping across the GCC, Africa, Asia and Europe.",
+        "slogan": "Where Data Becomes Decisive Insight",
+        "foundingDate": "2024",
+        "areaServed": [
+          { "@type": "Place", "name": "Gulf Cooperation Council (GCC)" },
+          { "@type": "Place", "name": "Africa" },
+          { "@type": "Place", "name": "Asia" },
+          { "@type": "Place", "name": "Europe" }
+        ],
+        "knowsAbout": [
+          "Qualitative research",
+          "Quantitative surveys",
+          "Mystery shopping",
+          "Brand tracking",
+          "Retail distribution mapping",
+          "High net worth individual research"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "England",
+          "addressCountry": "GB"
+        },
+        "sameAs": ["https://www.linkedin.com/company/datumvista/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://datumvista.com/#website",
+        "url": "https://datumvista.com/",
+        "name": "Datumvista Research Ltd",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://datumvista.com/#organization" }
+      }
+    ]
+  }
+  </script>
+  <!-- TODO(SEO): add "streetAddress" and "postalCode" to the Organization address,
+       and a "contactPoint" block, once the registered office address, phone and
+       domain email are confirmed. Do not invent them. -->
 </head>
 <body>
 
