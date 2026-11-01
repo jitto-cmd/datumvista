@@ -107,6 +107,10 @@
     }
     .cookie-table tr:last-child td { border-bottom: none; }
     .cookie-table tr:nth-child(even) td { background: var(--slate); }
+    @media (max-width: 600px) {
+      .cookie-table { font-size: 12px; }
+      .cookie-table th, .cookie-table td { padding: 8px; overflow-wrap: anywhere; }
+    }
     .highlight-box {
       background: #eff6ff;
       border-left: 3px solid var(--blue);
@@ -333,23 +337,33 @@
   </section>
 
   <!-- ── FOOTER ── -->
+    <!-- SITE FOOTER - identical on every page -->
   <footer class="footer">
-    <img src="css/Images/Dvlogo.png" alt="Datumvista Research Ltd logo" class="footer-logo-img" width="160" height="161" loading="lazy" decoding="async">
-    <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
-    <div class="footer-tag">Where Data Becomes Decisive Insight</div>
-    <nav class="footer-nav">
-      <a href="/">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="industries.html">Industries</a>
-      <a href="research.html">Insights</a>
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms &amp; Conditions</a>
-    </nav>
-    <!-- Company and contact details, kept consistent across the site -->
-      <div class="footer-about"><strong>Datumvista Research Ltd</strong> — market research and fieldwork, registered in England &amp; Wales. We operate across the GCC, Africa, Asia and Europe. For study enquiries, <a href="contact.html">contact Datumvista Research</a>.</div>
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">
+        <img src="/css/Images/Dvlogo.png" alt="Datumvista logo" width="160" height="161" loading="lazy" decoding="async">
+      </a>
+      <div class="footer-name">DATUM<span>VISTA</span> RESEARCH LTD</div>
+      <div class="footer-tag">Where Data Becomes Decisive Insight</div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/services.html">Services</a>
+        <a href="/industries.html">Industries</a>
+        <a href="/research.html">Insights</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms &amp; Conditions</a>
+      </nav>
+      <a class="footer-linkedin" href="https://www.linkedin.com/company/datumvista/" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        Follow us on LinkedIn
+      </a>
+      <!-- TODO(SEO/content): company number, registered office address, domain email and phone still to be added to this block. -->
+      <div class="footer-about"><strong>Datumvista Research Ltd</strong> — market research and fieldwork, registered in England &amp; Wales. We operate across the GCC, Africa, Asia and Europe. For study enquiries, <a href="/contact.html">contact Datumvista Research</a>.</div>
+      <div class="footer-rule"></div>
       <div class="footer-copy">© 2026 Datumvista Research Ltd. Registered in England &amp; Wales. All rights reserved.</div>
+    </div>
   </footer>
 
   <script>
