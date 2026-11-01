@@ -1,0 +1,41 @@
+# robots.txt — https://datumvista.com/
+# Everything on this site may be crawled and indexed, including by AI answer
+# engines. No firewall or server rules block crawlers (GitHub Pages hosting).
+# See https://datumvista.com/sitemap.xml for the full list of pages.
+
+User-agent: *
+Allow: /
+
+# Search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Google AI training / AI Overviews
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+Sitemap: https://datumvista.com/sitemap.xml
