@@ -33,7 +33,12 @@
   --border:      #e8edf3;
   --text:        #1e293b;
   --text-mid:    #475569;
-  --text-muted:  #64748b;
+  --text-muted:  #475569;
+  --brand:       #1d4ed8;
+  --brand-hover: #1e40af;
+  --on-dark-muted: rgba(255,255,255,0.78);
+  --on-dark-soft:  rgba(255,255,255,0.68);
+  --focus-ring: #1d4ed8;
   --header-h:    78px;
 }
 
@@ -967,3 +972,383 @@ a  { text-decoration: none; color: inherit; }
   .hero-btns { flex-direction: column; gap: 10px; }
   .btn-primary, .btn-secondary { width: 100%; text-align: center; }
 }
+
+/* ============================================================
+   ACCESSIBILITY: CONTRAST, OVERLINES, STATES, SKIP LINK
+   Body-scoped so these win over the per-page <style> blocks
+   without moving any layout.
+   ============================================================ */
+
+/* ---- 1. Secondary text: no more opacity dimming, darker greys ---- */
+body .sec-p,
+body .hero-desc,
+body .hero-desc-dv,
+body .principle-desc,
+body .svc-row-desc,
+body .studies-count,
+body .policy-meta-item,
+body .svc-answer,
+body p,
+body td,
+body li {
+  color: var(--text-mid);
+}
+
+body .sec-p,
+body .hero-desc,
+body .hero-desc-dv,
+body .principle-desc,
+body .svc-row-desc,
+body .policy-body p,
+body .study-card-desc {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Generic meta/secondary text that may stay 14px but must not be pale */
+body .text-muted,
+body .study-card-meta,
+body .studies-count {
+  color: var(--text-muted);
+}
+
+/* Numbers had opacity dimming baked in */
+body .svc-num,
+body .why-tile-num,
+body .svc-row-num,
+body .principle-num {
+  opacity: 1;
+}
+
+/* The trust strip inherits its colour from the list, so stop body li winning */
+body .trust-strip li {
+  color: inherit;
+}
+
+/* ---- 2. Numbers and small blue accents on light backgrounds ---- */
+body .svc-num,
+body .why-tile-num,
+body .svc-row-num,
+body .study-read-link,
+body .principle-num {
+  color: var(--brand);
+}
+
+body .svc-row-num,
+body .why-tile-num {
+  font-weight: 600;
+}
+
+/* ---- 3. Overlines / eyebrows: >=12px, weight >=600, 4.5:1 ---- */
+body .eyebrow,
+body .hero-overline,
+body .hero-overline-dv,
+body .sec-eyebrow,
+body .sec-lbl,
+body .method-tag,
+body .spec-card-label,
+body .info-label,
+body .study-tag,
+body .study-card-label,
+body .reach-panel-label,
+body .stat-lbl-dv,
+body .discipline-tag,
+body .dv-conf-label,
+body .footer-tag {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+/* Overlines on light surfaces */
+body .sec-eyebrow,
+body .eyebrow,
+body .method-tag,
+body .info-label,
+body .study-tag,
+body .study-card-label {
+  color: var(--brand);
+}
+
+/* Overlines inside dark areas */
+body .hero-overline,
+body .hero-overline-dv,
+body .dv-hero .eyebrow,
+body .page-hero .eyebrow,
+body .dv-conf .eyebrow,
+body .eyebrow.light,
+body .stat-lbl-dv,
+body .discipline-tag,
+body .hero-tag,
+body .study-tag,
+body #hero .eyebrow {
+  color: #bfdbfe;
+}
+
+body .spec-card-label,
+body .reach-panel-label,
+body .footer-tag,
+body .dv-conf-label {
+  color: var(--on-dark-muted);
+}
+
+/* ---- 4. Placeholders and dim helper text ---- */
+body ::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+body .dv-conf-text {
+  color: var(--on-dark-muted);
+}
+
+/* ---- 5. Text that sits on dark surfaces ---- */
+body .hero-desc,
+body .hero-desc-dv,
+body .dv-hero p,
+body .page-hero p,
+body #hero p,
+body .spec-card p,
+body .conf-bar p,
+body .reach-panel p {
+  color: var(--on-dark-muted);
+}
+
+/* Gate card header sits on the study page's navy panel */
+body .gc-head p {
+  color: var(--on-dark-muted);
+  opacity: 1;
+}
+
+/* Card meta was dimmed by opacity, not colour */
+body .study-meta-info span { opacity: 1; }
+
+/* Topbar reference uses an inline opacity */
+body #topbar .ref { opacity: 0.92 !important; }
+
+/* ---- 6. Hover and focus states ---- */
+body a,
+body button,
+body summary,
+body input,
+body select,
+body textarea {
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease,
+              box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+/* Focus ring: 2px, offset, high contrast on light and dark */
+body a:focus-visible,
+body button:focus-visible,
+body summary:focus-visible,
+body input:focus-visible,
+body select:focus-visible,
+body textarea:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+body .nav-bar a:focus-visible,
+body .footer a:focus-visible,
+body .dv-footer a:focus-visible {
+  outline-color: var(--focus-ring);
+  background: rgba(29,78,216,0.08);
+}
+
+/* Nav links */
+body .nav-links-bar a:hover,
+body .nav-links-bar a:focus-visible {
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+body .nav-links-bar a.nav-cta:hover,
+body .nav-links-bar a.nav-cta:focus-visible {
+  background: var(--brand-hover);
+  color: #ffffff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* Solid buttons */
+body .btn-prim:hover,
+body .btn-primary:hover {
+  background: var(--brand-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(10,15,30,0.22);
+}
+
+body .btn-sec:hover,
+body .btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-1px);
+}
+
+/* Text button on dark */
+body .dv-cta .btn-prim:hover {
+  background: var(--brand-hover);
+}
+
+/* Footer links: colour plus underline, never colour alone */
+body .footer-nav a:hover,
+body .footer-nav a:focus-visible,
+body .footer-about a:hover,
+body .footer-about a:focus-visible {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+body .footer-linkedin:hover,
+body .footer-linkedin:focus-visible {
+  background: #00689d;
+  transform: translateY(-1px);
+}
+
+body .footer-logo:hover img,
+body .footer-logo:focus-visible img,
+body .nav-logo:hover img,
+body .nav-logo:focus-visible img {
+  opacity: 0.85;
+}
+
+/* Breadcrumb links */
+body .bc a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+body .bc a:hover,
+body .bc a:focus-visible {
+  color: #ffffff;
+}
+
+/* Cards */
+body .study-card:hover,
+body .study-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(10,15,30,0.10);
+}
+
+/* Summary toggles (chart data tables) */
+body summary:hover {
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Form fields: border + ring, not colour alone */
+body .cform input,
+body .cform select,
+body .cform textarea,
+body .gc-body input,
+body .gc-body select,
+body .gc-body textarea {
+  border: 1px solid #94a3b8;
+}
+body .cform input:hover,
+body .cform select:hover,
+body .cform textarea:hover,
+body .gc-body input:hover,
+body .gc-body select:hover,
+body .gc-body textarea:hover {
+  border-color: var(--text-mid);
+}
+body .cform input:focus-visible,
+body .cform select:focus-visible,
+body .cform textarea:focus-visible,
+body .gc-body input:focus-visible,
+body .gc-body select:focus-visible,
+body .gc-body textarea:focus-visible {
+  border-color: var(--focus-ring);
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+
+body #submitBtn:hover {
+  background: var(--brand-hover);
+}
+
+/* ---- 7. Skip link ---- */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 2000;
+  background: var(--brand);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 0 0 6px 6px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: top 0.15s ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 0;
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* ---- 8. Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  body a,
+  body button,
+  body summary,
+  body input,
+  body select,
+  body textarea,
+  body .study-card,
+  body .skip-link {
+    transition-duration: 0.01ms !important;
+  }
+  body .nav-links-bar a.nav-cta:hover,
+  body .btn-prim:hover,
+  body .btn-primary:hover,
+  body .btn-sec:hover,
+  body .btn-secondary:hover,
+  body .footer-linkedin:hover,
+  body .study-card:hover {
+    transform: none;
+  }
+}
+
+/* ---- 9. Hero trust strip (index only) ---- */
+.trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 26px;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--on-dark-muted);
+  max-width: 560px;
+}
+.trust-strip li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+}
+.trust-strip li + li::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.7;
+  margin-right: 11px;
+}
+
+/* Narrow screens: separators read as stray bullets, so drop them */
+@media (max-width: 600px) {
+  .trust-strip { gap: 4px 0; }
+  .trust-strip li + li::before { display: none; }
+  .trust-strip li { width: 100%; }
+}
+
+
