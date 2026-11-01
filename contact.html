@@ -180,11 +180,16 @@
           <div class="sec-rule"></div>
 
           <form class="cform" id="contactForm">
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="email" name="email" placeholder="Email Address" required>
-            <input type="text" name="organisation" placeholder="Organisation / Company">
-            <input type="text" name="country" placeholder="Country">
-            <select name="service">
+            <label class="sr-only" for="cf-name">Full name (required)</label>
+            <input type="text" id="cf-name" name="name" placeholder="Full Name" autocomplete="name" required>
+            <label class="sr-only" for="cf-email">Email address (required)</label>
+            <input type="email" id="cf-email" name="email" placeholder="Email Address" autocomplete="email" required>
+            <label class="sr-only" for="cf-organisation">Organisation or company</label>
+            <input type="text" id="cf-organisation" name="organisation" placeholder="Organisation / Company" autocomplete="organization">
+            <label class="sr-only" for="cf-country">Country</label>
+            <input type="text" id="cf-country" name="country" placeholder="Country" autocomplete="country-name">
+            <label class="sr-only" for="cf-service">Research type (optional)</label>
+            <select id="cf-service" name="service">
               <option value="" disabled selected>Research Type (optional)</option>
               <option>Qualitative Research (IDIs / Focus Groups)</option>
               <option>Quantitative Survey</option>
@@ -197,7 +202,8 @@
               <option>Multi-Market Research</option>
               <option>Other / Not Sure</option>
             </select>
-            <textarea name="message" rows="5" placeholder="Describe your research requirement or business challenge..."></textarea>
+            <label class="sr-only" for="cf-message">Research requirement or business challenge</label>
+            <textarea id="cf-message" name="message" rows="5" placeholder="Describe your research requirement or business challenge..."></textarea>
             <button type="submit" id="submitBtn">Submit Enquiry →</button>
           </form>
         </div>

@@ -336,12 +336,12 @@ hr.rule{border:none;border-top:1px solid var(--rule);margin:1.8rem 0}
     <p class="intro">Access is completely free. We collect your details only to maintain a responsible-use record for this public research. No marketing. No sharing with third parties.</p>
 
     <div class="two-col">
-      <div><label>Full name *</label><input type="text" id="f-name" placeholder="Your full name"></div>
-      <div><label>Email address *</label><input type="email" id="f-email" placeholder="you@example.com"></div>
+      <div><label for="f-name">Full name *</label><input type="text" id="f-name" placeholder="Your full name"></div>
+      <div><label for="f-email">Email address *</label><input type="email" id="f-email" placeholder="you@example.com"></div>
     </div>
     <div class="two-col">
-      <div><label>Organisation (optional)</label><input type="text" id="f-org" placeholder="Company, university, or independent"></div>
-      <div><label>Purpose of access *</label>
+      <div><label for="f-org">Organisation (optional)</label><input type="text" id="f-org" placeholder="Company, university, or independent"></div>
+      <div><label for="f-purpose">Purpose of access *</label>
         <select id="f-purpose">
           <option value="">— Select —</option>
           <option>Academic research</option>
@@ -354,7 +354,7 @@ hr.rule{border:none;border-top:1px solid var(--rule);margin:1.8rem 0}
         </select>
       </div>
     </div>
-    <label>Brief description of intended use *</label>
+    <label for="f-desc">Brief description of intended use *</label>
     <textarea id="f-desc" placeholder="e.g. Understanding utility cost trends for a research paper on expat living costs in the GCC&hellip;"></textarea>
 
     <div class="decl">
@@ -362,8 +362,8 @@ hr.rule{border:none;border-top:1px solid var(--rule);margin:1.8rem 0}
       By accessing this report I confirm that: (1) I will use the data for lawful purposes only; (2) I will cite this study properly if I reference it in published work; (3) I will not redistribute the data in any way that identifies any individual; (4) I understand this report is for information only and is not legal or financial advice.
     </div>
     <div class="chk-row">
-      <input type="checkbox" id="f-agree">
-      <span>I have read and agree to the Declaration above, and confirm the information I provided is accurate.</span>
+      <input type="checkbox" id="f-agree" aria-labelledby="f-agree-text">
+      <span id="f-agree-text">I have read and agree to the Declaration above, and confirm the information I provided is accurate.</span>
     </div>
     <div id="err-msg" class="err">Please fill in all required fields and accept the declaration.</div>
 
