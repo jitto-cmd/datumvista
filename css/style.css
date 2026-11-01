@@ -1054,8 +1054,9 @@ body .reach-panel-label,
 body .stat-lbl-dv,
 body .discipline-tag,
 body .dv-conf-label,
-body .footer-tag {
-  font-size: 12px;
+body .footer-tag,
+body .ey {
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.12em;
 }
@@ -1091,6 +1092,19 @@ body .footer-tag,
 body .dv-conf-label {
   color: var(--on-dark-muted);
 }
+
+/* Overlines that live in inline styles or page-level CSS */
+body a[href*="bahrain-utility-cost-study"] div[style*="font-size:10px"] {
+  font-size: 13px !important;
+}
+body .policy-meta-item strong {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+/* Study page chrome, kept to CSS so its markup stays untouched */
+body #hero .hero-tag { font-size: 13px; }
+body .dt th { font-size: 13px; }
+body #topbar .ref { font-size: 13px; }
 
 /* ---- 4. Placeholders and dim helper text ---- */
 body ::placeholder {
@@ -1314,6 +1328,109 @@ body #submitBtn:hover {
   body .study-card:hover {
     transform: none;
   }
+}
+
+/* ---- 10. Home hero: message, CTA hierarchy, above-the-fold fit ---- */
+/* Remove the forced full-height hero and compress it so the eyebrow, H1,
+   paragraph, primary CTA and the whole trust strip fit a 768px-tall screen. */
+body .dv-hero {
+  min-height: 0;
+  align-items: start;
+  padding-top: 24px;
+  padding-bottom: 32px;
+}
+
+body .hero-inner-dv {
+  max-width: 1200px;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* One line at every width, 13px, >= 4.5:1 */
+body .hero-overline-dv {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+  margin-bottom: 16px;
+}
+
+body .hero-h1 {
+  font-size: clamp(2.25rem, 3.2vw, 2.75rem);
+  line-height: 1.14;
+  margin-bottom: 16px;
+}
+
+body .hero-desc-dv {
+  color: #e2e8f0;
+  font-size: 16px;
+  max-width: 52ch;
+  margin-bottom: 22px;
+}
+
+body .hero-btns-dv {
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 0;
+}
+
+/* Outline secondary button on the dark hero */
+body .btn-sec {
+  color: #eef2f7;
+  border-color: rgba(255,255,255,0.38);
+}
+body .btn-sec:hover,
+body .btn-sec:focus-visible {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* Tertiary text link */
+body .hero-link {
+  color: #dbeafe;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding: 10px 4px;
+  white-space: nowrap;
+}
+body .hero-link:hover,
+body .hero-link:focus-visible {
+  color: #ffffff;
+}
+
+body .trust-strip {
+  margin-top: 14px;
+}
+
+/* Stat card: aligned to the H1, lighter panel, thinner dividers */
+body .hero-right {
+  margin-top: 37px;
+  background: rgba(255,255,255,0.045);
+  border-color: rgba(255,255,255,0.10);
+}
+body .stat-box {
+  background: transparent;
+  padding: 26px 24px;
+}
+body .stat-box:hover { background: rgba(255,255,255,0.04); }
+body .stat-box + .stat-box { border-left-color: rgba(255,255,255,0.08); }
+body .stat-row-2 .stat-box { border-top-color: rgba(255,255,255,0.08); }
+
+/* Mobile: stack the three controls, primary full width */
+@media (max-width: 900px) {
+  body .hero-btns-dv {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  body .hero-right { margin-top: 24px; }
+}
+
+@media (max-width: 600px) {
+  /* the rule costs ~44px; the overline must stay on one line */
+  body .hero-overline-dv::before { display: none; }
 }
 
 /* ---- 9. Hero trust strip (index only) ---- */
