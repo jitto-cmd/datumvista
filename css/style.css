@@ -684,26 +684,50 @@ a  { text-decoration: none; color: inherit; }
 }
 .cform button:hover { background: #1d4ed8; }
 
-/* ── FOOTER ───────────────────────────────────────────────── */
+/* ── SITE FOOTER ──────────────────────────────────────────────
+   ONE implementation, identical byte for byte on every page.
+   Markup contract:
+     footer.footer > div.footer-inner > a.footer-logo > img
+                    + .footer-name + .footer-tag
+                    + nav.footer-nav > a (x8)
+                    + a.footer-linkedin
+                    + .footer-about
+                    + .footer-rule + .footer-copy
+   ────────────────────────────────────────────────────────────── */
 .footer {
   background: var(--dark);
-  padding: 44px 40px;
+  padding: 48px 40px 40px;
   text-align: center;
   border-top: 1px solid rgba(37,99,235,0.25);
 }
+.footer-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.65;
+}
 
-.footer-logo-img {
-  height: 50px;
+/* White tile: the logo is dark artwork on white, so it needs its own surface.
+   No opacity or filter, or the tile greys out. */
+.footer-logo {
+  display: inline-flex;
+  padding: 6px;
+  border-radius: 8px;
+  background: #ffffff;
+  margin-bottom: 18px;
+}
+.footer-logo img {
+  display: block;
+  height: 64px;
   width: auto;
-  margin: 0 auto 14px;
-  opacity: 0.85;
+  object-fit: contain;
 }
 
 .footer-name {
   font-family: 'Poppins', sans-serif;
   font-size: 1.3rem;
   font-weight: 600;
-  color: #fff;
+  color: #ffffff;
   letter-spacing: 0.05em;
   margin-bottom: 6px;
 }
@@ -712,7 +736,7 @@ a  { text-decoration: none; color: inherit; }
 .footer-tag {
   font-size: 10.5px;
   letter-spacing: 0.15em;
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.62);
   text-transform: uppercase;
   margin-bottom: 24px;
 }
@@ -722,34 +746,56 @@ a  { text-decoration: none; color: inherit; }
   justify-content: center;
   gap: 26px;
   flex-wrap: wrap;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 .footer-nav a {
   font-size: 12px;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.78);
   transition: color 0.2s;
   font-weight: 300;
 }
 .footer-nav a:hover { color: var(--blue-light); }
 
-.footer-copy {
-  font-size: 11px;
-  color: rgba(255,255,255,0.18);
-  font-weight: 300;
+/* LinkedIn button, matching the styling that already existed on the about page */
+.footer-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0077b5;
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin-bottom: 22px;
 }
+.footer-linkedin:hover { background: #00689d; color: #ffffff; }
 
-/* Consistent company / contact block in every footer */
 .footer-about {
   max-width: 620px;
-  margin: 18px auto 14px;
+  margin: 0 auto 22px;
   font-size: 12px;
   line-height: 1.8;
   font-weight: 300;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.72);
 }
-.footer-about strong { color: rgba(255,255,255,0.72); font-weight: 500; }
+.footer-about strong { color: #ffffff; font-weight: 500; }
 .footer-about a { color: var(--blue-light); text-decoration: none; }
 .footer-about a:hover { text-decoration: underline; }
+
+.footer-rule {
+  height: 1px;
+  max-width: 720px;
+  margin: 0 auto 18px;
+  background: rgba(255,255,255,0.12);
+}
+
+.footer-copy {
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+}
 
 /* ── INDUSTRIES PAGE — LIGHT VARIANT ─────────────────────── */
 .sect-grid.light .sect-cell {
