@@ -129,8 +129,12 @@ a  { text-decoration: none; color: inherit; }
   color: #2563eb;
 }
 
-/* CTA button — declared after the link rules so it keeps white text */
-.nav-links-bar a.nav-cta {
+/* CTA button — declared after the link rules so it keeps white text.
+   :visited and :focus-visible are listed so no other link state can
+   repaint the label dark. */
+.nav-links-bar a.nav-cta,
+.nav-links-bar a.nav-cta:visited,
+.nav-links-bar a.nav-cta:focus-visible {
   background: #1d4ed8;
   color: #ffffff;
   padding: 8px 20px;
