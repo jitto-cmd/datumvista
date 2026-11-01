@@ -279,6 +279,31 @@
       color: var(--text-muted);
       line-height: 1.75;
     }
+    .svc-answer {
+      display: block;
+      font-weight: 400;
+      color: #334155;
+      margin-bottom: 9px;
+    }
+
+    /* ── FAQ ── */
+    .faq-list { border-top: 1px solid var(--border); }
+    .faq-item { padding: 28px 0; border-bottom: 1px solid var(--border); }
+    .faq-item h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #0a0f1e;
+      margin-bottom: 10px;
+    }
+    .faq-item p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 720px;
+    }
 
     /* ── METHODOLOGIES — alternating blocks ── */
     .methods-header {
@@ -627,6 +652,63 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://datumvista.com/services.html#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which survey methods do you offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Face-to-face (CAPI), telephone (CATI), online and paper-based surveys, alongside in-depth interviews, focus groups and ethnographic work. The right method depends on the research question, and we often combine approaches within a single programme."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which markets do you cover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We operate across 9+ markets: Bahrain, Saudi Arabia, the UAE, Kuwait, Oman, Morocco, South Africa, India, Singapore and the United Kingdom — spanning the GCC, Africa, Asia and Europe."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is fieldwork subcontracted to another agency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every methodology we offer has been executed by our own team across real projects — not subcontracted, and not described from textbooks. Large, complex studies are run with structured field management and quality control."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you handle confidentiality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All enquiries and client relationships are governed by Non-Disclosure Agreements. We do not publicly disclose client names, project specifics or commercially sensitive detail; credentials and case references are available upon request under mutual NDA."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does \"HNI access\" mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It means proven access and a tailored methodology for interviewing High Net Worth Individuals with USD 5M+ in assets — a rare capability in the region, used for premium financial, investment, real estate and lifestyle research."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you run a multi-country programme?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We have coordinated mystery shopping and survey programmes across Bahrain, the UAE, Kuwait, Oman and Saudi Arabia to a single protocol, with consistent scoring and cross-market reporting."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -685,47 +767,47 @@
         <div class="svc-row" id="qualitative-research">
           <div class="svc-row-num">01</div>
           <div class="svc-row-title">Qualitative Research</div>
-          <div class="svc-row-desc">In-Depth Interviews (IDIs), Focus Groups, and ethnographic approaches that reveal motivations, attitudes, and emotional drivers beyond surface-level responses. Conducted face-to-face or remotely.</div>
+          <div class="svc-row-desc"><p class="svc-answer">Datumvista runs in-depth interviews, focus groups and ethnographic work, delivered face-to-face or remotely by experienced moderators. Studies are built to surface motivations and attitudes that surveys cannot reach, and are executed across the GCC and the other markets we operate in.</p>In-Depth Interviews (IDIs), Focus Groups, and ethnographic approaches that reveal motivations, attitudes, and emotional drivers beyond surface-level responses. Conducted face-to-face or remotely.</div>
         </div>
         <div class="svc-row" id="quantitative-surveys">
           <div class="svc-row-num">02</div>
           <div class="svc-row-title">Quantitative Surveys</div>
-          <div class="svc-row-desc">Face-to-face (CAPI), online, telemetric (CATI), and paper-based surveys. We handle large, complex sample sizes with structured field management and quality control across multiple locations.</div>
+          <div class="svc-row-desc"><p class="svc-answer">We collect survey data face-to-face (CAPI), by telephone (CATI), online and on paper, with structured field management and quality control behind every project. Large, complex sample sizes are handled across multiple locations in the GCC and beyond.</p>Face-to-face (CAPI), online, telemetric (CATI), and paper-based surveys. We handle large, complex sample sizes with structured field management and quality control across multiple locations.</div>
         </div>
         <div class="svc-row" id="mystery-shopping">
           <div class="svc-row-num">03</div>
           <div class="svc-row-title">Mystery Shopping</div>
-          <div class="svc-row-desc">Discreet evaluations of customer experience and service quality across retail, QSR, automotive, luxury beauty, telecoms, heavy machinery dealerships, and other specialist environments.</div>
+          <div class="svc-row-desc"><p class="svc-answer">Mystery shopping is a discreet, visit-by-visit evaluation of customer experience and service quality carried out by trained field staff. Programmes cover retail, QSR, automotive, luxury beauty, telecoms and heavy machinery dealerships, and can run across Bahrain, the UAE, Kuwait, Oman and Saudi Arabia to a single protocol.</p>Discreet evaluations of customer experience and service quality across retail, QSR, automotive, luxury beauty, telecoms, heavy machinery dealerships, and other specialist environments.</div>
         </div>
         <div class="svc-row" id="brand-tracking">
           <div class="svc-row-num">04</div>
           <div class="svc-row-title">Brand Tracking</div>
-          <div class="svc-row-desc">Continuous or periodic studies measuring brand awareness, perception, preference, and competitive positioning over time — helping clients understand how their brand is moving in the market.</div>
+          <div class="svc-row-desc"><p class="svc-answer">Brand tracking measures awareness, perception, preference and competitive positioning over time, either continuously or in periodic waves. Each study shows how the brand is actually moving in the market between waves, so clients can act on the trend rather than a snapshot.</p>Continuous or periodic studies measuring brand awareness, perception, preference, and competitive positioning over time — helping clients understand how their brand is moving in the market.</div>
         </div>
         <div class="svc-row" id="retail-distribution-mapping">
           <div class="svc-row-num">05</div>
           <div class="svc-row-title">Retail Distribution Mapping</div>
-          <div class="svc-row-desc">Comprehensive nationwide outlet mapping — identifying missing stockists, auditing product placement, measuring competitor presence, and understanding distribution gaps across cold stores, mini-markets, and retail outlets.</div>
+          <div class="svc-row-desc"><p class="svc-answer">Retail distribution mapping audits outlets across a market to record who stocks a product, where it sits and which competitors are present. Nationwide sweeps of cold stores, mini-markets and retail outlets expose missing stockists and distribution gaps that desk research cannot show.</p>Comprehensive nationwide outlet mapping — identifying missing stockists, auditing product placement, measuring competitor presence, and understanding distribution gaps across cold stores, mini-markets, and retail outlets.</div>
         </div>
         <div class="svc-row" id="hni-specialist-research">
           <div class="svc-row-num">06</div>
           <div class="svc-row-title">HNI & Specialist Research</div>
-          <div class="svc-row-desc">Proven access and tailored methodology for interviewing High Net Worth Individuals with USD 5M+ in assets — a rare and carefully managed capability for premium financial, investment, real estate, and lifestyle research.</div>
+          <div class="svc-row-desc"><p class="svc-answer">HNI research reaches individuals holding USD 5M+ in assets using established access and a methodology built around their time and discretion. It is used for premium financial, investment, real estate and lifestyle studies where standard consumer samples will not do.</p>Proven access and tailored methodology for interviewing High Net Worth Individuals with USD 5M+ in assets — a rare and carefully managed capability for premium financial, investment, real estate, and lifestyle research.</div>
         </div>
         <div class="svc-row" id="telephone-mystery-evaluations">
           <div class="svc-row-num">07</div>
           <div class="svc-row-title">Telephone Mystery Evaluations</div>
-          <div class="svc-row-desc">Structured telephone-based mystery audits across multi-country dealer networks and service centres — assessing responsiveness, product knowledge, and service quality standards without an in-person visit.</div>
+          <div class="svc-row-desc"><p class="svc-answer">Telephone mystery evaluations test responsiveness, product knowledge and service standards over the phone across dealer networks and service centres. They can be run at multi-country scale without an in-person visit.</p>Structured telephone-based mystery audits across multi-country dealer networks and service centres — assessing responsiveness, product knowledge, and service quality standards without an in-person visit.</div>
         </div>
         <div class="svc-row" id="price-surveys-footfall">
           <div class="svc-row-num">08</div>
           <div class="svc-row-title">Price Surveys & Footfall Studies</div>
-          <div class="svc-row-desc">Retail price data collection across multiple outlets, and structured visitor measurement studies for commercial and retail properties — supporting competitive intelligence and investment decisions.</div>
+          <div class="svc-row-desc"><p class="svc-answer">Price surveys collect retail price data outlet by outlet, while footfall studies measure visitors to commercial and retail properties. Both feed competitive intelligence and leasing or investment decisions.</p>Retail price data collection across multiple outlets, and structured visitor measurement studies for commercial and retail properties — supporting competitive intelligence and investment decisions.</div>
         </div>
         <div class="svc-row" id="online-surveys-digital-research">
           <div class="svc-row-num">09</div>
           <div class="svc-row-title">Online Surveys & Digital Research</div>
-          <div class="svc-row-desc">End-to-end design and deployment of digital surveys across banking, fintech, insurance, and consumer product categories — including panel management and data validation.</div>
+          <div class="svc-row-desc"><p class="svc-answer">Online and digital research is designed, hosted and deployed end to end, including panel management and data validation. Programmes run across banking, fintech, insurance and consumer product categories.</p>End-to-end design and deployment of digital surveys across banking, fintech, insurance, and consumer product categories — including panel management and data validation.</div>
         </div>
       </div>
     </div>
@@ -804,6 +886,51 @@
           <div class="spec-card-label">Competitive Intelligence</div>
           <h4>Retail Price Intelligence</h4>
           <p>Systematic collection of retail price data across city-wide outlet networks — conducted for international professional services clients and regulatory bodies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="dv-sec bg-white" id="faq">
+    <div class="dv-inner">
+      <div class="svc-sec-header">
+        <div>
+          <div class="eyebrow">Questions</div>
+          <h2 class="sec-title">Frequently asked <em>questions</em></h2>
+        </div>
+        <p>Short answers to the questions clients ask most often before commissioning work. Anything specific to your study is best discussed with us directly.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>Which survey methods do you offer?</h3>
+          <p>Face-to-face (CAPI), telephone (CATI), online and paper-based surveys, alongside in-depth interviews, focus groups and ethnographic work. The right method depends on the research question, and we often combine approaches within a single programme.</p>
+          <!-- TODO: review for accuracy -->
+        </div>
+        <div class="faq-item">
+          <h3>Which markets do you cover?</h3>
+          <p>We operate across 9+ markets: Bahrain, Saudi Arabia, the UAE, Kuwait, Oman, Morocco, South Africa, India, Singapore and the United Kingdom — spanning the GCC, Africa, Asia and Europe.</p>
+          <!-- TODO: review for accuracy -->
+        </div>
+        <div class="faq-item">
+          <h3>Is fieldwork subcontracted to another agency?</h3>
+          <p>Every methodology we offer has been executed by our own team across real projects — not subcontracted, and not described from textbooks. Large, complex studies are run with structured field management and quality control.</p>
+          <!-- TODO: review for accuracy -->
+        </div>
+        <div class="faq-item">
+          <h3>How do you handle confidentiality?</h3>
+          <p>All enquiries and client relationships are governed by Non-Disclosure Agreements. We do not publicly disclose client names, project specifics or commercially sensitive detail; credentials and case references are available upon request under mutual NDA.</p>
+          <!-- TODO: review for accuracy -->
+        </div>
+        <div class="faq-item">
+          <h3>What does "HNI access" mean?</h3>
+          <p>It means proven access and a tailored methodology for interviewing High Net Worth Individuals with USD 5M+ in assets — a rare capability in the region, used for premium financial, investment, real estate and lifestyle research.</p>
+          <!-- TODO: review for accuracy -->
+        </div>
+        <div class="faq-item">
+          <h3>Can you run a multi-country programme?</h3>
+          <p>Yes. We have coordinated mystery shopping and survey programmes across Bahrain, the UAE, Kuwait, Oman and Saudi Arabia to a single protocol, with consistent scoring and cross-market reporting.</p>
+          <!-- TODO: review for accuracy -->
         </div>
       </div>
     </div>
