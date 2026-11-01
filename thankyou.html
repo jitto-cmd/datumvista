@@ -25,24 +25,23 @@
 </head>
 <body>
 
-  <!-- ── NAVIGATION ── -->
-  <nav class="nav-bar" id="mainNav">
+    <header class="nav-bar" id="mainNav">
     <a href="/" class="nav-logo">
-      <img src="css/Images/Dvlogo.png" alt="Datumvista Research Ltd — home" class="logo-img" width="160" height="161" decoding="async">
+      <img src="/css/Images/Dvlogo.png" alt="Datumvista logo" class="logo-img" width="160" height="161" decoding="async">
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
-    <div class="nav-links-bar" id="navLinks">
+    <nav class="nav-links-bar" id="navLinks" aria-label="Main">
       <a href="/">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="industries.html">Industries</a>
-      <a href="research.html">Insights</a>
-      <a href="contact.html">Contact</a>
-      <a href="contact.html" class="nav-cta">Start a Project</a>
-    </div>
-  </nav>
+      <a href="/about.html">About</a>
+      <a href="/services.html">Services</a>
+      <a href="/industries.html">Industries</a>
+      <a href="/research.html">Insights</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/contact.html" class="nav-cta">Start a Project</a>
+    </nav>
+  </header>
 
   <!-- ── THANK YOU ── -->
   <section class="sec bg-white">
@@ -81,14 +80,18 @@
   </footer>
 
   <script>
-    const toggle = document.getElementById('navToggle');
-    const links  = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => {
-      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-    });
-    links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => { links.style.display = 'none'; });
-    });
+    // HEADER MENU TOGGLE
+    (function () {
+      const toggle = document.getElementById('navToggle');
+      const links  = document.getElementById('navLinks');
+      if (!toggle || !links) return;
+      const setOpen = (open) => {
+        links.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+      toggle.addEventListener('click', () => setOpen(!links.classList.contains('open')));
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    })();
   </script>
 
 </body>
