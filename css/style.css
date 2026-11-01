@@ -1433,7 +1433,15 @@ body .stat-row-2 .stat-box { border-top-color: rgba(255,255,255,0.08); }
   body .hero-overline-dv::before { display: none; }
 }
 
-/* ---- 9. Hero trust strip (index only) ---- */
+/* ---- 11. One grid: header inset matches the hero container ---- */
+/* Keeps the bar full-bleed but pushes its contents in to the same edges the
+   hero content uses, so the logo and the nav's last item line up with it. */
+@media (min-width: 901px) {
+  body .nav-bar {
+    padding-left: max(48px, calc((100vw - 1200px) / 2));
+    padding-right: max(48px, calc((100vw - 1200px) / 2));
+  }
+}
 .trust-strip {
   display: flex;
   flex-wrap: wrap;
